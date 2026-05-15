@@ -57,5 +57,5 @@ This separation matters because pattern matching alone can find a `COMMON` state
 | Pattern detector | `src/Analyzer.cpp`, `include/Analyzer.hpp` |
 | Impact analyzer | `ModernizationAnalyzer::computeImpact` in `src/Analyzer.cpp` |
 | Prioritized plan | `src/Reporter.cpp` |
-| Legacy tests | `examples/legacy`, `tests_cpp/test_analyzer.cpp` |
+| Legacy tests | `examples/legacy`, `tests/test_analyzer.cpp` |
 | Case study | `examples/case_study`, `docs/case_study_report.md` after running the command |

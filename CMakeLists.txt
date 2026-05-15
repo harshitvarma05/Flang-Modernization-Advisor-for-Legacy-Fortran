@@ -16,7 +16,7 @@ target_include_directories(flang_modernizer_core PUBLIC include)
 add_executable(flang-modernizer src/main.cpp)
 target_link_libraries(flang-modernizer PRIVATE flang_modernizer_core)
 
-add_executable(flang-modernizer-tests tests_cpp/test_analyzer.cpp)
+add_executable(flang-modernizer-tests tests/test_analyzer.cpp)
 target_link_libraries(flang-modernizer-tests PRIVATE flang_modernizer_core)
 
 enable_testing()
