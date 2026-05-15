@@ -2,7 +2,7 @@
 
 This project is a compiler-design lab prototype for a Flang-style static analysis tool that detects legacy Fortran anti-patterns, estimates modernization impact, and produces a prioritized modernization plan.
 
-The runnable prototype uses a lightweight Fortran front-end so it works without a local LLVM/Flang build. The architecture keeps the detector, semantic facts, impact analysis, and reporting separate so the front-end can be replaced with Flang parse-tree and semantic-symbol extraction.
+The main implementation is now C++17, matching LLVM/Flang's native ecosystem. It uses a lightweight Fortran front-end in this lab build so it can run without a local LLVM/Flang installation, while keeping the detector, semantic facts, impact analysis, and reporting separated so a Flang parse-tree adapter can replace the scanner.
 
 ## Features
 
@@ -17,25 +17,26 @@ The runnable prototype uses a lightweight Fortran front-end so it works without 
 ## Run
 
 ```bash
-python3 -m flang_modernizer.cli examples/legacy
+make
+./build/flang-modernizer examples/legacy
 ```
 
 Generate the case-study report:
 
 ```bash
-python3 -m flang_modernizer.cli examples/case_study --output docs/case_study_report.md
+make report
 ```
 
 Run safe demonstration transformations:
 
 ```bash
-python3 -m flang_modernizer.cli examples/case_study --safe-transform-out transformed/case_study
+make transform
 ```
 
 Run tests:
 
 ```bash
-python3 -m unittest discover -s tests
+make test
 ```
 
 ## Flang Integration Design
@@ -53,8 +54,8 @@ This separation matters because pattern matching alone can find a `COMMON` state
 
 | Required deliverable | Project location |
 |---|---|
-| Pattern detector | `flang_modernizer/analyzer.py` |
-| Impact analyzer | `ModernizationAnalyzer._compute_impact` |
-| Prioritized plan | `flang_modernizer/reporter.py` |
-| Legacy tests | `examples/legacy`, `tests/test_analyzer.py` |
+| Pattern detector | `src/Analyzer.cpp`, `include/Analyzer.hpp` |
+| Impact analyzer | `ModernizationAnalyzer::computeImpact` in `src/Analyzer.cpp` |
+| Prioritized plan | `src/Reporter.cpp` |
+| Legacy tests | `examples/legacy`, `tests_cpp/test_analyzer.cpp` |
 | Case study | `examples/case_study`, `docs/case_study_report.md` after running the command |

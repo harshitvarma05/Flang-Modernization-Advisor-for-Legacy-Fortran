@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Flang Modernization Advisor for Legacy Fortran.iml" filepath="$PROJECT_DIR$/.idea/Flang Modernization Advisor for Legacy Fortran.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/FlangModernizationAdvisor.iml" filepath="$PROJECT_DIR$/.idea/FlangModernizationAdvisor.iml" />
     </modules>
   </component>
 </project>
