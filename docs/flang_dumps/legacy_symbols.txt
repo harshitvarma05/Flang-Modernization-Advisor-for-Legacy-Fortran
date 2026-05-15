@@ -1,0 +1,295 @@
+Global scope: size=0 alignment=1 sourceRange=0 bytes
+  LEGACY: MainProgram
+  work, EXTERNAL (Subroutine): Subprogram (REAL(4) arr,INTEGER(4) n)
+  work2 (Subroutine): Subprogram entry in work (REAL(4) arr,INTEGER(4) n)
+  IntrinsicModules scope: size=0 alignment=1 sourceRange=0 bytes
+    __fortran_builtins, INTRINSIC (ModFile): Module
+    __fortran_type_info, INTRINSIC (ModFile): Module
+    Module scope: __fortran_builtins size=96 alignment=8 sourceRange=5014 bytes
+      .c.__builtin_c_devptr, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(component) shape: 0_8:0_8 init:[component::component(name=.n.cptr,genre=1_1,category=6_1,kind=0_1,rank=0_1,offset=0_8,characterlen=value(genre=1_1,value=0_8),derived=.dt.__builtin_c_ptr,lenvalue=NULL(),bounds=NULL(),initialization=NULL())]
+      .c.__builtin_c_funptr, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(component) shape: 0_8:0_8 init:[component::component(name=.n.__address,genre=1_1,category=0_1,kind=8_1,rank=0_1,offset=0_8,characterlen=value(genre=1_1,value=0_8),derived=NULL(),lenvalue=NULL(),bounds=NULL(),initialization=NULL())]
+      .c.__builtin_c_ptr, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(component) shape: 0_8:0_8 init:[component::component(name=.n.__address,genre=1_1,category=0_1,kind=8_1,rank=0_1,offset=0_8,characterlen=value(genre=1_1,value=0_8),derived=NULL(),lenvalue=NULL(),bounds=NULL(),initialization=NULL())]
+      .c.__builtin_dim3, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(component) shape: 0_8:2_8 init:[component::component(name=.n.x,genre=1_1,category=0_1,kind=4_1,rank=0_1,offset=0_8,characterlen=value(genre=1_1,value=0_8),derived=NULL(),lenvalue=NULL(),bounds=NULL(),initialization=.di.__builtin_dim3.x),component(name=.n.y,genre=1_1,category=0_1,kind=4_1,rank=0_1,offset=4_8,characterlen=value(genre=1_1,value=0_8),derived=NULL(),lenvalue=NULL(),bounds=NULL(),initialization=.di.__builtin_dim3.y),component(name=.n.z,genre=1_1,category=0_1,kind=4_1,rank=0_1,offset=8_8,characterlen=value(genre=1_1,value=0_8),derived=NULL(),lenvalue=NULL(),bounds=NULL(),initialization=.di.__builtin_dim3.z)]
+      .c.__builtin_event_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(component) shape: 0_8:0_8 init:[component::component(name=.n.__count,genre=1_1,category=0_1,kind=8_1,rank=0_1,offset=0_8,characterlen=value(genre=1_1,value=0_8),derived=NULL(),lenvalue=NULL(),bounds=NULL(),initialization=.di.__builtin_event_type.__count)]
+      .c.__builtin_ieee_flag_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(component) shape: 0_8:0_8 init:[component::component(name=.n.flag,genre=1_1,category=0_1,kind=1_1,rank=0_1,offset=0_8,characterlen=value(genre=1_1,value=0_8),derived=NULL(),lenvalue=NULL(),bounds=NULL(),initialization=.di.__builtin_ieee_flag_type.flag)]
+      .c.__builtin_ieee_round_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(component) shape: 0_8:0_8 init:[component::component(name=.n.mode,genre=1_1,category=0_1,kind=1_1,rank=0_1,offset=0_8,characterlen=value(genre=1_1,value=0_8),derived=NULL(),lenvalue=NULL(),bounds=NULL(),initialization=.di.__builtin_ieee_round_type.mode)]
+      .c.__builtin_lock_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(component) shape: 0_8:0_8 init:[component::component(name=.n.__count,genre=1_1,category=0_1,kind=8_1,rank=0_1,offset=0_8,characterlen=value(genre=1_1,value=0_8),derived=NULL(),lenvalue=NULL(),bounds=NULL(),initialization=.di.__builtin_lock_type.__count)]
+      .c.__builtin_notify_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(component) shape: 0_8:0_8 init:[component::component(name=.n.__count,genre=1_1,category=0_1,kind=8_1,rank=0_1,offset=0_8,characterlen=value(genre=1_1,value=0_8),derived=NULL(),lenvalue=NULL(),bounds=NULL(),initialization=.di.__builtin_notify_type.__count)]
+      .c.__builtin_team_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(component) shape: 0_8:0_8 init:[component::component(name=.n.__id,genre=1_1,category=0_1,kind=8_1,rank=0_1,offset=0_8,characterlen=value(genre=1_1,value=0_8),derived=NULL(),lenvalue=NULL(),bounds=NULL(),initialization=.di.__builtin_team_type.__id)]
+      .c.__force_derived_type_instantiations, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(component) shape: 0_8:5_8 init:[component::component(name=.n.c_ptr,genre=1_1,category=6_1,kind=0_1,rank=0_1,offset=0_8,characterlen=value(genre=1_1,value=0_8),derived=.dt.__builtin_c_ptr,lenvalue=NULL(),bounds=NULL(),initialization=NULL()),component(name=.n.c_devptr,genre=1_1,category=6_1,kind=0_1,rank=0_1,offset=8_8,characterlen=value(genre=1_1,value=0_8),derived=.dt.__builtin_c_devptr,lenvalue=NULL(),bounds=NULL(),initialization=NULL()),component(name=.n.c_funptr,genre=1_1,category=6_1,kind=0_1,rank=0_1,offset=16_8,characterlen=value(genre=1_1,value=0_8),derived=.dt.__builtin_c_funptr,lenvalue=NULL(),bounds=NULL(),initialization=NULL()),component(name=.n.event_type,genre=1_1,category=6_1,kind=0_1,rank=0_1,offset=24_8,characterlen=value(genre=1_1,value=0_8),derived=.dt.__builtin_event_type,lenvalue=NULL(),bounds=NULL(),initialization=NULL()),component(name=.n.lock_type,genre=1_1,category=6_1,kind=0_1,rank=0_1,offset=32_8,characterlen=value(genre=1_1,value=0_8),derived=.dt.__builtin_lock_type,lenvalue=NULL(),bounds=NULL(),initialization=NULL()),component(name=.n.team_type,genre=1_1,category=6_1,kind=0_1,rank=0_1,offset=40_8,characterlen=value(genre=1_1,value=0_8),derived=.dt.__builtin_team_type,lenvalue=NULL(),bounds=NULL(),initialization=NULL())]
+      .di.__builtin_dim3.x, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: INTEGER(4) init:1_4
+      .di.__builtin_dim3.y, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: INTEGER(4) init:1_4
+      .di.__builtin_dim3.z, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: INTEGER(4) init:1_4
+      .di.__builtin_event_type.__count, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: INTEGER(8) init:-1_8
+      .di.__builtin_ieee_flag_type.flag, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: INTEGER(1) init:0_1
+      .di.__builtin_ieee_round_type.mode, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: INTEGER(1) init:0_1
+      .di.__builtin_lock_type.__count, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: INTEGER(8) init:-1_8
+      .di.__builtin_notify_type.__count, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: INTEGER(8) init:-1_8
+      .di.__builtin_team_type.__id, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: INTEGER(8) init:-1_8
+      .dt.__builtin_c_devptr, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(derivedtype) init:derivedtype(binding=NULL(),name=.n.__builtin_c_devptr,sizeinbytes=8_8,uninstantiated=NULL(),kindparameter=NULL(),lenparameterkind=NULL(),component=.c.__builtin_c_devptr,procptr=NULL(),special=NULL(),specialbitset=0_4,hasparent=0_1,noinitializationneeded=1_1,nodestructionneeded=1_1,nofinalizationneeded=1_1,nodefinedassignment=1_1)
+      .dt.__builtin_c_funptr, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(derivedtype) init:derivedtype(binding=NULL(),name=.n.__builtin_c_funptr,sizeinbytes=8_8,uninstantiated=NULL(),kindparameter=NULL(),lenparameterkind=NULL(),component=.c.__builtin_c_funptr,procptr=NULL(),special=NULL(),specialbitset=0_4,hasparent=0_1,noinitializationneeded=1_1,nodestructionneeded=1_1,nofinalizationneeded=1_1,nodefinedassignment=1_1)
+      .dt.__builtin_c_ptr, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(derivedtype) init:derivedtype(binding=NULL(),name=.n.__builtin_c_ptr,sizeinbytes=8_8,uninstantiated=NULL(),kindparameter=NULL(),lenparameterkind=NULL(),component=.c.__builtin_c_ptr,procptr=NULL(),special=NULL(),specialbitset=0_4,hasparent=0_1,noinitializationneeded=1_1,nodestructionneeded=1_1,nofinalizationneeded=1_1,nodefinedassignment=1_1)
+      .dt.__builtin_dim3, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(derivedtype) init:derivedtype(binding=NULL(),name=.n.__builtin_dim3,sizeinbytes=12_8,uninstantiated=NULL(),kindparameter=NULL(),lenparameterkind=NULL(),component=.c.__builtin_dim3,procptr=NULL(),special=NULL(),specialbitset=0_4,hasparent=0_1,noinitializationneeded=0_1,nodestructionneeded=1_1,nofinalizationneeded=1_1,nodefinedassignment=1_1)
+      .dt.__builtin_event_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(derivedtype) init:derivedtype(binding=NULL(),name=.n.__builtin_event_type,sizeinbytes=8_8,uninstantiated=NULL(),kindparameter=NULL(),lenparameterkind=NULL(),component=.c.__builtin_event_type,procptr=NULL(),special=NULL(),specialbitset=0_4,hasparent=0_1,noinitializationneeded=0_1,nodestructionneeded=1_1,nofinalizationneeded=1_1,nodefinedassignment=1_1)
+      .dt.__builtin_ieee_flag_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(derivedtype) init:derivedtype(binding=NULL(),name=.n.__builtin_ieee_flag_type,sizeinbytes=1_8,uninstantiated=NULL(),kindparameter=NULL(),lenparameterkind=NULL(),component=.c.__builtin_ieee_flag_type,procptr=NULL(),special=NULL(),specialbitset=0_4,hasparent=0_1,noinitializationneeded=0_1,nodestructionneeded=1_1,nofinalizationneeded=1_1,nodefinedassignment=1_1)
+      .dt.__builtin_ieee_round_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(derivedtype) init:derivedtype(binding=NULL(),name=.n.__builtin_ieee_round_type,sizeinbytes=1_8,uninstantiated=NULL(),kindparameter=NULL(),lenparameterkind=NULL(),component=.c.__builtin_ieee_round_type,procptr=NULL(),special=NULL(),specialbitset=0_4,hasparent=0_1,noinitializationneeded=0_1,nodestructionneeded=1_1,nofinalizationneeded=1_1,nodefinedassignment=1_1)
+      .dt.__builtin_lock_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(derivedtype) init:derivedtype(binding=NULL(),name=.n.__builtin_lock_type,sizeinbytes=8_8,uninstantiated=NULL(),kindparameter=NULL(),lenparameterkind=NULL(),component=.c.__builtin_lock_type,procptr=NULL(),special=NULL(),specialbitset=0_4,hasparent=0_1,noinitializationneeded=0_1,nodestructionneeded=1_1,nofinalizationneeded=1_1,nodefinedassignment=1_1)
+      .dt.__builtin_notify_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(derivedtype) init:derivedtype(binding=NULL(),name=.n.__builtin_notify_type,sizeinbytes=8_8,uninstantiated=NULL(),kindparameter=NULL(),lenparameterkind=NULL(),component=.c.__builtin_notify_type,procptr=NULL(),special=NULL(),specialbitset=0_4,hasparent=0_1,noinitializationneeded=0_1,nodestructionneeded=1_1,nofinalizationneeded=1_1,nodefinedassignment=1_1)
+      .dt.__builtin_team_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(derivedtype) init:derivedtype(binding=NULL(),name=.n.__builtin_team_type,sizeinbytes=8_8,uninstantiated=NULL(),kindparameter=NULL(),lenparameterkind=NULL(),component=.c.__builtin_team_type,procptr=NULL(),special=NULL(),specialbitset=0_4,hasparent=0_1,noinitializationneeded=0_1,nodestructionneeded=1_1,nofinalizationneeded=1_1,nodefinedassignment=1_1)
+      .dt.__force_derived_type_instantiations, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: TYPE(derivedtype) init:derivedtype(binding=NULL(),name=.n.__force_derived_type_instantiations,sizeinbytes=48_8,uninstantiated=NULL(),kindparameter=NULL(),lenparameterkind=NULL(),component=.c.__force_derived_type_instantiations,procptr=NULL(),special=NULL(),specialbitset=0_4,hasparent=0_1,noinitializationneeded=0_1,nodestructionneeded=1_1,nofinalizationneeded=1_1,nodefinedassignment=1_1)
+      .n.__address, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(9_8,1) init:"__address"
+      .n.__builtin_c_devptr, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(18_8,1) init:"__builtin_c_devptr"
+      .n.__builtin_c_funptr, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(18_8,1) init:"__builtin_c_funptr"
+      .n.__builtin_c_ptr, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(15_8,1) init:"__builtin_c_ptr"
+      .n.__builtin_dim3, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(14_8,1) init:"__builtin_dim3"
+      .n.__builtin_event_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(20_8,1) init:"__builtin_event_type"
+      .n.__builtin_ieee_flag_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(24_8,1) init:"__builtin_ieee_flag_type"
+      .n.__builtin_ieee_round_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(25_8,1) init:"__builtin_ieee_round_type"
+      .n.__builtin_lock_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(19_8,1) init:"__builtin_lock_type"
+      .n.__builtin_notify_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(21_8,1) init:"__builtin_notify_type"
+      .n.__builtin_team_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(19_8,1) init:"__builtin_team_type"
+      .n.__count, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(7_8,1) init:"__count"
+      .n.__force_derived_type_instantiations, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(35_8,1) init:"__force_derived_type_instantiations"
+      .n.__id, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(4_8,1) init:"__id"
+      .n.c_devptr, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(8_8,1) init:"c_devptr"
+      .n.c_funptr, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(8_8,1) init:"c_funptr"
+      .n.c_ptr, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(5_8,1) init:"c_ptr"
+      .n.cptr, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(4_8,1) init:"cptr"
+      .n.event_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(10_8,1) init:"event_type"
+      .n.flag, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(4_8,1) init:"flag"
+      .n.lock_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(9_8,1) init:"lock_type"
+      .n.mode, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(4_8,1) init:"mode"
+      .n.team_type, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(9_8,1) init:"team_type"
+      .n.x, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(1_8,1) init:"x"
+      .n.y, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(1_8,1) init:"y"
+      .n.z, SAVE, TARGET (CompilerCreated, ReadOnly): ObjectEntity type: CHARACTER(1_8,1) init:"z"
+      __builtin_atomic_int_kind, PARAMETER, PUBLIC size=4 offset=16: ObjectEntity type: INTEGER(4) init:8_4
+      __builtin_atomic_logical_kind, PARAMETER, PUBLIC size=4 offset=20: ObjectEntity type: INTEGER(4) init:8_4
+      __builtin_blockdim, PUBLIC size=12 offset=36: ObjectEntity type: TYPE(__builtin_dim3)
+      __builtin_blockidx, PUBLIC size=12 offset=48: ObjectEntity type: TYPE(__builtin_dim3)
+      __builtin_c_associated, PUBLIC (Function): Generic Name procs: c_associated_c_ptr,c_associated_c_funptr
+      __builtin_c_devloc, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_c_devptr, BIND(C), PUBLIC: DerivedType components: cptr
+      __builtin_c_f_pointer, INTRINSIC, PUBLIC (Subroutine): ProcEntity
+      __builtin_c_funloc, PUBLIC, PURE (Function): Subprogram result:TYPE(__builtin_c_funptr) __builtin_c_funloc (x)
+      __builtin_c_funptr, BIND(C), PUBLIC: DerivedType components: __address
+      __builtin_c_loc, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_c_null_funptr, PARAMETER, PUBLIC size=8 offset=88: ObjectEntity type: TYPE(__builtin_c_funptr) init:__builtin_c_funptr(__address=0_8)
+      __builtin_c_null_ptr, PARAMETER, PUBLIC size=8 offset=80: ObjectEntity type: TYPE(__builtin_c_ptr) init:__builtin_c_ptr(__address=0_8)
+      __builtin_c_ptr, BIND(C), PUBLIC: DerivedType components: __address
+      __builtin_c_ptr_eq, ELEMENTAL, PUBLIC (Function): Subprogram result:LOGICAL(4) __builtin_c_ptr_eq (TYPE(__builtin_c_ptr) x,TYPE(__builtin_c_ptr) y)
+      __builtin_c_ptr_ne, ELEMENTAL, PUBLIC (Function): Subprogram result:LOGICAL(4) __builtin_c_ptr_ne (TYPE(__builtin_c_ptr) x,TYPE(__builtin_c_ptr) y)
+      __builtin_compiler_options, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_compiler_version, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_dim3, PUBLIC: DerivedType components: x,y,z
+      __builtin_event_type, PUBLIC: DerivedType components: __count
+      __builtin_fma, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_griddim, PUBLIC size=12 offset=60: ObjectEntity type: TYPE(__builtin_dim3)
+      __builtin_ieee_away, PARAMETER, PUBLIC size=1 offset=14: ObjectEntity type: TYPE(__builtin_ieee_round_type) init:__builtin_ieee_round_type(mode=4_1)
+      __builtin_ieee_denorm, PARAMETER, PUBLIC size=1 offset=9: ObjectEntity type: TYPE(__builtin_ieee_flag_type) init:__builtin_ieee_flag_type(flag=2_1)
+      __builtin_ieee_divide_by_zero, PARAMETER, PUBLIC size=1 offset=6: ObjectEntity type: TYPE(__builtin_ieee_flag_type) init:__builtin_ieee_flag_type(flag=4_1)
+      __builtin_ieee_down, PARAMETER, PUBLIC size=1 offset=13: ObjectEntity type: TYPE(__builtin_ieee_round_type) init:__builtin_ieee_round_type(mode=3_1)
+      __builtin_ieee_flag_type, PUBLIC: DerivedType components: flag
+      __builtin_ieee_inexact, PARAMETER, PUBLIC size=1 offset=8: ObjectEntity type: TYPE(__builtin_ieee_flag_type) init:__builtin_ieee_flag_type(flag=32_1)
+      __builtin_ieee_int, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_invalid, PARAMETER, PUBLIC size=1 offset=4: ObjectEntity type: TYPE(__builtin_ieee_flag_type) init:__builtin_ieee_flag_type(flag=1_1)
+      __builtin_ieee_is_nan, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_is_negative, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_is_normal, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_nearest, PARAMETER, PUBLIC size=1 offset=11: ObjectEntity type: TYPE(__builtin_ieee_round_type) init:__builtin_ieee_round_type(mode=1_1)
+      __builtin_ieee_next_after, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_next_down, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_next_up, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_other, PARAMETER, PUBLIC size=1 offset=15: ObjectEntity type: TYPE(__builtin_ieee_round_type) init:__builtin_ieee_round_type(mode=5_1)
+      __builtin_ieee_overflow, PARAMETER, PUBLIC size=1 offset=5: ObjectEntity type: TYPE(__builtin_ieee_flag_type) init:__builtin_ieee_flag_type(flag=8_1)
+      __builtin_ieee_real, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_round_type, PUBLIC: DerivedType components: mode
+      __builtin_ieee_selected_real_kind, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_support_datatype, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_support_denormal, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_support_divide, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_support_flag, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_support_halting, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_support_inf, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_support_io, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_support_nan, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_support_rounding, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_support_sqrt, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_support_standard, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_support_subnormal, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_support_underflow_control, INTRINSIC, PUBLIC (Function): ProcEntity
+      __builtin_ieee_to_zero, PARAMETER, PUBLIC size=1 offset=10: ObjectEntity type: TYPE(__builtin_ieee_round_type) init:__builtin_ieee_round_type(mode=0_1)
+      __builtin_ieee_underflow, PARAMETER, PUBLIC size=1 offset=7: ObjectEntity type: TYPE(__builtin_ieee_flag_type) init:__builtin_ieee_flag_type(flag=16_1)
+      __builtin_ieee_up, PARAMETER, PUBLIC size=1 offset=12: ObjectEntity type: TYPE(__builtin_ieee_round_type) init:__builtin_ieee_round_type(mode=2_1)
+      __builtin_lock_type, PUBLIC: DerivedType components: __count
+      __builtin_notify_type, PUBLIC: DerivedType components: __count
+      __builtin_show_descriptor, INTRINSIC, PUBLIC (Subroutine): ProcEntity
+      __builtin_team_type, PUBLIC: DerivedType components: __id
+      __builtin_threadidx, PUBLIC size=12 offset=24: ObjectEntity type: TYPE(__builtin_dim3)
+      __builtin_warpsize, PARAMETER, PUBLIC size=4 offset=72: ObjectEntity type: INTEGER(4) init:32_4
+      __force_derived_type_instantiations, PRIVATE: DerivedType components: c_ptr,c_devptr,c_funptr,event_type,lock_type,team_type
+      c_associated_c_funptr, PRIVATE, PURE (Function): Subprogram result:LOGICAL(4) c_associated_c_funptr (TYPE(__builtin_c_funptr) c_ptr_1,TYPE(__builtin_c_funptr) c_ptr_2)
+      c_associated_c_ptr, PRIVATE, PURE (Function): Subprogram result:LOGICAL(4) c_associated_c_ptr (TYPE(__builtin_c_ptr) c_ptr_1,TYPE(__builtin_c_ptr) c_ptr_2)
+      int64, PARAMETER, PRIVATE size=4 offset=0: ObjectEntity type: INTEGER(4) init:8_4
+      operator(/=), PUBLIC (Function): Generic NE procs: __builtin_c_ptr_ne
+      operator(==), PUBLIC (Function): Generic EQ procs: __builtin_c_ptr_eq
+      scale, INTRINSIC, PUBLIC (Function): ProcEntity
+      selected_int_kind, INTRINSIC, PRIVATE (Function): ProcEntity
+      sizeof, INTRINSIC, PUBLIC (Function): ProcEntity
+      DerivedType scope: __builtin_c_ptr size=8 alignment=8 instantiation of __builtin_c_ptr sourceRange=38 bytes
+        __address, PRIVATE size=8 offset=0: ObjectEntity type: INTEGER(8)
+      DerivedType scope: __builtin_c_funptr size=8 alignment=8 instantiation of __builtin_c_funptr sourceRange=38 bytes
+        __address, PRIVATE size=8 offset=0: ObjectEntity type: INTEGER(8)
+      DerivedType scope: __builtin_event_type size=8 alignment=8 instantiation of __builtin_event_type sourceRange=41 bytes
+        __count, PRIVATE size=8 offset=0: ObjectEntity type: INTEGER(8) init:-1_8
+      DerivedType scope: __builtin_notify_type size=8 alignment=8 sourceRange=41 bytes
+        __count, PRIVATE size=8 offset=0: ObjectEntity type: INTEGER(8) init:-1_8
+      DerivedType scope: __builtin_lock_type size=8 alignment=8 instantiation of __builtin_lock_type sourceRange=41 bytes
+        __count, PRIVATE size=8 offset=0: ObjectEntity type: INTEGER(8) init:-1_8
+      DerivedType scope: __builtin_ieee_flag_type size=1 alignment=1 instantiation of __builtin_ieee_flag_type sourceRange=37 bytes
+        flag, PRIVATE size=1 offset=0: ObjectEntity type: INTEGER(1) init:0_1
+      DerivedType scope: __builtin_ieee_round_type size=1 alignment=1 instantiation of __builtin_ieee_round_type sourceRange=37 bytes
+        mode, PRIVATE size=1 offset=0: ObjectEntity type: INTEGER(1) init:0_1
+      DerivedType scope: __builtin_team_type size=8 alignment=8 instantiation of __builtin_team_type sourceRange=38 bytes
+        __id, PRIVATE size=8 offset=0: ObjectEntity type: INTEGER(8) init:-1_8
+      DerivedType scope: __builtin_dim3 size=12 alignment=4 instantiation of __builtin_dim3 sourceRange=62 bytes
+        x size=4 offset=0: ObjectEntity type: INTEGER(4) init:1_4
+        y size=4 offset=4: ObjectEntity type: INTEGER(4) init:1_4
+        z size=4 offset=8: ObjectEntity type: INTEGER(4) init:1_4
+      DerivedType scope: __builtin_c_devptr size=8 alignment=8 instantiation of __builtin_c_devptr sourceRange=36 bytes
+        cptr size=8 offset=0: ObjectEntity type: TYPE(__builtin_c_ptr)
+      DerivedType scope: __force_derived_type_instantiations size=48 alignment=8 sourceRange=220 bytes
+        c_devptr size=8 offset=8: ObjectEntity type: TYPE(__builtin_c_devptr)
+        c_funptr size=8 offset=16: ObjectEntity type: TYPE(__builtin_c_funptr)
+        c_ptr size=8 offset=0: ObjectEntity type: TYPE(__builtin_c_ptr)
+        event_type size=8 offset=24: ObjectEntity type: TYPE(__builtin_event_type)
+        lock_type size=8 offset=32: ObjectEntity type: TYPE(__builtin_lock_type)
+        team_type size=8 offset=40: ObjectEntity type: TYPE(__builtin_team_type)
+      Subprogram scope: __builtin_c_ptr_eq size=24 alignment=8 sourceRange=149 bytes
+        __builtin_c_ptr_eq size=4 offset=16: ObjectEntity funcResult type: LOGICAL(4)
+        x, INTENT(IN) size=8 offset=0: ObjectEntity dummy type: TYPE(__builtin_c_ptr)
+        y, INTENT(IN) size=8 offset=8: ObjectEntity dummy type: TYPE(__builtin_c_ptr)
+      Subprogram scope: __builtin_c_ptr_ne size=24 alignment=8 sourceRange=149 bytes
+        __builtin_c_ptr_ne size=4 offset=16: ObjectEntity funcResult type: LOGICAL(4)
+        x, INTENT(IN) size=8 offset=0: ObjectEntity dummy type: TYPE(__builtin_c_ptr)
+        y, INTENT(IN) size=8 offset=8: ObjectEntity dummy type: TYPE(__builtin_c_ptr)
+      Subprogram scope: __builtin_c_funloc size=8 alignment=8 sourceRange=99 bytes
+        __builtin_c_funloc size=8 offset=0: ObjectEntity funcResult type: TYPE(__builtin_c_funptr)
+        x, EXTERNAL: ProcEntity
+      Subprogram scope: c_associated_c_ptr size=24 alignment=8 sourceRange=177 bytes
+        c_associated_c_ptr size=4 offset=16: ObjectEntity funcResult type: LOGICAL(4)
+        c_ptr_1, INTENT(IN) size=8 offset=0: ObjectEntity dummy type: TYPE(__builtin_c_ptr)
+        c_ptr_2, INTENT(IN), OPTIONAL size=8 offset=8: ObjectEntity dummy type: TYPE(__builtin_c_ptr)
+      Subprogram scope: c_associated_c_funptr size=24 alignment=8 sourceRange=189 bytes
+        c_associated_c_funptr size=4 offset=16: ObjectEntity funcResult type: LOGICAL(4)
+        c_ptr_1, INTENT(IN) size=8 offset=0: ObjectEntity dummy type: TYPE(__builtin_c_funptr)
+        c_ptr_2, INTENT(IN), OPTIONAL size=8 offset=8: ObjectEntity dummy type: TYPE(__builtin_c_funptr)
+    Module scope: __fortran_type_info sourceRange=3079 bytes
+      __builtin_c_devptr, BIND(C), PRIVATE: Use from __builtin_c_devptr in __fortran_builtins
+      __builtin_c_funptr, BIND(C), PRIVATE: Use from __builtin_c_funptr in __fortran_builtins
+      __builtin_c_ptr, BIND(C), PRIVATE: Use from __builtin_c_ptr in __fortran_builtins
+      allocatable, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:3_4
+      allocatabledevice, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:6_4
+      assumedrankfinal, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:8_4
+      automatic, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:4_4
+      binding, PRIVATE: DerivedType components: proc,name
+      categorycharacter, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:3_4
+      categorycomplex, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:2_4
+      categoryderived, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:5_4
+      categoryinteger, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:0_4
+      categorylogical, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:4_4
+      categoryreal, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:1_4
+      component, PRIVATE: DerivedType components: name,genre,category,kind,rank,__padding0,offset,characterlen,derived,lenvalue,bounds,initialization
+      data, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:1_4
+      deferred, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:1_4
+      derivedtype, PRIVATE: DerivedType components: binding,name,sizeinbytes,uninstantiated,kindparameter,lenparameterkind,component,procptr,special,specialbitset,hasparent,noinitializationneeded,nodestructionneeded,nofinalizationneeded,nodefinedassignment,__padding0
+      elementalassignment, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:2_4
+      elementalfinal, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:7_4
+      explicit, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:2_4
+      int64, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:8_4
+      lenparameter, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:3_4
+      pointer, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:2_4
+      pointerdevice, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:5_4
+      procptrcomponent, PRIVATE: DerivedType components: name,offset,initialization
+      readformatted, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:3_4
+      readunformatted, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:4_4
+      scalarassignment, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:1_4
+      scalarfinal, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:9_4
+      selected_int_kind, INTRINSIC, PRIVATE (Function): ProcEntity
+      specialbinding, BIND(C), PRIVATE: DerivedType components: which,isargdescriptorset,istypebound,specialcaseflag,__padding0,proc
+      value, BIND(C), PRIVATE: DerivedType components: genre,__padding0,value
+      writeformatted, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:5_4
+      writeunformatted, PARAMETER, PRIVATE: ObjectEntity type: INTEGER(4) init:6_4
+      DerivedType scope: derivedtype size=440 alignment=8 instantiation of derivedtype sourceRange=614 bytes
+        __padding0 size=3 offset=433: ObjectEntity type: INTEGER(1) shape: 1_8:3_8
+        binding, CONTIGUOUS, POINTER size=64 offset=0: ObjectEntity type: TYPE(binding) shape: :
+        component, CONTIGUOUS, POINTER size=64 offset=232: ObjectEntity type: TYPE(component) shape: :
+        hasparent size=1 offset=428: ObjectEntity type: INTEGER(1)
+        kindparameter, CONTIGUOUS, POINTER size=48 offset=136: ObjectEntity type: INTEGER(8) shape: :
+        lenparameterkind, CONTIGUOUS, POINTER size=48 offset=184: ObjectEntity type: INTEGER(1) shape: :
+        name, POINTER size=24 offset=64: ObjectEntity type: CHARACTER(:,1)
+        nodefinedassignment size=1 offset=432: ObjectEntity type: INTEGER(1)
+        nodestructionneeded size=1 offset=430: ObjectEntity type: INTEGER(1)
+        nofinalizationneeded size=1 offset=431: ObjectEntity type: INTEGER(1)
+        noinitializationneeded size=1 offset=429: ObjectEntity type: INTEGER(1)
+        procptr, CONTIGUOUS, POINTER size=64 offset=296: ObjectEntity type: TYPE(procptrcomponent) shape: :
+        sizeinbytes size=8 offset=88: ObjectEntity type: INTEGER(8)
+        special, CONTIGUOUS, POINTER size=64 offset=360: ObjectEntity type: TYPE(specialbinding) shape: :
+        specialbitset size=4 offset=424: ObjectEntity type: INTEGER(4)
+        uninstantiated, POINTER size=40 offset=96: ObjectEntity type: TYPE(derivedtype)
+      DerivedType scope: binding size=32 alignment=8 instantiation of binding sourceRange=68 bytes
+        name, POINTER size=24 offset=8: ObjectEntity type: CHARACTER(:,1)
+        proc size=8 offset=0: ObjectEntity type: TYPE(__builtin_c_funptr)
+      DerivedType scope: value size=16 alignment=8 instantiation of value sourceRange=76 bytes
+        __padding0 size=7 offset=1: ObjectEntity type: INTEGER(1) shape: 1_8:7_8
+        genre size=1 offset=0: ObjectEntity type: INTEGER(1)
+        value size=8 offset=8: ObjectEntity type: INTEGER(8)
+      DerivedType scope: component size=256 alignment=8 instantiation of component sourceRange=348 bytes
+        __padding0 size=4 offset=28: ObjectEntity type: INTEGER(1) shape: 1_8:4_8
+        bounds, CONTIGUOUS, POINTER size=88 offset=160: ObjectEntity type: TYPE(value) shape: :,:
+        category size=1 offset=25: ObjectEntity type: INTEGER(1)
+        characterlen size=16 offset=40: ObjectEntity type: TYPE(value)
+        derived, POINTER size=40 offset=56: ObjectEntity type: TYPE(derivedtype)
+        genre size=1 offset=24: ObjectEntity type: INTEGER(1)
+        initialization size=8 offset=248: ObjectEntity type: TYPE(__builtin_c_ptr)
+        kind size=1 offset=26: ObjectEntity type: INTEGER(1)
+        lenvalue, CONTIGUOUS, POINTER size=64 offset=96: ObjectEntity type: TYPE(value) shape: :
+        name, POINTER size=24 offset=0: ObjectEntity type: CHARACTER(:,1)
+        offset size=8 offset=32: ObjectEntity type: INTEGER(8)
+        rank size=1 offset=27: ObjectEntity type: INTEGER(1)
+      DerivedType scope: procptrcomponent size=40 alignment=8 instantiation of procptrcomponent sourceRange=97 bytes
+        initialization size=8 offset=32: ObjectEntity type: TYPE(__builtin_c_funptr)
+        name, POINTER size=24 offset=0: ObjectEntity type: CHARACTER(:,1)
+        offset size=8 offset=24: ObjectEntity type: INTEGER(8)
+      DerivedType scope: specialbinding size=16 alignment=8 instantiation of specialbinding sourceRange=172 bytes
+        __padding0 size=4 offset=4: ObjectEntity type: INTEGER(1) shape: 1_8:4_8
+        isargdescriptorset size=1 offset=1: ObjectEntity type: INTEGER(1)
+        istypebound size=1 offset=2: ObjectEntity type: INTEGER(1)
+        proc size=8 offset=8: ObjectEntity type: TYPE(__builtin_c_funptr)
+        specialcaseflag size=1 offset=3: ObjectEntity type: INTEGER(1)
+        which size=1 offset=0: ObjectEntity type: INTEGER(1)
+  MainProgram scope: LEGACY size=52 alignment=4 sourceRange=261 bytes
+    a (InCommonBlock) size=40 offset=8: ObjectEntity type: REAL(4) shape: 1_8:10_8
+    b size=40 offset=8: ObjectEntity type: REAL(4) shape: 1_8:10_8
+    f (Function, StmtFunction): Subprogram result:REAL(4) f (REAL(4) y) -> y*y+x
+    i (InCommonBlock) size=4 offset=0: ObjectEntity type: INTEGER(4)
+    idx size=4 offset=44: ObjectEntity type: INTEGER(4)
+    j (InCommonBlock) size=4 offset=4: ObjectEntity type: INTEGER(4)
+    k size=4 offset=40: ObjectEntity type: INTEGER(4)
+    work, EXTERNAL: HostAssoc => work, EXTERNAL (Subroutine): Subprogram (REAL(4) arr,INTEGER(4) n)
+    x size=4 offset=48: ObjectEntity type: REAL(4)
+    Equivalence Sets: (a(1),b(1))
+    state size=48 offset=0: CommonBlockDetails alignment=4: i j a
+    Subprogram scope: f size=8 alignment=4 sourceRange=0 bytes
+      f (StmtFunction, Implicit) size=4 offset=0: ObjectEntity funcResult type: REAL(4)
+      x: HostAssoc => x size=4 offset=48: ObjectEntity type: REAL(4)
+      y (Implicit) size=4 offset=4: ObjectEntity dummy type: REAL(4)
+  Subprogram scope: work size=4 alignment=4 sourceRange=114 bytes
+    a (Implicit, InCommonBlock) size=4 offset=8: ObjectEntity type: REAL(4)
+    arr: ObjectEntity dummy type: REAL(4) shape: 1_8:*
+    i (Implicit, InCommonBlock) size=4 offset=0: ObjectEntity type: INTEGER(4)
+    j (Implicit, InCommonBlock) size=4 offset=4: ObjectEntity type: INTEGER(4)
+    n size=4 offset=0: ObjectEntity dummy type: INTEGER(4)
+    work (Subroutine): HostAssoc => work, EXTERNAL (Subroutine): Subprogram (REAL(4) arr,INTEGER(4) n)
+    work2 (Subroutine): HostAssoc => work2 (Subroutine): Subprogram entry in work (REAL(4) arr,INTEGER(4) n)
+    state size=12 offset=0: CommonBlockDetails alignment=4: i j a

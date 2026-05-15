@@ -1,0 +1,159 @@
+======================== Flang: parse tree dump ========================
+Program -> ProgramUnit -> MainProgram
+| ProgramStmt -> Name = 'LEGACY'
+| SpecificationPart
+| | ImplicitPart -> 
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'i'
+| | | EntityDecl
+| | | | Name = 'j'
+| | | EntityDecl
+| | | | Name = 'k'
+| | | EntityDecl
+| | | | Name = 'idx'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> Real -> 
+| | | EntityDecl
+| | | | Name = 'a'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = '10_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '10'
+| | | EntityDecl
+| | | | Name = 'b'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = '10_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '10'
+| | | EntityDecl
+| | | | Name = 'x'
+| | DeclarationConstruct -> SpecificationConstruct -> OtherSpecificationStmt -> CommonStmt -> Block
+| | | Name = 'state'
+| | | CommonBlockObject
+| | | | Name = 'i'
+| | | CommonBlockObject
+| | | | Name = 'j'
+| | | CommonBlockObject
+| | | | Name = 'a'
+| | DeclarationConstruct -> SpecificationConstruct -> OtherSpecificationStmt -> EquivalenceStmt -> EquivalenceObject -> Designator -> DataRef -> ArrayElement
+| | | DataRef -> Name = 'a'
+| | | SectionSubscript -> Integer -> Expr = '1_4'
+| | | | LiteralConstant -> IntLiteralConstant = '1'
+| | EquivalenceObject -> Designator -> DataRef -> ArrayElement
+| | | DataRef -> Name = 'b'
+| | | SectionSubscript -> Integer -> Expr = '1_4'
+| | | | LiteralConstant -> IntLiteralConstant = '1'
+| | DeclarationConstruct -> StmtFunctionStmt
+| | | Name = 'f'
+| | | Name = 'y'
+| | | Scalar -> Expr = 'y*y+x'
+| | | | Add
+| | | | | Expr = 'y*y'
+| | | | | | Multiply
+| | | | | | | Expr = 'y'
+| | | | | | | | Designator -> DataRef -> Name = 'y'
+| | | | | | | Expr = 'y'
+| | | | | | | | Designator -> DataRef -> Name = 'y'
+| | | | | Expr = 'x'
+| | | | | | Designator -> DataRef -> Name = 'x'
+| ExecutionPart -> Block
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'idx=2_4'
+| | | Variable = 'idx'
+| | | | Designator -> DataRef -> Name = 'idx'
+| | | Expr = '2_4'
+| | | | LiteralConstant -> IntLiteralConstant = '2'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ArithmeticIfStmt
+| | | Expr = 'x'
+| | | | Designator -> DataRef -> Name = 'x'
+| | | uint64_t = '10'
+| | | uint64_t = '20'
+| | | uint64_t = '30'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'i=1_4'
+| | | Variable = 'i'
+| | | | Designator -> DataRef -> Name = 'i'
+| | | Expr = '1_4'
+| | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> GotoStmt -> uint64_t = '40'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'i=2_4'
+| | | Variable = 'i'
+| | | | Designator -> DataRef -> Name = 'i'
+| | | Expr = '2_4'
+| | | | LiteralConstant -> IntLiteralConstant = '2'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> GotoStmt -> uint64_t = '40'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'i=3_4'
+| | | Variable = 'i'
+| | | | Designator -> DataRef -> Name = 'i'
+| | | Expr = '3_4'
+| | | | LiteralConstant -> IntLiteralConstant = '3'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ComputedGotoStmt
+| | | uint64_t = '100'
+| | | uint64_t = '200'
+| | | uint64_t = '300'
+| | | Scalar -> Integer -> Expr = 'idx'
+| | | | Designator -> DataRef -> Name = 'idx'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> CallStmt = 'CALL work(a,10_4)'
+| | | Call
+| | | | ProcedureDesignator -> Name = 'work'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'a'
+| | | | | | Designator -> DataRef -> Name = 'a'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = '10_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '10'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> StopStmt
+| | | Kind = Stop
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> StopStmt
+| | | Kind = Stop
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> StopStmt
+| | | Kind = Stop
+| EndProgramStmt -> 
+ProgramUnit -> SubroutineSubprogram
+| SubroutineStmt
+| | Name = 'work'
+| | DummyArg -> Name = 'arr'
+| | DummyArg -> Name = 'n'
+| SpecificationPart
+| | ImplicitPart -> 
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> Real -> 
+| | | EntityDecl
+| | | | Name = 'arr'
+| | | | ArraySpec -> ImpliedShapeSpec -> AssumedImpliedSpec -> 
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'n'
+| | DeclarationConstruct -> SpecificationConstruct -> OtherSpecificationStmt -> CommonStmt -> Block
+| | | Name = 'state'
+| | | CommonBlockObject
+| | | | Name = 'i'
+| | | CommonBlockObject
+| | | | Name = 'j'
+| | | CommonBlockObject
+| | | | Name = 'a'
+| | DeclarationConstruct -> EntryStmt
+| | | Name = 'work2'
+| | | DummyArg -> Name = 'arr'
+| | | DummyArg -> Name = 'n'
+| ExecutionPart -> Block
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'arr(1_8)=arr(1_8)+1._4'
+| | | Variable = 'arr(1_8)'
+| | | | Designator -> DataRef -> ArrayElement
+| | | | | DataRef -> Name = 'arr'
+| | | | | SectionSubscript -> Integer -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | Expr = 'arr(1_8)+1._4'
+| | | | Add
+| | | | | Expr = 'arr(1_8)'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'arr'
+| | | | | | | SectionSubscript -> Integer -> Expr = '1_4'
+| | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Expr = '1._4'
+| | | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | | Real = '1.0'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ReturnStmt -> 
+| EndSubroutineStmt -> 

@@ -1,0 +1,118 @@
+======================== Flang: parse tree dump ========================
+Program -> ProgramUnit -> SubroutineSubprogram
+| SubroutineStmt
+| | Name = 'step'
+| | DummyArg -> Name = 'x'
+| | DummyArg -> Name = 'y'
+| | DummyArg -> Name = 'n'
+| SpecificationPart
+| | ImplicitPart -> 
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'n'
+| | | EntityDecl
+| | | | Name = 'i'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> Real -> 
+| | | EntityDecl
+| | | | Name = 'x'
+| | | | ArraySpec -> ImpliedShapeSpec -> AssumedImpliedSpec -> 
+| | | EntityDecl
+| | | | Name = 'y'
+| | | | ArraySpec -> ImpliedShapeSpec -> AssumedImpliedSpec -> 
+| | | EntityDecl
+| | | | Name = 'tmp'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = '2_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | DeclarationConstruct -> SpecificationConstruct -> OtherSpecificationStmt -> CommonStmt -> Block
+| | | Name = 'grid'
+| | | CommonBlockObject
+| | | | Name = 'ng'
+| | | CommonBlockObject
+| | | | Name = 'gx'
+| | | CommonBlockObject
+| | | | Name = 'gy'
+| | DeclarationConstruct -> SpecificationConstruct -> OtherSpecificationStmt -> EquivalenceStmt -> EquivalenceObject -> Designator -> DataRef -> ArrayElement
+| | | DataRef -> Name = 'tmp'
+| | | SectionSubscript -> Integer -> Expr = '1_4'
+| | | | LiteralConstant -> IntLiteralConstant = '1'
+| | EquivalenceObject -> Designator -> DataRef -> Name = 'local'
+| | DeclarationConstruct -> StmtFunctionStmt
+| | | Name = 'scale'
+| | | Name = 'z'
+| | | Scalar -> Expr = 'z*5.e-1_4'
+| | | | Multiply
+| | | | | Expr = 'z'
+| | | | | | Designator -> DataRef -> Name = 'z'
+| | | | | Expr = '5.e-1_4'
+| | | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | | Real = '0.5'
+| ExecutionPart -> Block
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'i'
+| | | | | Scalar -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Scalar -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'x(int(i,kind=8))=x(int(i,kind=8))+scale(y(int(i,kind=8)))'
+| | | | | Variable = 'x(int(i,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'x'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | Expr = 'x(int(i,kind=8))+scale(y(int(i,kind=8)))'
+| | | | | | Add
+| | | | | | | Expr = 'x(int(i,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'x'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | Expr = 'scale(y(int(i,kind=8)))'
+| | | | | | | | FunctionReference -> Call
+| | | | | | | | | ProcedureDesignator -> Name = 'scale'
+| | | | | | | | | ActualArgSpec
+| | | | | | | | | | ActualArg -> Expr = 'y(int(i,kind=8))'
+| | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | DataRef -> Name = 'y'
+| | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ReturnStmt -> 
+| EndSubroutineStmt -> 
+ProgramUnit -> SubroutineSubprogram
+| SubroutineStmt
+| | Name = 'finalize'
+| | DummyArg -> Name = 'x'
+| | DummyArg -> Name = 'y'
+| | DummyArg -> Name = 'n'
+| SpecificationPart
+| | ImplicitPart -> 
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'n'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> Real -> 
+| | | EntityDecl
+| | | | Name = 'x'
+| | | | ArraySpec -> ImpliedShapeSpec -> AssumedImpliedSpec -> 
+| | | EntityDecl
+| | | | Name = 'y'
+| | | | ArraySpec -> ImpliedShapeSpec -> AssumedImpliedSpec -> 
+| | DeclarationConstruct -> SpecificationConstruct -> OtherSpecificationStmt -> CommonStmt -> Block
+| | | Name = 'grid'
+| | | CommonBlockObject
+| | | | Name = 'ng'
+| | | CommonBlockObject
+| | | | Name = 'gx'
+| | | CommonBlockObject
+| | | | Name = 'gy'
+| ExecutionPart -> Block
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ReturnStmt -> 
+| EndSubroutineStmt -> 

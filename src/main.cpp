@@ -1,6 +1,7 @@
 #include "Analyzer.hpp"
 #include "Reporter.hpp"
 #include "Transform.hpp"
+#include "WebServer.hpp"
 
 #include <filesystem>
 #include <fstream>
@@ -10,7 +11,8 @@
 namespace {
 void usage() {
   std::cerr << "Usage: flang-modernizer <path> [--format markdown|json] [--output file] "
-               "[--safe-transform-out dir]\n";
+               "[--safe-transform-out dir]\n"
+               "       flang-modernizer --serve [--port 8080]\n";
 }
 } // namespace
 
@@ -18,6 +20,21 @@ int main(int argc, char **argv) {
   if (argc < 2) {
     usage();
     return 1;
+  }
+
+  std::string firstArg = argv[1];
+  if (firstArg == "--serve") {
+    int port = 8080;
+    for (int i = 2; i < argc; ++i) {
+      std::string arg = argv[i];
+      if (arg == "--port" && i + 1 < argc) {
+        port = std::stoi(argv[++i]);
+      } else {
+        usage();
+        return 1;
+      }
+    }
+    return runWebServer(port);
   }
 
   std::filesystem::path input = argv[1];
