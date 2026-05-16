@@ -45,7 +45,7 @@ ctest --test-dir cmake-build --output-on-failure
 ## How This Aligns With The Assignment
 
 This implementation is Flang-based in the literal sense: the tool does not consume
-text dumps as its frontend. It holds Flang's parse tree in memory, visits typed
+text dumps as its frontend instead it holds Flang's parse tree in memory, visits typed
 parse-tree nodes, runs Flang semantic analysis, and reads semantic scopes/symbols
 to estimate impact.
 
