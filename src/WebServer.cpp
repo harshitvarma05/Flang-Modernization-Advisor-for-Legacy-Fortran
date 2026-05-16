@@ -77,22 +77,31 @@ std::string html() {
     .metric { border:1px solid var(--line); border-radius:10px; padding:12px; background:#030303; }
     .metric strong { display:block; font-size:22px; line-height:1; margin-bottom:6px; }
     .metric span { color:var(--muted); font-size:12px; }
-    .plan-compact { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    .plan-compact { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:2px 0; }
+    .plan-compact + .plan-compact { border-top:1px solid var(--line); margin-top:12px; padding-top:14px; }
     .plan-compact strong { font-size:14px; }
     .plan-compact span { color:var(--muted); font-size:13px; }
     table { width:100%; border-collapse:collapse; font-size:13px; }
     th, td { border-bottom:1px solid #1f1f1f; padding:10px 8px; text-align:left; vertical-align:top; }
     th { color:#9a9a9a; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
     .badge { display:inline-block; border-radius:999px; padding:3px 8px; font-weight:750; font-size:12px; white-space:nowrap; }
+    .impact-list { margin:8px 0 0; padding-left:16px; color:#cfcfcf; line-height:1.45; }
+    .impact-list li { margin:3px 0; }
+    .impact-label { color:#8d8d8d; font-size:11px; text-transform:uppercase; letter-spacing:.05em; margin-top:8px; }
+    .detail-cell { min-width:220px; max-width:360px; }
+    .recommendation-cell { min-width:220px; max-width:320px; line-height:1.45; color:#ededed; }
+    .priority-score { display:inline-block; margin-left:8px; color:#8a8a8a; font-size:12px; font-weight:650; }
+    .tab-empty { color:#777; margin:0; }
     .safe { color:#001b0a; background:var(--safe); }
     .review-needed { color:#1f1600; background:var(--warn); }
     .risky { color:#210000; background:var(--risk); }
     .hidden { display:none !important; }
     .modal { position:fixed; inset:0; z-index:50; background:rgba(0,0,0,.76); display:flex; align-items:center; justify-content:center; padding:20px; }
     .dialog { width:min(1120px, 96vw); max-height:86vh; overflow:auto; background:#030303; border:1px solid #2b2b2b; border-radius:14px; padding:16px; box-shadow:0 24px 80px rgba(0,0,0,.7); }
+    .dialog-wide { width:min(1360px, 96vw); }
     .dialog-head { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:8px; }
     .dialog-head h2 { margin:0; font-size:16px; }
-    .close { width:36px; padding:0; }
+    .close { width:36px; padding:0; flex:0 0 auto; }
     @media (max-width:760px) { .input-row { grid-template-columns:1fr; } .summary { grid-template-columns:1fr 1fr; } .plan-compact { display:block; } .plan-compact button { margin-top:10px; width:100%; } }
   </style>
 </head>
@@ -132,18 +141,35 @@ std::string html() {
       <div><strong>Modernization plan</strong><br><span id="planSummary">No analysis yet.</span></div>
       <button onclick="openPlan()">Open Plan</button>
     </div>
+    <div class="plan-compact">
+      <div><strong>Semantic analysis</strong><br><span id="analysisSummary">Impact, risks, affected files, and Flang evidence.</span></div>
+      <button onclick="openAnalysis()">Open Analysis</button>
+    </div>
   </section>
 </main>
 
-<div id="planModal" class="modal hidden" onclick="closePlan(event)">
+<div id="planModal" class="modal hidden" onclick="closeModal(event, 'planModal')">
   <div class="dialog" onclick="event.stopPropagation()">
     <div class="dialog-head">
       <h2>Modernization Plan</h2>
-      <button class="close" onclick="hidePlan()">×</button>
+      <button class="close" onclick="hideModal('planModal')">×</button>
     </div>
     <table>
-      <thead><tr><th>Priority</th><th>Pattern</th><th>Location</th><th>Effort</th><th>Safety</th><th>Recommendation</th></tr></thead>
+      <thead><tr><th>Rank</th><th>Pattern</th><th>Location</th><th>Effort</th><th>Safety</th><th>Recommendation</th></tr></thead>
       <tbody id="rows"></tbody>
+    </table>
+  </div>
+</div>
+
+<div id="analysisModal" class="modal hidden" onclick="closeModal(event, 'analysisModal')">
+  <div class="dialog dialog-wide" onclick="event.stopPropagation()">
+    <div class="dialog-head">
+      <h2>Semantic Analysis</h2>
+      <button class="close" onclick="hideModal('analysisModal')">×</button>
+    </div>
+    <table>
+      <thead><tr><th>Pattern</th><th>Location</th><th>Semantic Impact</th><th>Risks</th><th>Flang Evidence</th></tr></thead>
+      <tbody id="analysisRows"></tbody>
     </table>
   </div>
 </div>
@@ -153,11 +179,29 @@ const el = id => document.getElementById(id);
 function qs() { return encodeURIComponent(el('path').value.trim()); }
 function setPath(p) { el('path').value = p; analyze(); }
 function badge(text) { return `<span class="badge ${text}">${text}</span>`; }
+function esc(value) {
+  return String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+}
+function detailList(label, values) {
+  if (!values || values.length === 0) return `<p class="tab-empty">No ${esc(label.toLowerCase())} recorded.</p>`;
+  return `<div class="impact-label">${esc(label)}</div><ul class="impact-list">${values.map(v => `<li>${esc(v)}</li>`).join('')}</ul>`;
+}
+function impactDetails(f) {
+  return detailList('Affected files', f.affected_files) + detailList('Dependent constructs', f.dependent_constructs);
+}
+function riskDetails(f) {
+  return detailList('Behavior risks', f.behavior_risks);
+}
+function evidenceDetails(f) {
+  return detailList('Compiler evidence', [...(f.flang_evidence || []), ...(f.semantic_evidence || [])]);
+}
 function showMessage(message) { el('output').textContent = message || 'No output.'; }
-function openPlan() { el('planModal').classList.remove('hidden'); }
-function hidePlan() { el('planModal').classList.add('hidden'); }
-function closePlan(event) { if (event.target.id === 'planModal') hidePlan(); }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') hidePlan(); });
+function showModal(id) { el(id).classList.remove('hidden'); }
+function hideModal(id) { el(id).classList.add('hidden'); }
+function closeModal(event, id) { if (event.target.id === id) hideModal(id); }
+function openPlan() { showModal('planModal'); }
+function openAnalysis() { showModal('analysisModal'); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { hideModal('planModal'); hideModal('analysisModal'); } });
 async function getJson(url) {
   showMessage('Running...');
   const r = await fetch(url);
@@ -179,11 +223,16 @@ async function analyze() {
     const safe = findings.filter(f => f.safety === 'safe').length;
     el('risky').textContent = risky;
     el('safe').textContent = safe;
-    el('planSummary').textContent = `Flang AST engine: ${findings.length} findings, ${risky} risky, ${safe} safe.`;
-    el('rows').innerHTML = findings.map(f => {
+    el('planSummary').textContent = `Sorted by priority: ${findings.length} findings, ${risky} risky, ${safe} safe.`;
+    el('analysisSummary').textContent = `${findings.length} findings with affected files, dependencies, risks, and compiler evidence.`;
+    el('rows').innerHTML = findings.map((f, index) => {
       const location = f.location || ((f.file || '') + ':' + (f.line || 1));
       const recommendation = f.recommendation || f.message || 'Review construct.';
-      return `<tr><td>${f.priority}</td><td>${f.pattern}</td><td>${location}</td><td>${f.effort}</td><td>${badge(f.safety)}</td><td>${recommendation}</td></tr>`;
+      return `<tr><td>${index + 1}</td><td>${esc(f.pattern)}</td><td>${esc(location)}</td><td>${esc(f.effort)}</td><td>${badge(esc(f.safety))}</td><td class="recommendation-cell">${esc(recommendation)}<span class="priority-score">Priority ${esc(f.priority)}</span></td></tr>`;
+    }).join('');
+    el('analysisRows').innerHTML = findings.map(f => {
+      const location = f.location || ((f.file || '') + ':' + (f.line || 1));
+      return `<tr><td>${esc(f.pattern)}</td><td>${esc(location)}</td><td class="detail-cell">${impactDetails(f)}</td><td class="detail-cell">${riskDetails(f)}</td><td class="detail-cell">${evidenceDetails(f)}</td></tr>`;
     }).join('');
     showMessage(data.markdown || 'AST analysis completed.');
   } catch (e) { showMessage(e.message); }
@@ -265,6 +314,25 @@ std::filesystem::path resolveInputPath(const std::filesystem::path &input) {
 
 
 
+void writeJsonArray(std::ostringstream &out, const std::vector<std::string> &items) {
+  out << "[";
+  for (size_t i = 0; i < items.size(); ++i) {
+    if (i) out << ",";
+    out << "\"" << jsonEscape(items[i]) << "\"";
+  }
+  out << "]";
+}
+
+void writeJsonSet(std::ostringstream &out, const std::set<std::string> &items) {
+  out << "[";
+  size_t i = 0;
+  for (const auto &item : items) {
+    if (i++) out << ",";
+    out << "\"" << jsonEscape(item) << "\"";
+  }
+  out << "]";
+}
+
 std::string advisorFindingsJson(advisor::ProjectAnalysis analysis) {
   advisor::prioritize(analysis);
   std::ostringstream out;
@@ -281,7 +349,18 @@ std::string advisorFindingsJson(advisor::ProjectAnalysis analysis) {
         << ",\"effort\":\"" << advisor::toString(f.effort)
         << "\",\"safety\":\"" << advisor::toString(f.safety)
         << "\",\"message\":\"" << jsonEscape(f.message)
-        << "\",\"recommendation\":\"" << jsonEscape(f.message) << "\"}";
+        << "\",\"recommendation\":\"" << jsonEscape(f.message) << "\"";
+    out << ",\"affected_files\":";
+    writeJsonSet(out, f.affectedFiles);
+    out << ",\"dependent_constructs\":";
+    writeJsonArray(out, f.dependentConstructs);
+    out << ",\"behavior_risks\":";
+    writeJsonArray(out, f.behaviorRisks);
+    out << ",\"flang_evidence\":";
+    writeJsonArray(out, f.flangEvidence);
+    out << ",\"semantic_evidence\":";
+    writeJsonArray(out, f.semanticEvidence);
+    out << "}";
   }
   out << "],\"markdown\":\"" << jsonEscape(advisor::markdownReport(analysis)) << "\"}";
   return out.str();
