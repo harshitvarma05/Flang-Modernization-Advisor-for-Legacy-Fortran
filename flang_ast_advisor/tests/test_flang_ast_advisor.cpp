@@ -9,6 +9,25 @@
 #include <string>
 
 
+
+static bool containsDetail(
+    const advisor::ProjectAnalysis &analysis, const std::string &pattern,
+    const std::string &needle) {
+  for (const auto &finding : analysis.findings) {
+    if (finding.pattern != pattern)
+      continue;
+    for (const auto &detail : finding.dependentConstructs) {
+      if (detail.find(needle) != std::string::npos)
+        return true;
+    }
+    for (const auto &risk : finding.behaviorRisks) {
+      if (risk.find(needle) != std::string::npos)
+        return true;
+    }
+  }
+  return false;
+}
+
 static std::string readFile(const std::filesystem::path &path) {
   std::ifstream input(path);
   return std::string(std::istreambuf_iterator<char>(input), std::istreambuf_iterator<char>());
@@ -41,6 +60,12 @@ int main() {
   assert(!hasPattern(negative, "statement-function"));
   assert(!hasPattern(negative, "arithmetic-if"));
   assert(!hasPattern(negative, "computed-goto"));
+
+  auto demo = analyzer.analyzePath("examples/case_study");
+  assert(containsDetail(demo, "common", "COMMON migration scope"));
+  assert(containsDetail(demo, "common", "COMMON declaration:"));
+  assert(containsDetail(demo, "assumed-size-array", "call-site impact"));
+  assert(containsDetail(demo, "equivalence", "alias class size"));
 
   auto real = analyzer.analyzePath("examples/real_case_study/minpack");
   assert(!real.files.empty());

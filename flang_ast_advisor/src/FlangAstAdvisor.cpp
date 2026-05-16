@@ -14,7 +14,9 @@
 #include <algorithm>
 #include <filesystem>
 #include <map>
+#include <fstream>
 #include <optional>
+#include <regex>
 #include <sstream>
 
 namespace advisor {
@@ -107,6 +109,153 @@ static std::string join(const std::vector<std::string> &items,
     out << items[i];
   }
   return out.str();
+}
+
+
+static std::string lowerCopy(std::string value) {
+  std::transform(value.begin(), value.end(), value.begin(),
+      [](unsigned char ch) { return static_cast<char>(std::tolower(ch)); });
+  return value;
+}
+
+static std::string trimCopy(const std::string &value) {
+  auto start = value.find_first_not_of(" \t\r\n");
+  if (start == std::string::npos)
+    return "";
+  auto end = value.find_last_not_of(" \t\r\n");
+  return value.substr(start, end - start + 1);
+}
+
+static bool containsText(const std::vector<std::string> &items, const std::string &text) {
+  return std::find(items.begin(), items.end(), text) != items.end();
+}
+
+static void addUnique(std::vector<std::string> &items, const std::string &text) {
+  if (!text.empty() && !containsText(items, text))
+    items.push_back(text);
+}
+
+static std::optional<std::string> afterPrefix(const std::vector<std::string> &items,
+    const std::string &prefix) {
+  for (const auto &item : items) {
+    if (item.rfind(prefix, 0) == 0)
+      return item.substr(prefix.size());
+  }
+  return std::nullopt;
+}
+
+static std::vector<std::string> splitList(const std::string &value) {
+  std::vector<std::string> result;
+  std::stringstream stream(value);
+  std::string part;
+  while (std::getline(stream, part, ',')) {
+    auto trimmed = trimCopy(part);
+    if (!trimmed.empty())
+      result.push_back(trimmed);
+  }
+  return result;
+}
+
+static std::string stripInlineComment(const std::string &line) {
+  auto pos = line.find('!');
+  if (pos == std::string::npos)
+    return line;
+  return line.substr(0, pos);
+}
+
+static std::vector<std::string> readTextLines(const std::string &path) {
+  std::ifstream input(path);
+  std::vector<std::string> lines;
+  std::string line;
+  while (std::getline(input, line))
+    lines.push_back(line);
+  return lines;
+}
+
+struct CallSite {
+  std::string caller;
+  std::string file;
+  int line = 1;
+  std::string callee;
+};
+
+static std::map<std::string, std::vector<CallSite>> collectCallSites(
+    const std::vector<FileAnalysis> &files) {
+  std::map<std::string, std::vector<CallSite>> calls;
+  const std::regex routineRe(R"(^\s*(program|subroutine|function)\s+([a-z_]\w*)\b)",
+      std::regex::icase);
+  const std::regex callRe(R"(\bcall\s+([a-z_]\w*)\s*\()", std::regex::icase);
+  for (const auto &file : files) {
+    std::string currentRoutine;
+    auto lines = readTextLines(file.path);
+    for (std::size_t i = 0; i < lines.size(); ++i) {
+      auto code = stripInlineComment(lines[i]);
+      std::smatch routineMatch;
+      if (std::regex_search(code, routineMatch, routineRe))
+        currentRoutine = lowerCopy(routineMatch[2].str());
+      std::smatch callMatch;
+      auto begin = code.cbegin();
+      while (std::regex_search(begin, code.cend(), callMatch, callRe)) {
+        CallSite site;
+        site.caller = currentRoutine.empty() ? "<unknown>" : currentRoutine;
+        site.file = file.path;
+        site.line = static_cast<int>(i + 1);
+        site.callee = lowerCopy(callMatch[1].str());
+        calls[site.callee].push_back(std::move(site));
+        begin = callMatch.suffix().first;
+      }
+    }
+  }
+  return calls;
+}
+
+static std::string routineKey(const Finding &finding) {
+  if (finding.pattern == "entry") {
+    const std::string prefix = "ENTRY ";
+    if (finding.construct.rfind(prefix, 0) == 0)
+      return lowerCopy(finding.construct.substr(prefix.size()));
+  }
+  return lowerCopy(finding.routine);
+}
+
+static void addCallSiteImpact(Finding &finding,
+    const std::map<std::string, std::vector<CallSite>> &calls) {
+  auto key = routineKey(finding);
+  if (key.empty())
+    return;
+  auto it = calls.find(key);
+  if (it == calls.end() || it->second.empty()) {
+    if (finding.pattern == "assumed-size-array" || finding.pattern == "entry")
+      addUnique(finding.dependentConstructs,
+          "call-site impact: no direct CALL sites found in analyzed file set");
+    return;
+  }
+
+  std::set<std::string> callerFiles;
+  std::vector<std::string> summaries;
+  for (const auto &site : it->second) {
+    callerFiles.insert(site.file);
+    finding.affectedFiles.insert(site.file);
+    summaries.push_back(site.file + ":" + std::to_string(site.line) +
+        " in " + site.caller + " calls " + site.callee);
+  }
+  addUnique(finding.dependentConstructs,
+      "call-site impact: " + std::to_string(it->second.size()) +
+          " direct calls across " + std::to_string(callerFiles.size()) + " files");
+  const std::size_t limit = std::min<std::size_t>(summaries.size(), 8);
+  for (std::size_t i = 0; i < limit; ++i)
+    addUnique(finding.dependentConstructs, "call site: " + summaries[i]);
+  if (summaries.size() > limit)
+    addUnique(finding.dependentConstructs,
+        "call sites omitted from report: " + std::to_string(summaries.size() - limit));
+
+  if (finding.pattern == "assumed-size-array") {
+    addUnique(finding.behaviorRisks,
+        "Every listed caller may need an explicit interface before assumed-shape modernization.");
+  } else if (finding.pattern == "entry") {
+    addUnique(finding.behaviorRisks,
+        "Callers of the alternate entry point may depend on shared host procedure state.");
+  }
 }
 
 class AstFindingVisitor {
@@ -551,25 +700,94 @@ ProjectAnalysis FlangAstAdvisor::analyzePath(const fs::path &path) const {
 
   normalizeFindings(project.findings);
 
-  std::map<std::string, std::set<std::string>> commonUsers;
+  struct CommonUse {
+    std::string file;
+    std::string routine;
+    std::string layout;
+    int line = 1;
+  };
+
+  std::map<std::string, std::vector<CommonUse>> commonUses;
   for (const auto &finding : project.findings) {
-    if (finding.pattern == "common")
-      commonUsers[finding.construct].insert(normalizePathString(finding.location.file));
-  }
-  for (auto &finding : project.findings) {
     if (finding.pattern != "common")
       continue;
-    auto it = commonUsers.find(finding.construct);
-    if (it == commonUsers.end())
-      continue;
-    finding.affectedFiles.insert(it->second.begin(), it->second.end());
-    normalizeFindingPaths(finding);
-    if (it->second.size() > 1) {
-      finding.dependentConstructs.push_back(
-          "cross-file COMMON users: " + std::to_string(it->second.size()));
-      finding.behaviorRisks.push_back(
-          "Module replacement requires updating every semantic COMMON declaration consistently.");
+    CommonUse use;
+    use.file = normalizePathString(finding.location.file);
+    use.routine = finding.routine.empty() ? "<scope>" : finding.routine;
+    use.line = finding.location.line;
+    if (auto layout = afterPrefix(finding.dependentConstructs, "COMMON objects: "))
+      use.layout = *layout;
+    else if (auto layout = afterPrefix(finding.dependentConstructs, "semantic COMMON members: "))
+      use.layout = *layout;
+    else
+      use.layout = "<layout unavailable>";
+    commonUses[finding.construct].push_back(std::move(use));
+  }
+
+  const auto calls = collectCallSites(project.files);
+
+  for (auto &finding : project.findings) {
+    if (finding.pattern == "common") {
+      auto it = commonUses.find(finding.construct);
+      if (it != commonUses.end()) {
+        std::set<std::string> files;
+        std::set<std::string> layouts;
+        for (const auto &use : it->second) {
+          files.insert(use.file);
+          layouts.insert(use.layout);
+          finding.affectedFiles.insert(use.file);
+        }
+        addUnique(finding.dependentConstructs,
+            "COMMON migration scope: " + std::to_string(it->second.size()) +
+                " declarations across " + std::to_string(files.size()) + " files");
+        for (const auto &use : it->second) {
+          addUnique(finding.dependentConstructs,
+              "COMMON declaration: " + use.file + ":" + std::to_string(use.line) +
+                  " scope " + use.routine + " layout [" + use.layout + "]");
+        }
+        if (layouts.size() > 1) {
+          addUnique(finding.behaviorRisks,
+              "COMMON layout is not textually identical across scopes; module conversion must preserve storage order, offsets, and any intentional name differences.");
+        } else {
+          addUnique(finding.behaviorRisks,
+              "COMMON layout appears consistent, but module conversion still changes global storage ownership and initialization visibility.");
+        }
+        addUnique(finding.semanticEvidence,
+            "Whole-project COMMON impact grouped Flang AST/semantic COMMON declarations by block name.");
+      }
     }
+
+    if (finding.pattern == "equivalence") {
+      std::optional<std::string> aliases = afterPrefix(finding.dependentConstructs, "overlaid objects: ");
+      if (!aliases)
+        aliases = afterPrefix(finding.dependentConstructs, "semantic aliases: ");
+      if (aliases) {
+        auto objects = splitList(*aliases);
+        addUnique(finding.dependentConstructs,
+            "alias class size: " + std::to_string(objects.size()) + " storage-associated objects");
+        if (aliases->find('(') != std::string::npos) {
+          addUnique(finding.behaviorRisks,
+              "Alias class includes array elements or substrings; replacing it can change element-level storage interpretation.");
+        }
+        addUnique(finding.behaviorRisks,
+            "A safe rewrite must preserve every use that relies on shared storage, not just replace names locally.");
+      }
+    }
+
+    if (finding.pattern == "assumed-size-array" || finding.pattern == "entry")
+      addCallSiteImpact(finding, calls);
+
+    if (finding.pattern == "implicit-typing") {
+      if (auto symbols = afterPrefix(finding.dependentConstructs, "implicit symbols: ")) {
+        addUnique(finding.dependentConstructs,
+            "declaration worklist: add explicit declarations for " + *symbols +
+                " before inserting IMPLICIT NONE");
+        addUnique(finding.behaviorRisks,
+            "Changing implicit typing can reveal misspelled variables that previously compiled as new implicit symbols.");
+      }
+    }
+
+    normalizeFindingPaths(finding);
   }
 
   prioritize(project);

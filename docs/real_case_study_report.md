@@ -18,14 +18,14 @@ Total findings: 18
 
 | Priority | Pattern | Location | Effort | Safety | Recommendation |
 |---:|---|---|---|---|---|
-| 81 | equivalence | /Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:38 | complex | risky | Review EQUIVALENCE manually before replacing storage overlays. |
-| 81 | equivalence | /Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:39 | complex | risky | Review EQUIVALENCE manually before replacing storage overlays. |
-| 81 | equivalence | /Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:40 | complex | risky | Review EQUIVALENCE manually before replacing storage overlays. |
-| 81 | equivalence | /Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:1 | complex | risky | Flang semantic scope resolved an EQUIVALENCE set; keep as risky until aliasing is reviewed. |
-| 81 | equivalence | /Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:1 | complex | risky | Flang semantic scope resolved an EQUIVALENCE set; keep as risky until aliasing is reviewed. |
-| 81 | equivalence | /Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:1 | complex | risky | Flang semantic scope resolved an EQUIVALENCE set; keep as risky until aliasing is reviewed. |
-| 81 | equivalence | /Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:1 | complex | risky | Flang semantic scope resolved an EQUIVALENCE set; keep as risky until aliasing is reviewed. |
-| 46 | implicit-typing | /Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/fdjac1.f:1 | moderate | review-needed | Flang semantics resolved implicitly typed symbols; add explicit declarations before IMPLICIT NONE. |
+| 94 | equivalence | /Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:38 | complex | risky | Review EQUIVALENCE manually before replacing storage overlays. |
+| 94 | equivalence | /Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:39 | complex | risky | Review EQUIVALENCE manually before replacing storage overlays. |
+| 94 | equivalence | /Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:40 | complex | risky | Review EQUIVALENCE manually before replacing storage overlays. |
+| 94 | equivalence | /Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:1 | complex | risky | Flang semantic scope resolved an EQUIVALENCE set; keep as risky until aliasing is reviewed. |
+| 94 | equivalence | /Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:1 | complex | risky | Flang semantic scope resolved an EQUIVALENCE set; keep as risky until aliasing is reviewed. |
+| 94 | equivalence | /Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:1 | complex | risky | Flang semantic scope resolved an EQUIVALENCE set; keep as risky until aliasing is reviewed. |
+| 89 | equivalence | /Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:1 | complex | risky | Flang semantic scope resolved an EQUIVALENCE set; keep as risky until aliasing is reviewed. |
+| 54 | implicit-typing | /Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/fdjac1.f:1 | moderate | review-needed | Flang semantics resolved implicitly typed symbols; add explicit declarations before IMPLICIT NONE. |
 | 13 | fixed-form | /Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dogleg.f:1 | trivial | safe | Convert fixed-form source to free-form Fortran. |
 | 13 | fixed-form | /Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:1 | trivial | safe | Convert fixed-form source to free-form Fortran. |
 | 13 | fixed-form | /Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/enorm.f:1 | trivial | safe | Convert fixed-form source to free-form Fortran. |
@@ -47,7 +47,10 @@ Total findings: 18
 - Routine/scope: `dpmpar`
 - Affected files: `/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f`
 - Dependent construct: overlaid objects: dmach(1), mcheps(1)
+- Dependent construct: alias class size: 2 storage-associated objects
 - Behavior/aliasing risk: Removing this overlay can change aliasing, alignment, and old binary layout assumptions.
+- Behavior/aliasing risk: Alias class includes array elements or substrings; replacing it can change element-level storage interpretation.
+- Behavior/aliasing risk: A safe rewrite must preserve every use that relies on shared storage, not just replace names locally.
 - Flang AST evidence: Visited parser::EquivalenceStmt in memory.
 
 ### equivalence at `/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:39`
@@ -58,7 +61,10 @@ Total findings: 18
 - Routine/scope: `dpmpar`
 - Affected files: `/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f`
 - Dependent construct: overlaid objects: dmach(2), minmag(1)
+- Dependent construct: alias class size: 2 storage-associated objects
 - Behavior/aliasing risk: Removing this overlay can change aliasing, alignment, and old binary layout assumptions.
+- Behavior/aliasing risk: Alias class includes array elements or substrings; replacing it can change element-level storage interpretation.
+- Behavior/aliasing risk: A safe rewrite must preserve every use that relies on shared storage, not just replace names locally.
 - Flang AST evidence: Visited parser::EquivalenceStmt in memory.
 
 ### equivalence at `/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:40`
@@ -69,7 +75,10 @@ Total findings: 18
 - Routine/scope: `dpmpar`
 - Affected files: `/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f`
 - Dependent construct: overlaid objects: dmach(3), maxmag(1)
+- Dependent construct: alias class size: 2 storage-associated objects
 - Behavior/aliasing risk: Removing this overlay can change aliasing, alignment, and old binary layout assumptions.
+- Behavior/aliasing risk: Alias class includes array elements or substrings; replacing it can change element-level storage interpretation.
+- Behavior/aliasing risk: A safe rewrite must preserve every use that relies on shared storage, not just replace names locally.
 - Flang AST evidence: Visited parser::EquivalenceStmt in memory.
 
 ### equivalence at `/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:1`
@@ -80,7 +89,10 @@ Total findings: 18
 - Routine/scope: `dpmpar`
 - Affected files: `/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f`
 - Dependent construct: semantic aliases: dmach(1), mcheps(1)
+- Dependent construct: alias class size: 2 storage-associated objects
 - Behavior/aliasing risk: Flang resolved actual storage association, so this is a real aliasing dependency.
+- Behavior/aliasing risk: Alias class includes array elements or substrings; replacing it can change element-level storage interpretation.
+- Behavior/aliasing risk: A safe rewrite must preserve every use that relies on shared storage, not just replace names locally.
 - Flang semantic evidence: Read semantics::Scope::equivalenceSets() in memory.
 
 ### equivalence at `/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:1`
@@ -91,7 +103,10 @@ Total findings: 18
 - Routine/scope: `dpmpar`
 - Affected files: `/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f`
 - Dependent construct: semantic aliases: dmach(2), minmag(1)
+- Dependent construct: alias class size: 2 storage-associated objects
 - Behavior/aliasing risk: Flang resolved actual storage association, so this is a real aliasing dependency.
+- Behavior/aliasing risk: Alias class includes array elements or substrings; replacing it can change element-level storage interpretation.
+- Behavior/aliasing risk: A safe rewrite must preserve every use that relies on shared storage, not just replace names locally.
 - Flang semantic evidence: Read semantics::Scope::equivalenceSets() in memory.
 
 ### equivalence at `/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:1`
@@ -102,7 +117,10 @@ Total findings: 18
 - Routine/scope: `dpmpar`
 - Affected files: `/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f`
 - Dependent construct: semantic aliases: dmach(3), maxmag(1)
+- Dependent construct: alias class size: 2 storage-associated objects
 - Behavior/aliasing risk: Flang resolved actual storage association, so this is a real aliasing dependency.
+- Behavior/aliasing risk: Alias class includes array elements or substrings; replacing it can change element-level storage interpretation.
+- Behavior/aliasing risk: A safe rewrite must preserve every use that relies on shared storage, not just replace names locally.
 - Flang semantic evidence: Read semantics::Scope::equivalenceSets() in memory.
 
 ### equivalence at `/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f:1`
@@ -113,7 +131,9 @@ Total findings: 18
 - Routine/scope: `dpmpar`
 - Affected files: `/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f`
 - Dependent construct: semantic aliases: .F18.0, dmach
+- Dependent construct: alias class size: 2 storage-associated objects
 - Behavior/aliasing risk: Flang resolved actual storage association, so this is a real aliasing dependency.
+- Behavior/aliasing risk: A safe rewrite must preserve every use that relies on shared storage, not just replace names locally.
 - Flang semantic evidence: Read semantics::Scope::equivalenceSets() in memory.
 
 ### implicit-typing at `/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/fdjac1.f:1`
@@ -124,7 +144,9 @@ Total findings: 18
 - Routine/scope: `fdjac1`
 - Affected files: `/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/fdjac1.f`
 - Dependent construct: implicit symbols: fcn
+- Dependent construct: declaration worklist: add explicit declarations for fcn before inserting IMPLICIT NONE
 - Behavior/aliasing risk: Modernization can fail compilation until every implicit symbol has an explicit declaration.
+- Behavior/aliasing risk: Changing implicit typing can reveal misspelled variables that previously compiled as new implicit symbols.
 - Flang semantic evidence: Read semantics::Symbol::Flag::Implicit from the in-memory symbol table.
 
 ### fixed-form at `/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dogleg.f:1`

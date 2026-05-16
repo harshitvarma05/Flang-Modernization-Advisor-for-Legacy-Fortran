@@ -150,8 +150,8 @@ add_custom_target(serve
 )
 
 add_custom_target(minpack-driver
-  COMMAND ${FLANG_EXECUTABLE} -o
-        examples/real_case_study/minpack_driver/main.f90
+  COMMAND ${FLANG_EXECUTABLE} -o transformed/real_case_study/minpack_driver
+          examples/real_case_study/minpack_driver/main.f90
           ${MINPACK_TRANSFORMED_SOURCES}
   DEPENDS real-transform
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}

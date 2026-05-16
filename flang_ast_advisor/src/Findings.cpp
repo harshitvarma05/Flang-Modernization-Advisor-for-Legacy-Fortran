@@ -122,6 +122,18 @@ static void writeStringArray(
   out << "]";
 }
 
+static void writeStringSet(
+    std::ostringstream &out, const std::set<std::string> &values) {
+  out << "[";
+  std::size_t i = 0;
+  for (const auto &value : values) {
+    if (i++)
+      out << ", ";
+    out << "\"" << escapeJson(value) << "\"";
+  }
+  out << "]";
+}
+
 std::string jsonReport(const ProjectAnalysis &analysis) {
   std::ostringstream out;
   out << "{\n";
@@ -139,6 +151,9 @@ std::string jsonReport(const ProjectAnalysis &analysis) {
     out << "      \"effort\": \"" << toString(f.effort) << "\",\n";
     out << "      \"safety\": \"" << toString(f.safety) << "\",\n";
     out << "      \"priority\": " << f.priority << ",\n";
+    out << "      \"affected_files\": ";
+    writeStringSet(out, f.affectedFiles);
+    out << ",\n";
     out << "      \"dependent_constructs\": ";
     writeStringArray(out, f.dependentConstructs);
     out << ",\n";

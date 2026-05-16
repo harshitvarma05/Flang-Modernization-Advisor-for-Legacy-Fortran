@@ -1,0 +1,144 @@
+======================== Flang: parse tree dump ========================
+Program -> ProgramUnit -> MainProgram
+| ProgramStmt -> Name = 'SOLVER'
+| SpecificationPart
+| | ImplicitPart -> 
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'mode'
+| | | EntityDecl
+| | | | Name = 'n'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> Real -> 
+| | | EntityDecl
+| | | | Name = 'x'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = '20_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '20'
+| | | EntityDecl
+| | | | Name = 'y'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = '20_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '20'
+| | DeclarationConstruct -> SpecificationConstruct -> OtherSpecificationStmt -> CommonStmt -> Block
+| | | Name = 'grid'
+| | | CommonBlockObject
+| | | | Name = 'n'
+| | | CommonBlockObject
+| | | | Name = 'x'
+| | | CommonBlockObject
+| | | | Name = 'y'
+| ExecutionPart -> Block
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'mode=1_4'
+| | | Variable = 'mode'
+| | | | Designator -> DataRef -> Name = 'mode'
+| | | Expr = '1_4'
+| | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ArithmeticIfStmt
+| | | Expr = 'mode'
+| | | | Designator -> DataRef -> Name = 'mode'
+| | | uint64_t = '10'
+| | | uint64_t = '20'
+| | | uint64_t = '30'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> CallStmt = 'CALL init(x,y,n)'
+| | | Call
+| | | | ProcedureDesignator -> Name = 'init'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'x'
+| | | | | | Designator -> DataRef -> Name = 'x'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'y'
+| | | | | | Designator -> DataRef -> Name = 'y'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> GotoStmt -> uint64_t = '40'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> CallStmt = 'CALL step(x,y,n)'
+| | | Call
+| | | | ProcedureDesignator -> Name = 'step'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'x'
+| | | | | | Designator -> DataRef -> Name = 'x'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'y'
+| | | | | | Designator -> DataRef -> Name = 'y'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> GotoStmt -> uint64_t = '40'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> CallStmt = 'CALL finalize(x,y,n)'
+| | | Call
+| | | | ProcedureDesignator -> Name = 'finalize'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'x'
+| | | | | | Designator -> DataRef -> Name = 'x'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'y'
+| | | | | | Designator -> DataRef -> Name = 'y'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> StopStmt
+| | | Kind = Stop
+| EndProgramStmt -> 
+ProgramUnit -> SubroutineSubprogram
+| SubroutineStmt
+| | Name = 'init'
+| | DummyArg -> Name = 'x'
+| | DummyArg -> Name = 'y'
+| | DummyArg -> Name = 'n'
+| SpecificationPart
+| | ImplicitPart -> 
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'n'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> Real -> 
+| | | EntityDecl
+| | | | Name = 'x'
+| | | | ArraySpec -> ImpliedShapeSpec -> AssumedImpliedSpec -> 
+| | | EntityDecl
+| | | | Name = 'y'
+| | | | ArraySpec -> ImpliedShapeSpec -> AssumedImpliedSpec -> 
+| | DeclarationConstruct -> SpecificationConstruct -> OtherSpecificationStmt -> CommonStmt -> Block
+| | | Name = 'grid'
+| | | CommonBlockObject
+| | | | Name = 'ng'
+| | | CommonBlockObject
+| | | | Name = 'gx'
+| | | CommonBlockObject
+| | | | Name = 'gy'
+| ExecutionPart -> Block
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'i'
+| | | | | Scalar -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Scalar -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'x(int(i,kind=8))=0._4'
+| | | | | Variable = 'x(int(i,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'x'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | Expr = '0._4'
+| | | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | | Real = '0.0'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'y(int(i,kind=8))=0._4'
+| | | | | Variable = 'y(int(i,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'y'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | Expr = '0._4'
+| | | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | | Real = '0.0'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ReturnStmt -> 
+| EndSubroutineStmt -> 
