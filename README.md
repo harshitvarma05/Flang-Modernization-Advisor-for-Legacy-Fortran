@@ -29,43 +29,44 @@ A C++17 static analysis tool for legacy Fortran modernization. The analyzer embe
 | `docs/` | Reports, scoring notes, presentation notes, Flang dumps |
 | `transformed/` | Safe transformation outputs |
 
-There is one official build entry point: the root `Makefile` and root `CMakeLists.txt`.
+There is one official build entry point: the root `CMakeLists.txt`.
 
 ## Build And Run
 
+Configure and build with CMake:
+
 ```bash
-make
-./build/flang-modernizer examples/legacy/all_patterns.f
+cmake -S . -B cmake-build
+cmake --build cmake-build
+```
+
+Run the CLI:
+
+```bash
+./cmake-build/flang-modernizer examples/legacy/all_patterns.f
 ```
 
 Generate reports:
 
 ```bash
-make report
-make real-report
-make ast-report
-make ast-real-report
+cmake --build cmake-build --target report
+cmake --build cmake-build --target real-report
+cmake --build cmake-build --target ast-report
+cmake --build cmake-build --target ast-real-report
 ```
 
 Run tests:
 
 ```bash
-make test
-```
-
-CMake flow for IDEs:
-
-```bash
-cmake -S . -B cmake-build
-cmake --build cmake-build
 ctest --test-dir cmake-build --output-on-failure
 ```
 
 ## Local Web Dashboard
 
 ```bash
-make
-./build/flang-modernizer --serve
+cmake -S . -B cmake-build
+cmake --build cmake-build --target flang-modernizer
+./cmake-build/flang-modernizer --serve
 ```
 
 Open:

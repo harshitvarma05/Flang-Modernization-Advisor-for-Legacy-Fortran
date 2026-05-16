@@ -28,13 +28,6 @@ source in the same process, then visits Flang's in-memory parse tree with
 ## Build
 
 ```bash
-make ast-advisor
-make ast-test
-```
-
-Or with CMake:
-
-```bash
 cmake -S . -B cmake-build
 cmake --build cmake-build --target flang-ast-advisor
 ctest --test-dir cmake-build --output-on-failure
@@ -43,8 +36,8 @@ ctest --test-dir cmake-build --output-on-failure
 ## Run
 
 ```bash
-./build/flang-ast-advisor examples/case_study
-./build/flang-ast-advisor examples/real_case_study/minpack \
+./cmake-build/flang-ast-advisor examples/case_study
+./cmake-build/flang-ast-advisor examples/real_case_study/minpack \
   --output flang_ast_advisor/docs/ast_real_case_study_report.md \
   --json flang_ast_advisor/docs/ast_real_case_study_report.json
 ```
