@@ -76,7 +76,7 @@ For CMake-based IDEs, build the `serve` target to start the same dashboard.
 
 ## Assignment-Strict In-Memory Flang AST Core
 
-A separate implementation lives in `flang_ast_advisor/`. This is the version to emphasize when a professor asks whether the project truly uses Flang parse-tree and semantic analysis. It links against Flang libraries, parses Fortran in process, visits typed Flang AST nodes with `Fortran::parser::Walk`, and reads `semantics::Scope` / `Symbol` data for COMMON, EQUIVALENCE, and implicit typing impact.
+The assignment-strict implementation lives in `flang_ast_advisor/`, but it is built from the root Makefile/CMake project. This is the version to emphasize when a professor asks whether the project truly uses Flang parse-tree and semantic analysis. It links against Flang libraries, parses Fortran in process, visits typed Flang AST nodes with `Fortran::parser::Walk`, and reads `semantics::Scope` / `Symbol` data for COMMON, EQUIVALENCE, and implicit typing impact.
 
 Useful commands:
 
@@ -87,7 +87,7 @@ make ast-report
 make ast-real-report
 ```
 
-CMake IDEs also see the subproject through `add_subdirectory(flang_ast_advisor)`.
+CMake IDEs now see these targets directly from the root `CMakeLists.txt`, so there is only one official CMake project to open.
 
 ## Flang Integration Design
 

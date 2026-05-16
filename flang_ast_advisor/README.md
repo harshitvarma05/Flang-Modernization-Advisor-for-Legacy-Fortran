@@ -31,24 +31,23 @@ source in the same process, then visits Flang's in-memory parse tree with
 ## Build
 
 ```bash
-cd flang_ast_advisor
-make
-make test
+make ast-advisor
+make ast-test
 ```
 
 Or with CMake:
 
 ```bash
-cmake -S flang_ast_advisor -B flang_ast_advisor/cmake-build
-cmake --build flang_ast_advisor/cmake-build
-ctest --test-dir flang_ast_advisor/cmake-build --output-on-failure
+cmake -S . -B cmake-build
+cmake --build cmake-build --target flang-ast-advisor
+ctest --test-dir cmake-build --output-on-failure
 ```
 
 ## Run
 
 ```bash
-flang_ast_advisor/build/flang-ast-advisor examples/case_study
-flang_ast_advisor/build/flang-ast-advisor examples/real_case_study/minpack \
+./build/flang-ast-advisor examples/case_study
+./build/flang-ast-advisor examples/real_case_study/minpack \
   --output flang_ast_advisor/docs/ast_real_case_study_report.md \
   --json flang_ast_advisor/docs/ast_real_case_study_report.json
 ```

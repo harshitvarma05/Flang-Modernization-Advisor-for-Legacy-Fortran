@@ -1,11 +1,11 @@
 {
-  "root": "../examples/case_study",
+  "root": "examples/case_study",
   "files_analyzed": 2,
   "findings": [
     {
       "pattern": "common",
       "message": "Flang semantic scope contains a COMMON block; compare layouts before module conversion.",
-      "file": "./../examples/case_study/solver.f",
+      "file": "./examples/case_study/solver.f",
       "line": 19,
       "routine": "init",
       "effort": "complex",
@@ -19,7 +19,7 @@
     {
       "pattern": "common",
       "message": "Flang semantic scope contains a COMMON block; compare layouts before module conversion.",
-      "file": "./../examples/case_study/physics.f",
+      "file": "./examples/case_study/physics.f",
       "line": 4,
       "routine": "step",
       "effort": "complex",
@@ -33,7 +33,7 @@
     {
       "pattern": "common",
       "message": "Flang semantic scope contains a COMMON block; compare layouts before module conversion.",
-      "file": "./../examples/case_study/solver.f",
+      "file": "./examples/case_study/solver.f",
       "line": 5,
       "routine": "SOLVER",
       "effort": "complex",
@@ -47,7 +47,7 @@
     {
       "pattern": "common",
       "message": "Flang semantic scope contains a COMMON block; compare layouts before module conversion.",
-      "file": "./../examples/case_study/physics.f",
+      "file": "./examples/case_study/physics.f",
       "line": 16,
       "routine": "finalize",
       "effort": "complex",
@@ -61,7 +61,7 @@
     {
       "pattern": "common",
       "message": "Replace COMMON storage with a module after checking layout compatibility.",
-      "file": "./../examples/case_study/physics.f",
+      "file": "./examples/case_study/physics.f",
       "line": 4,
       "routine": "step",
       "effort": "complex",
@@ -75,7 +75,7 @@
     {
       "pattern": "common",
       "message": "Replace COMMON storage with a module after checking layout compatibility.",
-      "file": "./../examples/case_study/physics.f",
+      "file": "./examples/case_study/physics.f",
       "line": 16,
       "routine": "finalize",
       "effort": "complex",
@@ -89,7 +89,7 @@
     {
       "pattern": "common",
       "message": "Replace COMMON storage with a module after checking layout compatibility.",
-      "file": "./../examples/case_study/solver.f",
+      "file": "./examples/case_study/solver.f",
       "line": 19,
       "routine": "init",
       "effort": "complex",
@@ -103,7 +103,7 @@
     {
       "pattern": "common",
       "message": "Replace COMMON storage with a module after checking layout compatibility.",
-      "file": "./../examples/case_study/solver.f",
+      "file": "./examples/case_study/solver.f",
       "line": 5,
       "routine": "solver",
       "effort": "complex",
@@ -117,7 +117,7 @@
     {
       "pattern": "equivalence",
       "message": "Review EQUIVALENCE manually before replacing storage overlays.",
-      "file": "./../examples/case_study/physics.f",
+      "file": "./examples/case_study/physics.f",
       "line": 5,
       "routine": "step",
       "effort": "complex",
@@ -131,7 +131,7 @@
     {
       "pattern": "equivalence",
       "message": "Flang semantic scope resolved an EQUIVALENCE set; keep as risky until aliasing is reviewed.",
-      "file": "../examples/case_study/physics.f",
+      "file": "examples/case_study/physics.f",
       "line": 1,
       "routine": "step",
       "effort": "complex",
@@ -145,7 +145,7 @@
     {
       "pattern": "arithmetic-if",
       "message": "Replace arithmetic IF with structured IF/ELSE blocks.",
-      "file": "./../examples/case_study/solver.f",
+      "file": "./examples/case_study/solver.f",
       "line": 7,
       "routine": "solver",
       "effort": "moderate",
@@ -159,7 +159,7 @@
     {
       "pattern": "assumed-size-array",
       "message": "Consider assumed-shape arrays only after introducing explicit interfaces.",
-      "file": "./../examples/case_study/physics.f",
+      "file": "./examples/case_study/physics.f",
       "line": 3,
       "routine": "step",
       "effort": "moderate",
@@ -173,7 +173,7 @@
     {
       "pattern": "assumed-size-array",
       "message": "Consider assumed-shape arrays only after introducing explicit interfaces.",
-      "file": "./../examples/case_study/physics.f",
+      "file": "./examples/case_study/physics.f",
       "line": 3,
       "routine": "step",
       "effort": "moderate",
@@ -187,7 +187,7 @@
     {
       "pattern": "assumed-size-array",
       "message": "Consider assumed-shape arrays only after introducing explicit interfaces.",
-      "file": "./../examples/case_study/physics.f",
+      "file": "./examples/case_study/physics.f",
       "line": 15,
       "routine": "finalize",
       "effort": "moderate",
@@ -201,7 +201,7 @@
     {
       "pattern": "assumed-size-array",
       "message": "Consider assumed-shape arrays only after introducing explicit interfaces.",
-      "file": "./../examples/case_study/physics.f",
+      "file": "./examples/case_study/physics.f",
       "line": 15,
       "routine": "finalize",
       "effort": "moderate",
@@ -215,7 +215,7 @@
     {
       "pattern": "assumed-size-array",
       "message": "Consider assumed-shape arrays only after introducing explicit interfaces.",
-      "file": "./../examples/case_study/solver.f",
+      "file": "./examples/case_study/solver.f",
       "line": 18,
       "routine": "init",
       "effort": "moderate",
@@ -229,7 +229,7 @@
     {
       "pattern": "assumed-size-array",
       "message": "Consider assumed-shape arrays only after introducing explicit interfaces.",
-      "file": "./../examples/case_study/solver.f",
+      "file": "./examples/case_study/solver.f",
       "line": 18,
       "routine": "init",
       "effort": "moderate",
@@ -243,7 +243,7 @@
     {
       "pattern": "implicit-typing",
       "message": "Flang semantics resolved implicitly typed symbols; add explicit declarations before IMPLICIT NONE.",
-      "file": "../examples/case_study/solver.f",
+      "file": "examples/case_study/solver.f",
       "line": 1,
       "routine": "init",
       "effort": "moderate",
@@ -257,7 +257,7 @@
     {
       "pattern": "implicit-typing",
       "message": "Flang semantics resolved implicitly typed symbols; add explicit declarations before IMPLICIT NONE.",
-      "file": "../examples/case_study/physics.f",
+      "file": "examples/case_study/physics.f",
       "line": 1,
       "routine": "finalize",
       "effort": "moderate",
@@ -271,7 +271,7 @@
     {
       "pattern": "implicit-typing",
       "message": "Flang semantics resolved implicitly typed symbols; add explicit declarations before IMPLICIT NONE.",
-      "file": "../examples/case_study/physics.f",
+      "file": "examples/case_study/physics.f",
       "line": 1,
       "routine": "scale",
       "effort": "moderate",
@@ -285,7 +285,7 @@
     {
       "pattern": "implicit-typing",
       "message": "Flang semantics resolved implicitly typed symbols; add explicit declarations before IMPLICIT NONE.",
-      "file": "../examples/case_study/physics.f",
+      "file": "examples/case_study/physics.f",
       "line": 1,
       "routine": "step",
       "effort": "moderate",
@@ -299,7 +299,7 @@
     {
       "pattern": "statement-function",
       "message": "Convert statement function to an internal function.",
-      "file": "./../examples/case_study/physics.f",
+      "file": "./examples/case_study/physics.f",
       "line": 6,
       "routine": "step",
       "effort": "moderate",
@@ -313,7 +313,7 @@
     {
       "pattern": "fixed-form",
       "message": "Convert fixed-form source to free-form Fortran.",
-      "file": "../examples/case_study/solver.f",
+      "file": "examples/case_study/solver.f",
       "line": 1,
       "routine": "",
       "effort": "trivial",
@@ -327,7 +327,7 @@
     {
       "pattern": "fixed-form",
       "message": "Convert fixed-form source to free-form Fortran.",
-      "file": "../examples/case_study/physics.f",
+      "file": "examples/case_study/physics.f",
       "line": 1,
       "routine": "",
       "effort": "trivial",
