@@ -9,6 +9,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_library(flang_modernizer_core
   src/Analyzer.cpp
+  src/FlangMetadata.cpp
   src/Models.cpp
   src/Reporter.cpp
   src/Transform.cpp
@@ -20,6 +21,28 @@ target_link_libraries(flang-modernizer PRIVATE flang_modernizer_core)
 
 add_executable(flang-modernizer-tests tests/test_analyzer.cpp)
 target_link_libraries(flang-modernizer-tests PRIVATE flang_modernizer_core)
+
+find_path(FLANG_INCLUDE_DIR flang/Parser/parsing.h HINTS /opt/homebrew/opt/flang/include)
+find_path(LLVM_INCLUDE_DIR llvm/Support/raw_ostream.h HINTS /opt/homebrew/opt/llvm/include)
+find_library(FORTRAN_PARSER_LIB FortranParser HINTS /opt/homebrew/opt/flang/lib)
+find_library(FORTRAN_SEMANTICS_LIB FortranSemantics HINTS /opt/homebrew/opt/flang/lib)
+find_library(FORTRAN_EVALUATE_LIB FortranEvaluate HINTS /opt/homebrew/opt/flang/lib)
+find_library(FORTRAN_SUPPORT_LIB FortranSupport HINTS /opt/homebrew/opt/flang/lib)
+find_library(FORTRAN_DECIMAL_LIB FortranDecimal HINTS /opt/homebrew/opt/flang/lib)
+find_library(LLVM_LIB LLVM-22 HINTS /opt/homebrew/opt/llvm/lib)
+
+if(FLANG_INCLUDE_DIR AND LLVM_INCLUDE_DIR AND FORTRAN_PARSER_LIB AND FORTRAN_SEMANTICS_LIB AND FORTRAN_EVALUATE_LIB AND FORTRAN_SUPPORT_LIB AND FORTRAN_DECIMAL_LIB AND LLVM_LIB)
+  add_executable(flang-inprocess-probe src/InProcessFlangProbe.cpp)
+  target_include_directories(flang-inprocess-probe PRIVATE ${FLANG_INCLUDE_DIR} ${LLVM_INCLUDE_DIR})
+  target_link_libraries(flang-inprocess-probe PRIVATE ${FORTRAN_PARSER_LIB} ${FORTRAN_SEMANTICS_LIB} ${FORTRAN_EVALUATE_LIB} ${FORTRAN_SUPPORT_LIB} ${FORTRAN_DECIMAL_LIB} ${LLVM_LIB})
+  add_custom_target(flang-inprocess
+    COMMAND flang-inprocess-probe examples/legacy/all_patterns.f
+    DEPENDS flang-inprocess-probe
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMENT "Running in-process Flang parser and semantic analysis probe"
+  )
+endif()
+
 
 add_test(NAME analyzer_tests
   COMMAND flang-modernizer-tests
@@ -67,3 +90,20 @@ add_custom_target(serve
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
   COMMENT "Starting local web dashboard at http://localhost:8080"
 )
+
+
+add_custom_target(real-report
+  COMMAND flang-modernizer examples/real_case_study/minpack --output docs/real_case_study_report.md
+  DEPENDS flang-modernizer
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  COMMENT "Generating real MINPACK case-study modernization report"
+)
+
+add_custom_target(real-transform
+  COMMAND flang-modernizer examples/real_case_study/minpack --safe-transform-out transformed/real_case_study
+  DEPENDS flang-modernizer
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  COMMENT "Generating safe transformed files for real MINPACK case study"
+)
+
+add_subdirectory(flang_ast_advisor)

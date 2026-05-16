@@ -1,0 +1,437 @@
+======================== Flang: parse tree dump ========================
+Program -> ProgramUnit -> FunctionSubprogram
+| FunctionStmt
+| | PrefixSpec -> DeclarationTypeSpec -> IntrinsicTypeSpec -> DoublePrecision
+| | Name = 'enorm'
+| | Name = 'n'
+| | Name = 'x'
+| SpecificationPart
+| | ImplicitPart -> 
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'n'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> DoublePrecision
+| | | EntityDecl
+| | | | Name = 'x'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'i'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> DoublePrecision
+| | | EntityDecl
+| | | | Name = 'agiant'
+| | | EntityDecl
+| | | | Name = 'floatn'
+| | | EntityDecl
+| | | | Name = 'one'
+| | | EntityDecl
+| | | | Name = 'rdwarf'
+| | | EntityDecl
+| | | | Name = 'rgiant'
+| | | EntityDecl
+| | | | Name = 's1'
+| | | EntityDecl
+| | | | Name = 's2'
+| | | EntityDecl
+| | | | Name = 's3'
+| | | EntityDecl
+| | | | Name = 'xabs'
+| | | EntityDecl
+| | | | Name = 'x1max'
+| | | EntityDecl
+| | | | Name = 'x3max'
+| | | EntityDecl
+| | | | Name = 'zero'
+| | DeclarationConstruct -> DataStmt -> DataStmtSet
+| | | DataStmtObject -> Variable = 'one'
+| | | | Designator -> DataRef -> Name = 'one'
+| | | DataStmtObject -> Variable = 'zero'
+| | | | Designator -> DataRef -> Name = 'zero'
+| | | DataStmtObject -> Variable = 'rdwarf'
+| | | | Designator -> DataRef -> Name = 'rdwarf'
+| | | DataStmtObject -> Variable = 'rgiant'
+| | | | Designator -> DataRef -> Name = 'rgiant'
+| | | DataStmtValue
+| | | | DataStmtConstant = '1._8'
+| | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | Real = '1.0d0'
+| | | DataStmtValue
+| | | | DataStmtConstant = '0._8'
+| | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | Real = '0.0d0'
+| | | DataStmtValue
+| | | | DataStmtConstant = '3.8339999999999998068704563226383170290107207476338715729409500898583473826874978840351104736328125e-20_8'
+| | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | Real = '3.834d-20'
+| | | DataStmtValue
+| | | | DataStmtConstant = '1.304e19_8'
+| | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | Real = '1.304d19'
+| ExecutionPart -> Block
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 's1=zero'
+| | | Variable = 's1'
+| | | | Designator -> DataRef -> Name = 's1'
+| | | Expr = 'zero'
+| | | | Designator -> DataRef -> Name = 'zero'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 's2=zero'
+| | | Variable = 's2'
+| | | | Designator -> DataRef -> Name = 's2'
+| | | Expr = 'zero'
+| | | | Designator -> DataRef -> Name = 'zero'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 's3=zero'
+| | | Variable = 's3'
+| | | | Designator -> DataRef -> Name = 's3'
+| | | Expr = 'zero'
+| | | | Designator -> DataRef -> Name = 'zero'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'x1max=zero'
+| | | Variable = 'x1max'
+| | | | Designator -> DataRef -> Name = 'x1max'
+| | | Expr = 'zero'
+| | | | Designator -> DataRef -> Name = 'zero'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'x3max=zero'
+| | | Variable = 'x3max'
+| | | | Designator -> DataRef -> Name = 'x3max'
+| | | Expr = 'zero'
+| | | | Designator -> DataRef -> Name = 'zero'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'floatn=real(n,kind=8)'
+| | | Variable = 'floatn'
+| | | | Designator -> DataRef -> Name = 'floatn'
+| | | Expr = 'n'
+| | | | Designator -> DataRef -> Name = 'n'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'agiant=rgiant/floatn'
+| | | Variable = 'agiant'
+| | | | Designator -> DataRef -> Name = 'agiant'
+| | | Expr = 'rgiant/floatn'
+| | | | Divide
+| | | | | Expr = 'rgiant'
+| | | | | | Designator -> DataRef -> Name = 'rgiant'
+| | | | | Expr = 'floatn'
+| | | | | | Designator -> DataRef -> Name = 'floatn'
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'i'
+| | | | | Scalar -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Scalar -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'xabs=abs(x(int(i,kind=8)))'
+| | | | | Variable = 'xabs'
+| | | | | | Designator -> DataRef -> Name = 'xabs'
+| | | | | Expr = 'abs(x(int(i,kind=8)))'
+| | | | | | FunctionReference -> Call
+| | | | | | | ProcedureDesignator -> Name = 'dabs'
+| | | | | | | ActualArgSpec
+| | | | | | | | ActualArg -> Expr = 'x(int(i,kind=8))'
+| | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | DataRef -> Name = 'x'
+| | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'xabs>rdwarf.and.xabs<agiant'
+| | | | | | AND
+| | | | | | | Expr = 'xabs>rdwarf'
+| | | | | | | | GT
+| | | | | | | | | Expr = 'xabs'
+| | | | | | | | | | Designator -> DataRef -> Name = 'xabs'
+| | | | | | | | | Expr = 'rdwarf'
+| | | | | | | | | | Designator -> DataRef -> Name = 'rdwarf'
+| | | | | | | Expr = 'xabs<agiant'
+| | | | | | | | LT
+| | | | | | | | | Expr = 'xabs'
+| | | | | | | | | | Designator -> DataRef -> Name = 'xabs'
+| | | | | | | | | Expr = 'agiant'
+| | | | | | | | | | Designator -> DataRef -> Name = 'agiant'
+| | | | | ActionStmt -> GotoStmt -> uint64_t = '70'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'xabs<=rdwarf'
+| | | | | | LE
+| | | | | | | Expr = 'xabs'
+| | | | | | | | Designator -> DataRef -> Name = 'xabs'
+| | | | | | | Expr = 'rdwarf'
+| | | | | | | | Designator -> DataRef -> Name = 'rdwarf'
+| | | | | ActionStmt -> GotoStmt -> uint64_t = '30'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'xabs<=x1max'
+| | | | | | LE
+| | | | | | | Expr = 'xabs'
+| | | | | | | | Designator -> DataRef -> Name = 'xabs'
+| | | | | | | Expr = 'x1max'
+| | | | | | | | Designator -> DataRef -> Name = 'x1max'
+| | | | | ActionStmt -> GotoStmt -> uint64_t = '10'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 's1=one+s1*(x1max/xabs)**2_4'
+| | | | | Variable = 's1'
+| | | | | | Designator -> DataRef -> Name = 's1'
+| | | | | Expr = 'one+s1*(x1max/xabs)**2_4'
+| | | | | | Add
+| | | | | | | Expr = 'one'
+| | | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | | | Expr = 's1*(x1max/xabs)**2_4'
+| | | | | | | | Multiply
+| | | | | | | | | Expr = 's1'
+| | | | | | | | | | Designator -> DataRef -> Name = 's1'
+| | | | | | | | | Expr = '(x1max/xabs)**2_4'
+| | | | | | | | | | Power
+| | | | | | | | | | | Expr = '(x1max/xabs)'
+| | | | | | | | | | | | Parentheses -> Expr = 'x1max/xabs'
+| | | | | | | | | | | | | Divide
+| | | | | | | | | | | | | | Expr = 'x1max'
+| | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'x1max'
+| | | | | | | | | | | | | | Expr = 'xabs'
+| | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'xabs'
+| | | | | | | | | | | Expr = '2_4'
+| | | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'x1max=xabs'
+| | | | | Variable = 'x1max'
+| | | | | | Designator -> DataRef -> Name = 'x1max'
+| | | | | Expr = 'xabs'
+| | | | | | Designator -> DataRef -> Name = 'xabs'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> GotoStmt -> uint64_t = '20'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 's1=s1+(xabs/x1max)**2_4'
+| | | | | Variable = 's1'
+| | | | | | Designator -> DataRef -> Name = 's1'
+| | | | | Expr = 's1+(xabs/x1max)**2_4'
+| | | | | | Add
+| | | | | | | Expr = 's1'
+| | | | | | | | Designator -> DataRef -> Name = 's1'
+| | | | | | | Expr = '(xabs/x1max)**2_4'
+| | | | | | | | Power
+| | | | | | | | | Expr = '(xabs/x1max)'
+| | | | | | | | | | Parentheses -> Expr = 'xabs/x1max'
+| | | | | | | | | | | Divide
+| | | | | | | | | | | | Expr = 'xabs'
+| | | | | | | | | | | | | Designator -> DataRef -> Name = 'xabs'
+| | | | | | | | | | | | Expr = 'x1max'
+| | | | | | | | | | | | | Designator -> DataRef -> Name = 'x1max'
+| | | | | | | | | Expr = '2_4'
+| | | | | | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> GotoStmt -> uint64_t = '60'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'xabs<=x3max'
+| | | | | | LE
+| | | | | | | Expr = 'xabs'
+| | | | | | | | Designator -> DataRef -> Name = 'xabs'
+| | | | | | | Expr = 'x3max'
+| | | | | | | | Designator -> DataRef -> Name = 'x3max'
+| | | | | ActionStmt -> GotoStmt -> uint64_t = '40'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 's3=one+s3*(x3max/xabs)**2_4'
+| | | | | Variable = 's3'
+| | | | | | Designator -> DataRef -> Name = 's3'
+| | | | | Expr = 'one+s3*(x3max/xabs)**2_4'
+| | | | | | Add
+| | | | | | | Expr = 'one'
+| | | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | | | Expr = 's3*(x3max/xabs)**2_4'
+| | | | | | | | Multiply
+| | | | | | | | | Expr = 's3'
+| | | | | | | | | | Designator -> DataRef -> Name = 's3'
+| | | | | | | | | Expr = '(x3max/xabs)**2_4'
+| | | | | | | | | | Power
+| | | | | | | | | | | Expr = '(x3max/xabs)'
+| | | | | | | | | | | | Parentheses -> Expr = 'x3max/xabs'
+| | | | | | | | | | | | | Divide
+| | | | | | | | | | | | | | Expr = 'x3max'
+| | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'x3max'
+| | | | | | | | | | | | | | Expr = 'xabs'
+| | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'xabs'
+| | | | | | | | | | | Expr = '2_4'
+| | | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'x3max=xabs'
+| | | | | Variable = 'x3max'
+| | | | | | Designator -> DataRef -> Name = 'x3max'
+| | | | | Expr = 'xabs'
+| | | | | | Designator -> DataRef -> Name = 'xabs'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> GotoStmt -> uint64_t = '50'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'xabs/=zero'
+| | | | | | NE
+| | | | | | | Expr = 'xabs'
+| | | | | | | | Designator -> DataRef -> Name = 'xabs'
+| | | | | | | Expr = 'zero'
+| | | | | | | | Designator -> DataRef -> Name = 'zero'
+| | | | | ActionStmt -> AssignmentStmt = 's3=s3+(xabs/x3max)**2_4'
+| | | | | | Variable = 's3'
+| | | | | | | Designator -> DataRef -> Name = 's3'
+| | | | | | Expr = 's3+(xabs/x3max)**2_4'
+| | | | | | | Add
+| | | | | | | | Expr = 's3'
+| | | | | | | | | Designator -> DataRef -> Name = 's3'
+| | | | | | | | Expr = '(xabs/x3max)**2_4'
+| | | | | | | | | Power
+| | | | | | | | | | Expr = '(xabs/x3max)'
+| | | | | | | | | | | Parentheses -> Expr = 'xabs/x3max'
+| | | | | | | | | | | | Divide
+| | | | | | | | | | | | | Expr = 'xabs'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'xabs'
+| | | | | | | | | | | | | Expr = 'x3max'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'x3max'
+| | | | | | | | | | Expr = '2_4'
+| | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> GotoStmt -> uint64_t = '80'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 's2=s2+xabs**2_4'
+| | | | | Variable = 's2'
+| | | | | | Designator -> DataRef -> Name = 's2'
+| | | | | Expr = 's2+xabs**2_4'
+| | | | | | Add
+| | | | | | | Expr = 's2'
+| | | | | | | | Designator -> DataRef -> Name = 's2'
+| | | | | | | Expr = 'xabs**2_4'
+| | | | | | | | Power
+| | | | | | | | | Expr = 'xabs'
+| | | | | | | | | | Designator -> DataRef -> Name = 'xabs'
+| | | | | | | | | Expr = '2_4'
+| | | | | | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 's1==zero'
+| | | | EQ
+| | | | | Expr = 's1'
+| | | | | | Designator -> DataRef -> Name = 's1'
+| | | | | Expr = 'zero'
+| | | | | | Designator -> DataRef -> Name = 'zero'
+| | | ActionStmt -> GotoStmt -> uint64_t = '100'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'enorm=x1max*sqrt(s1+(s2/x1max)/x1max)'
+| | | Variable = 'enorm'
+| | | | Designator -> DataRef -> Name = 'enorm'
+| | | Expr = 'x1max*sqrt(s1+(s2/x1max)/x1max)'
+| | | | Multiply
+| | | | | Expr = 'x1max'
+| | | | | | Designator -> DataRef -> Name = 'x1max'
+| | | | | Expr = 'sqrt(s1+(s2/x1max)/x1max)'
+| | | | | | FunctionReference -> Call
+| | | | | | | ProcedureDesignator -> Name = 'dsqrt'
+| | | | | | | ActualArgSpec
+| | | | | | | | ActualArg -> Expr = 's1+(s2/x1max)/x1max'
+| | | | | | | | | Add
+| | | | | | | | | | Expr = 's1'
+| | | | | | | | | | | Designator -> DataRef -> Name = 's1'
+| | | | | | | | | | Expr = '(s2/x1max)/x1max'
+| | | | | | | | | | | Divide
+| | | | | | | | | | | | Expr = '(s2/x1max)'
+| | | | | | | | | | | | | Parentheses -> Expr = 's2/x1max'
+| | | | | | | | | | | | | | Divide
+| | | | | | | | | | | | | | | Expr = 's2'
+| | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 's2'
+| | | | | | | | | | | | | | | Expr = 'x1max'
+| | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'x1max'
+| | | | | | | | | | | | Expr = 'x1max'
+| | | | | | | | | | | | | Designator -> DataRef -> Name = 'x1max'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> GotoStmt -> uint64_t = '130'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 's2==zero'
+| | | | EQ
+| | | | | Expr = 's2'
+| | | | | | Designator -> DataRef -> Name = 's2'
+| | | | | Expr = 'zero'
+| | | | | | Designator -> DataRef -> Name = 'zero'
+| | | ActionStmt -> GotoStmt -> uint64_t = '110'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 's2>=x3max'
+| | | | GE
+| | | | | Expr = 's2'
+| | | | | | Designator -> DataRef -> Name = 's2'
+| | | | | Expr = 'x3max'
+| | | | | | Designator -> DataRef -> Name = 'x3max'
+| | | ActionStmt -> AssignmentStmt = 'enorm=sqrt(s2*(one+(x3max/s2)*(x3max*s3)))'
+| | | | Variable = 'enorm'
+| | | | | Designator -> DataRef -> Name = 'enorm'
+| | | | Expr = 'sqrt(s2*(one+(x3max/s2)*(x3max*s3)))'
+| | | | | FunctionReference -> Call
+| | | | | | ProcedureDesignator -> Name = 'dsqrt'
+| | | | | | ActualArgSpec
+| | | | | | | ActualArg -> Expr = 's2*(one+(x3max/s2)*(x3max*s3))'
+| | | | | | | | Multiply
+| | | | | | | | | Expr = 's2'
+| | | | | | | | | | Designator -> DataRef -> Name = 's2'
+| | | | | | | | | Expr = '(one+(x3max/s2)*(x3max*s3))'
+| | | | | | | | | | Parentheses -> Expr = 'one+(x3max/s2)*(x3max*s3)'
+| | | | | | | | | | | Add
+| | | | | | | | | | | | Expr = 'one'
+| | | | | | | | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | | | | | | | | Expr = '(x3max/s2)*(x3max*s3)'
+| | | | | | | | | | | | | Multiply
+| | | | | | | | | | | | | | Expr = '(x3max/s2)'
+| | | | | | | | | | | | | | | Parentheses -> Expr = 'x3max/s2'
+| | | | | | | | | | | | | | | | Divide
+| | | | | | | | | | | | | | | | | Expr = 'x3max'
+| | | | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'x3max'
+| | | | | | | | | | | | | | | | | Expr = 's2'
+| | | | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 's2'
+| | | | | | | | | | | | | | Expr = '(x3max*s3)'
+| | | | | | | | | | | | | | | Parentheses -> Expr = 'x3max*s3'
+| | | | | | | | | | | | | | | | Multiply
+| | | | | | | | | | | | | | | | | Expr = 'x3max'
+| | | | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'x3max'
+| | | | | | | | | | | | | | | | | Expr = 's3'
+| | | | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 's3'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 's2<x3max'
+| | | | LT
+| | | | | Expr = 's2'
+| | | | | | Designator -> DataRef -> Name = 's2'
+| | | | | Expr = 'x3max'
+| | | | | | Designator -> DataRef -> Name = 'x3max'
+| | | ActionStmt -> AssignmentStmt = 'enorm=sqrt(x3max*((s2/x3max)+(x3max*s3)))'
+| | | | Variable = 'enorm'
+| | | | | Designator -> DataRef -> Name = 'enorm'
+| | | | Expr = 'sqrt(x3max*((s2/x3max)+(x3max*s3)))'
+| | | | | FunctionReference -> Call
+| | | | | | ProcedureDesignator -> Name = 'dsqrt'
+| | | | | | ActualArgSpec
+| | | | | | | ActualArg -> Expr = 'x3max*((s2/x3max)+(x3max*s3))'
+| | | | | | | | Multiply
+| | | | | | | | | Expr = 'x3max'
+| | | | | | | | | | Designator -> DataRef -> Name = 'x3max'
+| | | | | | | | | Expr = '((s2/x3max)+(x3max*s3))'
+| | | | | | | | | | Parentheses -> Expr = '(s2/x3max)+(x3max*s3)'
+| | | | | | | | | | | Add
+| | | | | | | | | | | | Expr = '(s2/x3max)'
+| | | | | | | | | | | | | Parentheses -> Expr = 's2/x3max'
+| | | | | | | | | | | | | | Divide
+| | | | | | | | | | | | | | | Expr = 's2'
+| | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 's2'
+| | | | | | | | | | | | | | | Expr = 'x3max'
+| | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'x3max'
+| | | | | | | | | | | | Expr = '(x3max*s3)'
+| | | | | | | | | | | | | Parentheses -> Expr = 'x3max*s3'
+| | | | | | | | | | | | | | Multiply
+| | | | | | | | | | | | | | | Expr = 'x3max'
+| | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'x3max'
+| | | | | | | | | | | | | | | Expr = 's3'
+| | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 's3'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> GotoStmt -> uint64_t = '120'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'enorm=x3max*sqrt(s3)'
+| | | Variable = 'enorm'
+| | | | Designator -> DataRef -> Name = 'enorm'
+| | | Expr = 'x3max*sqrt(s3)'
+| | | | Multiply
+| | | | | Expr = 'x3max'
+| | | | | | Designator -> DataRef -> Name = 'x3max'
+| | | | | Expr = 'sqrt(s3)'
+| | | | | | FunctionReference -> Call
+| | | | | | | ProcedureDesignator -> Name = 'dsqrt'
+| | | | | | | ActualArgSpec
+| | | | | | | | ActualArg -> Expr = 's3'
+| | | | | | | | | Designator -> DataRef -> Name = 's3'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ReturnStmt -> 
+| EndFunctionStmt -> 

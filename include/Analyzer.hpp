@@ -3,6 +3,9 @@
 #include "Models.hpp"
 
 #include <filesystem>
+#include <map>
+
+struct FlangFileMetadata;
 
 class ModernizationAnalyzer {
 public:
@@ -13,6 +16,7 @@ private:
   void indexRoutines(SourceUnit &unit);
   std::vector<Finding> detectInUnit(const SourceUnit &unit);
   void computeImpact(const std::vector<SourceUnit> &files, std::vector<Finding> &findings);
+  void enrichWithFlangMetadata(const std::map<std::string, FlangFileMetadata> &metadata, std::vector<Finding> &findings);
   void prioritize(std::vector<Finding> &findings);
 
   static bool isFortranFile(const std::filesystem::path &path);

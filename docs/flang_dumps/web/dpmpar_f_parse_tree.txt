@@ -1,0 +1,105 @@
+======================== Flang: parse tree dump ========================
+Program -> ProgramUnit -> FunctionSubprogram
+| FunctionStmt
+| | PrefixSpec -> DeclarationTypeSpec -> IntrinsicTypeSpec -> DoublePrecision
+| | Name = 'dpmpar'
+| | Name = 'i'
+| SpecificationPart
+| | ImplicitPart -> 
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'i'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'mcheps'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = '4_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '4'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'minmag'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = '4_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '4'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'maxmag'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = '4_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '4'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> DoublePrecision
+| | | EntityDecl
+| | | | Name = 'dmach'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = '3_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '3'
+| | DeclarationConstruct -> SpecificationConstruct -> OtherSpecificationStmt -> EquivalenceStmt -> EquivalenceObject -> Designator -> DataRef -> ArrayElement
+| | | DataRef -> Name = 'dmach'
+| | | SectionSubscript -> Integer -> Expr = '1_4'
+| | | | LiteralConstant -> IntLiteralConstant = '1'
+| | EquivalenceObject -> Designator -> DataRef -> ArrayElement
+| | | DataRef -> Name = 'mcheps'
+| | | SectionSubscript -> Integer -> Expr = '1_4'
+| | | | LiteralConstant -> IntLiteralConstant = '1'
+| | DeclarationConstruct -> SpecificationConstruct -> OtherSpecificationStmt -> EquivalenceStmt -> EquivalenceObject -> Designator -> DataRef -> ArrayElement
+| | | DataRef -> Name = 'dmach'
+| | | SectionSubscript -> Integer -> Expr = '2_4'
+| | | | LiteralConstant -> IntLiteralConstant = '2'
+| | EquivalenceObject -> Designator -> DataRef -> ArrayElement
+| | | DataRef -> Name = 'minmag'
+| | | SectionSubscript -> Integer -> Expr = '1_4'
+| | | | LiteralConstant -> IntLiteralConstant = '1'
+| | DeclarationConstruct -> SpecificationConstruct -> OtherSpecificationStmt -> EquivalenceStmt -> EquivalenceObject -> Designator -> DataRef -> ArrayElement
+| | | DataRef -> Name = 'dmach'
+| | | SectionSubscript -> Integer -> Expr = '3_4'
+| | | | LiteralConstant -> IntLiteralConstant = '3'
+| | EquivalenceObject -> Designator -> DataRef -> ArrayElement
+| | | DataRef -> Name = 'maxmag'
+| | | SectionSubscript -> Integer -> Expr = '1_4'
+| | | | LiteralConstant -> IntLiteralConstant = '1'
+| | DeclarationConstruct -> DataStmt -> DataStmtSet
+| | | DataStmtObject -> Variable = 'dmach(1_8)'
+| | | | Designator -> DataRef -> ArrayElement
+| | | | | DataRef -> Name = 'dmach'
+| | | | | SectionSubscript -> Integer -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | DataStmtValue
+| | | | DataStmtConstant = '2.2204460492599997997253115980197182694513193131589934292691168593592010438442230224609375e-16_8'
+| | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | Real = '2.22044604926d-16'
+| | DeclarationConstruct -> DataStmt -> DataStmtSet
+| | | DataStmtObject -> Variable = 'dmach(2_8)'
+| | | | Designator -> DataRef -> ArrayElement
+| | | | | DataRef -> Name = 'dmach'
+| | | | | SectionSubscript -> Integer -> Expr = '2_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | | DataStmtValue
+| | | | DataStmtConstant = '2.2250738585200001536457502090592980787984672551134487047400514999096492319190981948701179167295816128250155201136344410135879554793731151509377830058034290822214372980848641504548051643768774819656546929283385599904754318029260312270736247828435921005219212630048620947889726398919335368911279637915887370260415160216452851163923175575071557985134170474216389375487631998061122518905238969813418377823618134168265570578899635534217609338187192714571158607182937951751958128293803107712833783629962240288419243806871937557038146469681803137839166118199332862017825739832169793631623145160262949910601082307456250876678970685534970420016307400098183614896780089895596898323034954364201788740733073635105002694098979933783893241962259512689570328802801668643951416015625e-308_8'
+| | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | Real = '2.22507385852d-308'
+| | DeclarationConstruct -> DataStmt -> DataStmtSet
+| | | DataStmtObject -> Variable = 'dmach(3_8)'
+| | | | Designator -> DataRef -> ArrayElement
+| | | | | DataRef -> Name = 'dmach'
+| | | | | SectionSubscript -> Integer -> Expr = '3_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '3'
+| | | DataStmtValue
+| | | | DataStmtConstant = '1.79769313484999997634722834177525558888036925551881754449640569018022283953137808418473976976692954159773918241443181920560175463849266110458969511863305196244482289652014416175637563651980651942304195439954334035458227517724658304958267123841251702354296591595871804070732354400303049724598615647977924984832e308_8'
+| | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | Real = '1.79769313485d+308'
+| ExecutionPart -> Block
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'dpmpar=dmach(int(i,kind=8))'
+| | | Variable = 'dpmpar'
+| | | | Designator -> DataRef -> Name = 'dpmpar'
+| | | Expr = 'dmach(int(i,kind=8))'
+| | | | Designator -> DataRef -> ArrayElement
+| | | | | DataRef -> Name = 'dmach'
+| | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | Designator -> DataRef -> Name = 'i'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ReturnStmt -> 
+| EndFunctionStmt -> 

@@ -1,8 +1,11 @@
 #pragma once
 
+#include <map>
 #include <set>
 #include <string>
 #include <vector>
+
+namespace advisor {
 
 enum class Effort { Trivial, Moderate, Complex };
 enum class Safety { Safe, ReviewNeeded, Risky };
@@ -16,9 +19,9 @@ struct Location {
 struct Finding {
   std::string pattern;
   std::string message;
-  Location location;
   std::string construct;
   std::string routine;
+  Location location;
   Effort effort = Effort::Moderate;
   Safety safety = Safety::ReviewNeeded;
   std::set<std::string> affectedFiles;
@@ -29,30 +32,24 @@ struct Finding {
   int priority = 50;
 };
 
-struct Routine {
-  std::string name;
-  std::string kind;
-  std::string file;
-  int startLine = 1;
-  int endLine = 0;
-  int firstExecutableLine = 0;
-  bool hasImplicitNone = false;
-  std::set<std::string> declarations;
-  std::set<std::string> commonBlocks;
-};
-
-struct SourceUnit {
+struct FileAnalysis {
   std::string path;
-  std::vector<std::string> lines;
   bool fixedForm = false;
-  std::vector<Routine> routines;
+  bool parsed = false;
+  bool semanticsOk = false;
+  std::vector<Finding> findings;
 };
 
 struct ProjectAnalysis {
   std::string root;
-  std::vector<SourceUnit> files;
+  std::vector<FileAnalysis> files;
   std::vector<Finding> findings;
 };
 
 std::string toString(Effort effort);
 std::string toString(Safety safety);
+void prioritize(ProjectAnalysis &analysis);
+std::string markdownReport(const ProjectAnalysis &analysis);
+std::string jsonReport(const ProjectAnalysis &analysis);
+
+} // namespace advisor

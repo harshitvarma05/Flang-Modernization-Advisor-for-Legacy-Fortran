@@ -1,0 +1,408 @@
+======================== Flang: parse tree dump ========================
+Program -> ProgramUnit -> SubroutineSubprogram
+| SubroutineStmt
+| | Name = 'hybrd1'
+| | DummyArg -> Name = 'fcn'
+| | DummyArg -> Name = 'n'
+| | DummyArg -> Name = 'x'
+| | DummyArg -> Name = 'fvec'
+| | DummyArg -> Name = 'tol'
+| | DummyArg -> Name = 'info'
+| | DummyArg -> Name = 'wa'
+| | DummyArg -> Name = 'lwa'
+| SpecificationPart
+| | ImplicitPart -> 
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'n'
+| | | EntityDecl
+| | | | Name = 'info'
+| | | EntityDecl
+| | | | Name = 'lwa'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> DoublePrecision
+| | | EntityDecl
+| | | | Name = 'tol'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> DoublePrecision
+| | | EntityDecl
+| | | | Name = 'x'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | EntityDecl
+| | | | Name = 'fvec'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | EntityDecl
+| | | | Name = 'wa'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'lwa'
+| | | | | | Designator -> DataRef -> Name = 'lwa'
+| | DeclarationConstruct -> SpecificationConstruct -> OtherSpecificationStmt -> ExternalStmt -> Name = 'fcn'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'index'
+| | | EntityDecl
+| | | | Name = 'j'
+| | | EntityDecl
+| | | | Name = 'lr'
+| | | EntityDecl
+| | | | Name = 'maxfev'
+| | | EntityDecl
+| | | | Name = 'ml'
+| | | EntityDecl
+| | | | Name = 'mode'
+| | | EntityDecl
+| | | | Name = 'mu'
+| | | EntityDecl
+| | | | Name = 'nfev'
+| | | EntityDecl
+| | | | Name = 'nprint'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> DoublePrecision
+| | | EntityDecl
+| | | | Name = 'epsfcn'
+| | | EntityDecl
+| | | | Name = 'factor'
+| | | EntityDecl
+| | | | Name = 'one'
+| | | EntityDecl
+| | | | Name = 'xtol'
+| | | EntityDecl
+| | | | Name = 'zero'
+| | DeclarationConstruct -> DataStmt -> DataStmtSet
+| | | DataStmtObject -> Variable = 'factor'
+| | | | Designator -> DataRef -> Name = 'factor'
+| | | DataStmtObject -> Variable = 'one'
+| | | | Designator -> DataRef -> Name = 'one'
+| | | DataStmtObject -> Variable = 'zero'
+| | | | Designator -> DataRef -> Name = 'zero'
+| | | DataStmtValue
+| | | | DataStmtConstant = '1.e2_8'
+| | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | Real = '1.0d2'
+| | | DataStmtValue
+| | | | DataStmtConstant = '1._8'
+| | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | Real = '1.0d0'
+| | | DataStmtValue
+| | | | DataStmtConstant = '0._8'
+| | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | Real = '0.0d0'
+| ExecutionPart -> Block
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'info=0_4'
+| | | Variable = 'info'
+| | | | Designator -> DataRef -> Name = 'info'
+| | | Expr = '0_4'
+| | | | LiteralConstant -> IntLiteralConstant = '0'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'n<=0_4.or.tol<zero.or.lwa<(n*(3_4*n+13_4))/2_4'
+| | | | OR
+| | | | | Expr = 'n<=0_4.or.tol<zero'
+| | | | | | OR
+| | | | | | | Expr = 'n<=0_4'
+| | | | | | | | LE
+| | | | | | | | | Expr = 'n'
+| | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | | | | Expr = '0_4'
+| | | | | | | | | | LiteralConstant -> IntLiteralConstant = '0'
+| | | | | | | Expr = 'tol<zero'
+| | | | | | | | LT
+| | | | | | | | | Expr = 'tol'
+| | | | | | | | | | Designator -> DataRef -> Name = 'tol'
+| | | | | | | | | Expr = 'zero'
+| | | | | | | | | | Designator -> DataRef -> Name = 'zero'
+| | | | | Expr = 'lwa<(n*(3_4*n+13_4))/2_4'
+| | | | | | LT
+| | | | | | | Expr = 'lwa'
+| | | | | | | | Designator -> DataRef -> Name = 'lwa'
+| | | | | | | Expr = '(n*(3_4*n+13_4))/2_4'
+| | | | | | | | Divide
+| | | | | | | | | Expr = '(n*(3_4*n+13_4))'
+| | | | | | | | | | Parentheses -> Expr = 'n*(3_4*n+13_4)'
+| | | | | | | | | | | Multiply
+| | | | | | | | | | | | Expr = 'n'
+| | | | | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | | | | | | | Expr = '(3_4*n+13_4)'
+| | | | | | | | | | | | | Parentheses -> Expr = '3_4*n+13_4'
+| | | | | | | | | | | | | | Add
+| | | | | | | | | | | | | | | Expr = '3_4*n'
+| | | | | | | | | | | | | | | | Multiply
+| | | | | | | | | | | | | | | | | Expr = '3_4'
+| | | | | | | | | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '3'
+| | | | | | | | | | | | | | | | | Expr = 'n'
+| | | | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | | | | | | | | | | Expr = '13_4'
+| | | | | | | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '13'
+| | | | | | | | | Expr = '2_4'
+| | | | | | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | | ActionStmt -> GotoStmt -> uint64_t = '20'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'maxfev=200_4*(n+1_4)'
+| | | Variable = 'maxfev'
+| | | | Designator -> DataRef -> Name = 'maxfev'
+| | | Expr = '200_4*(n+1_4)'
+| | | | Multiply
+| | | | | Expr = '200_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '200'
+| | | | | Expr = '(n+1_4)'
+| | | | | | Parentheses -> Expr = 'n+1_4'
+| | | | | | | Add
+| | | | | | | | Expr = 'n'
+| | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | | | Expr = '1_4'
+| | | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'xtol=tol'
+| | | Variable = 'xtol'
+| | | | Designator -> DataRef -> Name = 'xtol'
+| | | Expr = 'tol'
+| | | | Designator -> DataRef -> Name = 'tol'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'ml=n-1_4'
+| | | Variable = 'ml'
+| | | | Designator -> DataRef -> Name = 'ml'
+| | | Expr = 'n-1_4'
+| | | | Subtract
+| | | | | Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'mu=n-1_4'
+| | | Variable = 'mu'
+| | | | Designator -> DataRef -> Name = 'mu'
+| | | Expr = 'n-1_4'
+| | | | Subtract
+| | | | | Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'epsfcn=zero'
+| | | Variable = 'epsfcn'
+| | | | Designator -> DataRef -> Name = 'epsfcn'
+| | | Expr = 'zero'
+| | | | Designator -> DataRef -> Name = 'zero'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'mode=2_4'
+| | | Variable = 'mode'
+| | | | Designator -> DataRef -> Name = 'mode'
+| | | Expr = '2_4'
+| | | | LiteralConstant -> IntLiteralConstant = '2'
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'j'
+| | | | | Scalar -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Scalar -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'wa(int(j,kind=8))=one'
+| | | | | Variable = 'wa(int(j,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | Expr = 'one'
+| | | | | | Designator -> DataRef -> Name = 'one'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'nprint=0_4'
+| | | Variable = 'nprint'
+| | | | Designator -> DataRef -> Name = 'nprint'
+| | | Expr = '0_4'
+| | | | LiteralConstant -> IntLiteralConstant = '0'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'lr=(n*(n+1_4))/2_4'
+| | | Variable = 'lr'
+| | | | Designator -> DataRef -> Name = 'lr'
+| | | Expr = '(n*(n+1_4))/2_4'
+| | | | Divide
+| | | | | Expr = '(n*(n+1_4))'
+| | | | | | Parentheses -> Expr = 'n*(n+1_4)'
+| | | | | | | Multiply
+| | | | | | | | Expr = 'n'
+| | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | | | Expr = '(n+1_4)'
+| | | | | | | | | Parentheses -> Expr = 'n+1_4'
+| | | | | | | | | | Add
+| | | | | | | | | | | Expr = 'n'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | | | | | | Expr = '1_4'
+| | | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Expr = '2_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'index=6_4*n+lr'
+| | | Variable = 'index'
+| | | | Designator -> DataRef -> Name = 'index'
+| | | Expr = '6_4*n+lr'
+| | | | Add
+| | | | | Expr = '6_4*n'
+| | | | | | Multiply
+| | | | | | | Expr = '6_4'
+| | | | | | | | LiteralConstant -> IntLiteralConstant = '6'
+| | | | | | | Expr = 'n'
+| | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | Expr = 'lr'
+| | | | | | Designator -> DataRef -> Name = 'lr'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> CallStmt = 'CALL hybrd(fcn,n,x,fvec,xtol,maxfev,ml,mu,epsfcn,wa(1_8),mode,factor,nprint,info,nfev,wa(int(index+1_4,kind=8)),n,wa(int(6_4*n+1_4,kind=8)),lr,wa(int(n+1_4,kind=8)),wa(int(2_4*n+1_4,kind=8)),wa(int(3_4*n+1_4,kind=8)),wa(int(4_4*n+1_4,kind=8)),wa(int(5_4*n+1_4,kind=8)))'
+| | | Call
+| | | | ProcedureDesignator -> Name = 'hybrd'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'fcn'
+| | | | | | Designator -> DataRef -> Name = 'fcn'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'x'
+| | | | | | Designator -> DataRef -> Name = 'x'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'fvec'
+| | | | | | Designator -> DataRef -> Name = 'fvec'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'xtol'
+| | | | | | Designator -> DataRef -> Name = 'xtol'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'maxfev'
+| | | | | | Designator -> DataRef -> Name = 'maxfev'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'ml'
+| | | | | | Designator -> DataRef -> Name = 'ml'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'mu'
+| | | | | | Designator -> DataRef -> Name = 'mu'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'epsfcn'
+| | | | | | Designator -> DataRef -> Name = 'epsfcn'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa(1_8)'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa'
+| | | | | | | SectionSubscript -> Integer -> Expr = '1_4'
+| | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'mode'
+| | | | | | Designator -> DataRef -> Name = 'mode'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'factor'
+| | | | | | Designator -> DataRef -> Name = 'factor'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'nprint'
+| | | | | | Designator -> DataRef -> Name = 'nprint'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'info'
+| | | | | | Designator -> DataRef -> Name = 'info'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'nfev'
+| | | | | | Designator -> DataRef -> Name = 'nfev'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa(int(index+1_4,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'index+1_4'
+| | | | | | | | Add
+| | | | | | | | | Expr = 'index'
+| | | | | | | | | | Designator -> DataRef -> Name = 'index'
+| | | | | | | | | Expr = '1_4'
+| | | | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa(int(6_4*n+1_4,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa'
+| | | | | | | SectionSubscript -> Integer -> Expr = '6_4*n+1_4'
+| | | | | | | | Add
+| | | | | | | | | Expr = '6_4*n'
+| | | | | | | | | | Multiply
+| | | | | | | | | | | Expr = '6_4'
+| | | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '6'
+| | | | | | | | | | | Expr = 'n'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | | | | Expr = '1_4'
+| | | | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'lr'
+| | | | | | Designator -> DataRef -> Name = 'lr'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa(int(n+1_4,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'n+1_4'
+| | | | | | | | Add
+| | | | | | | | | Expr = 'n'
+| | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | | | | Expr = '1_4'
+| | | | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa(int(2_4*n+1_4,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa'
+| | | | | | | SectionSubscript -> Integer -> Expr = '2_4*n+1_4'
+| | | | | | | | Add
+| | | | | | | | | Expr = '2_4*n'
+| | | | | | | | | | Multiply
+| | | | | | | | | | | Expr = '2_4'
+| | | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | | | | | | | | | | Expr = 'n'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | | | | Expr = '1_4'
+| | | | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa(int(3_4*n+1_4,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa'
+| | | | | | | SectionSubscript -> Integer -> Expr = '3_4*n+1_4'
+| | | | | | | | Add
+| | | | | | | | | Expr = '3_4*n'
+| | | | | | | | | | Multiply
+| | | | | | | | | | | Expr = '3_4'
+| | | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '3'
+| | | | | | | | | | | Expr = 'n'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | | | | Expr = '1_4'
+| | | | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa(int(4_4*n+1_4,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa'
+| | | | | | | SectionSubscript -> Integer -> Expr = '4_4*n+1_4'
+| | | | | | | | Add
+| | | | | | | | | Expr = '4_4*n'
+| | | | | | | | | | Multiply
+| | | | | | | | | | | Expr = '4_4'
+| | | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '4'
+| | | | | | | | | | | Expr = 'n'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | | | | Expr = '1_4'
+| | | | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa(int(5_4*n+1_4,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa'
+| | | | | | | SectionSubscript -> Integer -> Expr = '5_4*n+1_4'
+| | | | | | | | Add
+| | | | | | | | | Expr = '5_4*n'
+| | | | | | | | | | Multiply
+| | | | | | | | | | | Expr = '5_4'
+| | | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '5'
+| | | | | | | | | | | Expr = 'n'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | | | | Expr = '1_4'
+| | | | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'info==5_4'
+| | | | EQ
+| | | | | Expr = 'info'
+| | | | | | Designator -> DataRef -> Name = 'info'
+| | | | | Expr = '5_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '5'
+| | | ActionStmt -> AssignmentStmt = 'info=4_4'
+| | | | Variable = 'info'
+| | | | | Designator -> DataRef -> Name = 'info'
+| | | | Expr = '4_4'
+| | | | | LiteralConstant -> IntLiteralConstant = '4'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ReturnStmt -> 
+| EndSubroutineStmt -> 

@@ -39,6 +39,13 @@ int main() {
   require(found.count("assumed-size-array") == 1, "detect assumed-size array");
   require(found.count("entry") == 1, "detect ENTRY");
 
+
+  auto falsePositives = analyzer.analyzePath(root / "examples" / "legacy" / "false_positives.f90");
+  auto falsePatterns = patterns(falsePositives);
+  require(falsePatterns.count("arithmetic-if") == 0, "ordinary IF THEN is not arithmetic IF");
+  require(falsePatterns.count("computed-goto") == 0, "ordinary GOTO is not computed GOTO");
+  require(falsePatterns.count("statement-function") == 0, "array assignment is not statement function");
+
   auto caseStudy = analyzer.analyzePath(root / "examples" / "case_study");
   bool multiFileCommon = false;
   bool riskyTop = false;

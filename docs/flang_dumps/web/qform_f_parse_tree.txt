@@ -1,0 +1,375 @@
+======================== Flang: parse tree dump ========================
+Program -> ProgramUnit -> SubroutineSubprogram
+| SubroutineStmt
+| | Name = 'qform'
+| | DummyArg -> Name = 'm'
+| | DummyArg -> Name = 'n'
+| | DummyArg -> Name = 'q'
+| | DummyArg -> Name = 'ldq'
+| | DummyArg -> Name = 'wa'
+| SpecificationPart
+| | ImplicitPart -> 
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'm'
+| | | EntityDecl
+| | | | Name = 'n'
+| | | EntityDecl
+| | | | Name = 'ldq'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> DoublePrecision
+| | | EntityDecl
+| | | | Name = 'q'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'ldq'
+| | | | | | Designator -> DataRef -> Name = 'ldq'
+| | | | ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'm'
+| | | | | | Designator -> DataRef -> Name = 'm'
+| | | EntityDecl
+| | | | Name = 'wa'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'm'
+| | | | | | Designator -> DataRef -> Name = 'm'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'i'
+| | | EntityDecl
+| | | | Name = 'j'
+| | | EntityDecl
+| | | | Name = 'jm1'
+| | | EntityDecl
+| | | | Name = 'k'
+| | | EntityDecl
+| | | | Name = 'l'
+| | | EntityDecl
+| | | | Name = 'minmn'
+| | | EntityDecl
+| | | | Name = 'np1'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> DoublePrecision
+| | | EntityDecl
+| | | | Name = 'one'
+| | | EntityDecl
+| | | | Name = 'sum'
+| | | EntityDecl
+| | | | Name = 'temp'
+| | | EntityDecl
+| | | | Name = 'zero'
+| | DeclarationConstruct -> DataStmt -> DataStmtSet
+| | | DataStmtObject -> Variable = 'one'
+| | | | Designator -> DataRef -> Name = 'one'
+| | | DataStmtObject -> Variable = 'zero'
+| | | | Designator -> DataRef -> Name = 'zero'
+| | | DataStmtValue
+| | | | DataStmtConstant = '1._8'
+| | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | Real = '1.0d0'
+| | | DataStmtValue
+| | | | DataStmtConstant = '0._8'
+| | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | Real = '0.0d0'
+| ExecutionPart -> Block
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'minmn=min(m,n)'
+| | | Variable = 'minmn'
+| | | | Designator -> DataRef -> Name = 'minmn'
+| | | Expr = 'min(m,n)'
+| | | | FunctionReference -> Call
+| | | | | ProcedureDesignator -> Name = 'min0'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'm'
+| | | | | | | Designator -> DataRef -> Name = 'm'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'n'
+| | | | | | | Designator -> DataRef -> Name = 'n'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'minmn<2_4'
+| | | | LT
+| | | | | Expr = 'minmn'
+| | | | | | Designator -> DataRef -> Name = 'minmn'
+| | | | | Expr = '2_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | | ActionStmt -> GotoStmt -> uint64_t = '30'
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'j'
+| | | | | Scalar -> Expr = '2_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | | | | Scalar -> Expr = 'minmn'
+| | | | | | Designator -> DataRef -> Name = 'minmn'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'jm1=j-1_4'
+| | | | | Variable = 'jm1'
+| | | | | | Designator -> DataRef -> Name = 'jm1'
+| | | | | Expr = 'j-1_4'
+| | | | | | Subtract
+| | | | | | | Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = '1_4'
+| | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | | | NonLabelDoStmt
+| | | | | | LoopControl -> LoopBounds
+| | | | | | | Scalar -> Name = 'i'
+| | | | | | | Scalar -> Expr = '1_4'
+| | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | | | Scalar -> Expr = 'jm1'
+| | | | | | | | Designator -> DataRef -> Name = 'jm1'
+| | | | | Block
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'q(int(i,kind=8),int(j,kind=8))=zero'
+| | | | | | | Variable = 'q(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'q'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'zero'
+| | | | | | | | Designator -> DataRef -> Name = 'zero'
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | | EndDoStmt -> 
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'np1=n+1_4'
+| | | Variable = 'np1'
+| | | | Designator -> DataRef -> Name = 'np1'
+| | | Expr = 'n+1_4'
+| | | | Add
+| | | | | Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'm<np1'
+| | | | LT
+| | | | | Expr = 'm'
+| | | | | | Designator -> DataRef -> Name = 'm'
+| | | | | Expr = 'np1'
+| | | | | | Designator -> DataRef -> Name = 'np1'
+| | | ActionStmt -> GotoStmt -> uint64_t = '60'
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'j'
+| | | | | Scalar -> Expr = 'np1'
+| | | | | | Designator -> DataRef -> Name = 'np1'
+| | | | | Scalar -> Expr = 'm'
+| | | | | | Designator -> DataRef -> Name = 'm'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | | | NonLabelDoStmt
+| | | | | | LoopControl -> LoopBounds
+| | | | | | | Scalar -> Name = 'i'
+| | | | | | | Scalar -> Expr = '1_4'
+| | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | | | Scalar -> Expr = 'm'
+| | | | | | | | Designator -> DataRef -> Name = 'm'
+| | | | | Block
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'q(int(i,kind=8),int(j,kind=8))=zero'
+| | | | | | | Variable = 'q(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'q'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'zero'
+| | | | | | | | Designator -> DataRef -> Name = 'zero'
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | | EndDoStmt -> 
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'q(int(j,kind=8),int(j,kind=8))=one'
+| | | | | Variable = 'q(int(j,kind=8),int(j,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'q'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | Expr = 'one'
+| | | | | | Designator -> DataRef -> Name = 'one'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'l'
+| | | | | Scalar -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Scalar -> Expr = 'minmn'
+| | | | | | Designator -> DataRef -> Name = 'minmn'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'k=minmn-l+1_4'
+| | | | | Variable = 'k'
+| | | | | | Designator -> DataRef -> Name = 'k'
+| | | | | Expr = 'minmn-l+1_4'
+| | | | | | Add
+| | | | | | | Expr = 'minmn-l'
+| | | | | | | | Subtract
+| | | | | | | | | Expr = 'minmn'
+| | | | | | | | | | Designator -> DataRef -> Name = 'minmn'
+| | | | | | | | | Expr = 'l'
+| | | | | | | | | | Designator -> DataRef -> Name = 'l'
+| | | | | | | Expr = '1_4'
+| | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | | | NonLabelDoStmt
+| | | | | | LoopControl -> LoopBounds
+| | | | | | | Scalar -> Name = 'i'
+| | | | | | | Scalar -> Expr = 'k'
+| | | | | | | | Designator -> DataRef -> Name = 'k'
+| | | | | | | Scalar -> Expr = 'm'
+| | | | | | | | Designator -> DataRef -> Name = 'm'
+| | | | | Block
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'wa(int(i,kind=8))=q(int(i,kind=8),int(k,kind=8))'
+| | | | | | | Variable = 'wa(int(i,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'wa'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | Expr = 'q(int(i,kind=8),int(k,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'q'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'k'
+| | | | | | | | | | Designator -> DataRef -> Name = 'k'
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'q(int(i,kind=8),int(k,kind=8))=zero'
+| | | | | | | Variable = 'q(int(i,kind=8),int(k,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'q'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'k'
+| | | | | | | | | | Designator -> DataRef -> Name = 'k'
+| | | | | | | Expr = 'zero'
+| | | | | | | | Designator -> DataRef -> Name = 'zero'
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | | EndDoStmt -> 
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'q(int(k,kind=8),int(k,kind=8))=one'
+| | | | | Variable = 'q(int(k,kind=8),int(k,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'q'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'k'
+| | | | | | | | Designator -> DataRef -> Name = 'k'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'k'
+| | | | | | | | Designator -> DataRef -> Name = 'k'
+| | | | | Expr = 'one'
+| | | | | | Designator -> DataRef -> Name = 'one'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'wa(int(k,kind=8))==zero'
+| | | | | | EQ
+| | | | | | | Expr = 'wa(int(k,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'wa'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'k'
+| | | | | | | | | | Designator -> DataRef -> Name = 'k'
+| | | | | | | Expr = 'zero'
+| | | | | | | | Designator -> DataRef -> Name = 'zero'
+| | | | | ActionStmt -> GotoStmt -> uint64_t = '110'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | | | NonLabelDoStmt
+| | | | | | LoopControl -> LoopBounds
+| | | | | | | Scalar -> Name = 'j'
+| | | | | | | Scalar -> Expr = 'k'
+| | | | | | | | Designator -> DataRef -> Name = 'k'
+| | | | | | | Scalar -> Expr = 'm'
+| | | | | | | | Designator -> DataRef -> Name = 'm'
+| | | | | Block
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'sum=zero'
+| | | | | | | Variable = 'sum'
+| | | | | | | | Designator -> DataRef -> Name = 'sum'
+| | | | | | | Expr = 'zero'
+| | | | | | | | Designator -> DataRef -> Name = 'zero'
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | | | | | NonLabelDoStmt
+| | | | | | | | LoopControl -> LoopBounds
+| | | | | | | | | Scalar -> Name = 'i'
+| | | | | | | | | Scalar -> Expr = 'k'
+| | | | | | | | | | Designator -> DataRef -> Name = 'k'
+| | | | | | | | | Scalar -> Expr = 'm'
+| | | | | | | | | | Designator -> DataRef -> Name = 'm'
+| | | | | | | Block
+| | | | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'sum=sum+q(int(i,kind=8),int(j,kind=8))*wa(int(i,kind=8))'
+| | | | | | | | | Variable = 'sum'
+| | | | | | | | | | Designator -> DataRef -> Name = 'sum'
+| | | | | | | | | Expr = 'sum+q(int(i,kind=8),int(j,kind=8))*wa(int(i,kind=8))'
+| | | | | | | | | | Add
+| | | | | | | | | | | Expr = 'sum'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'sum'
+| | | | | | | | | | | Expr = 'q(int(i,kind=8),int(j,kind=8))*wa(int(i,kind=8))'
+| | | | | | | | | | | | Multiply
+| | | | | | | | | | | | | Expr = 'q(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | | | DataRef -> Name = 'q'
+| | | | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | | | | | | | Expr = 'wa(int(i,kind=8))'
+| | | | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | | | DataRef -> Name = 'wa'
+| | | | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | | | | EndDoStmt -> 
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'temp=sum/wa(int(k,kind=8))'
+| | | | | | | Variable = 'temp'
+| | | | | | | | Designator -> DataRef -> Name = 'temp'
+| | | | | | | Expr = 'sum/wa(int(k,kind=8))'
+| | | | | | | | Divide
+| | | | | | | | | Expr = 'sum'
+| | | | | | | | | | Designator -> DataRef -> Name = 'sum'
+| | | | | | | | | Expr = 'wa(int(k,kind=8))'
+| | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | DataRef -> Name = 'wa'
+| | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'k'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'k'
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | | | | | NonLabelDoStmt
+| | | | | | | | LoopControl -> LoopBounds
+| | | | | | | | | Scalar -> Name = 'i'
+| | | | | | | | | Scalar -> Expr = 'k'
+| | | | | | | | | | Designator -> DataRef -> Name = 'k'
+| | | | | | | | | Scalar -> Expr = 'm'
+| | | | | | | | | | Designator -> DataRef -> Name = 'm'
+| | | | | | | Block
+| | | | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'q(int(i,kind=8),int(j,kind=8))=q(int(i,kind=8),int(j,kind=8))-temp*wa(int(i,kind=8))'
+| | | | | | | | | Variable = 'q(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | DataRef -> Name = 'q'
+| | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | | | Expr = 'q(int(i,kind=8),int(j,kind=8))-temp*wa(int(i,kind=8))'
+| | | | | | | | | | Subtract
+| | | | | | | | | | | Expr = 'q(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | DataRef -> Name = 'q'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | | | | | Expr = 'temp*wa(int(i,kind=8))'
+| | | | | | | | | | | | Multiply
+| | | | | | | | | | | | | Expr = 'temp'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'temp'
+| | | | | | | | | | | | | Expr = 'wa(int(i,kind=8))'
+| | | | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | | | DataRef -> Name = 'wa'
+| | | | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | | | | EndDoStmt -> 
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | | EndDoStmt -> 
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ReturnStmt -> 
+| EndSubroutineStmt -> 

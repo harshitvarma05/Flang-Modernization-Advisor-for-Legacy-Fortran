@@ -1,0 +1,500 @@
+======================== Flang: parse tree dump ========================
+Program -> ProgramUnit -> SubroutineSubprogram
+| SubroutineStmt
+| | Name = 'r1mpyq'
+| | DummyArg -> Name = 'm'
+| | DummyArg -> Name = 'n'
+| | DummyArg -> Name = 'a'
+| | DummyArg -> Name = 'lda'
+| | DummyArg -> Name = 'v'
+| | DummyArg -> Name = 'w'
+| SpecificationPart
+| | ImplicitPart -> 
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'm'
+| | | EntityDecl
+| | | | Name = 'n'
+| | | EntityDecl
+| | | | Name = 'lda'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> DoublePrecision
+| | | EntityDecl
+| | | | Name = 'a'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'lda'
+| | | | | | Designator -> DataRef -> Name = 'lda'
+| | | | ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | EntityDecl
+| | | | Name = 'v'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | EntityDecl
+| | | | Name = 'w'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'i'
+| | | EntityDecl
+| | | | Name = 'j'
+| | | EntityDecl
+| | | | Name = 'nmj'
+| | | EntityDecl
+| | | | Name = 'nm1'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> DoublePrecision
+| | | EntityDecl
+| | | | Name = 'cos'
+| | | EntityDecl
+| | | | Name = 'one'
+| | | EntityDecl
+| | | | Name = 'sin'
+| | | EntityDecl
+| | | | Name = 'temp'
+| | DeclarationConstruct -> DataStmt -> DataStmtSet
+| | | DataStmtObject -> Variable = 'one'
+| | | | Designator -> DataRef -> Name = 'one'
+| | | DataStmtValue
+| | | | DataStmtConstant = '1._8'
+| | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | Real = '1.0d0'
+| ExecutionPart -> Block
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'nm1=n-1_4'
+| | | Variable = 'nm1'
+| | | | Designator -> DataRef -> Name = 'nm1'
+| | | Expr = 'n-1_4'
+| | | | Subtract
+| | | | | Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'nm1<1_4'
+| | | | LT
+| | | | | Expr = 'nm1'
+| | | | | | Designator -> DataRef -> Name = 'nm1'
+| | | | | Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | ActionStmt -> GotoStmt -> uint64_t = '50'
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'nmj'
+| | | | | Scalar -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Scalar -> Expr = 'nm1'
+| | | | | | Designator -> DataRef -> Name = 'nm1'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'j=n-nmj'
+| | | | | Variable = 'j'
+| | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | Expr = 'n-nmj'
+| | | | | | Subtract
+| | | | | | | Expr = 'n'
+| | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | | Expr = 'nmj'
+| | | | | | | | Designator -> DataRef -> Name = 'nmj'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'abs(v(int(j,kind=8)))>one'
+| | | | | | GT
+| | | | | | | Expr = 'abs(v(int(j,kind=8)))'
+| | | | | | | | FunctionReference -> Call
+| | | | | | | | | ProcedureDesignator -> Name = 'dabs'
+| | | | | | | | | ActualArgSpec
+| | | | | | | | | | ActualArg -> Expr = 'v(int(j,kind=8))'
+| | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | DataRef -> Name = 'v'
+| | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'one'
+| | | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | ActionStmt -> AssignmentStmt = 'cos=one/v(int(j,kind=8))'
+| | | | | | Variable = 'cos'
+| | | | | | | Designator -> DataRef -> Name = 'cos'
+| | | | | | Expr = 'one/v(int(j,kind=8))'
+| | | | | | | Divide
+| | | | | | | | Expr = 'one'
+| | | | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | | | | Expr = 'v(int(j,kind=8))'
+| | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | DataRef -> Name = 'v'
+| | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'abs(v(int(j,kind=8)))>one'
+| | | | | | GT
+| | | | | | | Expr = 'abs(v(int(j,kind=8)))'
+| | | | | | | | FunctionReference -> Call
+| | | | | | | | | ProcedureDesignator -> Name = 'dabs'
+| | | | | | | | | ActualArgSpec
+| | | | | | | | | | ActualArg -> Expr = 'v(int(j,kind=8))'
+| | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | DataRef -> Name = 'v'
+| | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'one'
+| | | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | ActionStmt -> AssignmentStmt = 'sin=sqrt(one-cos**2_4)'
+| | | | | | Variable = 'sin'
+| | | | | | | Designator -> DataRef -> Name = 'sin'
+| | | | | | Expr = 'sqrt(one-cos**2_4)'
+| | | | | | | FunctionReference -> Call
+| | | | | | | | ProcedureDesignator -> Name = 'dsqrt'
+| | | | | | | | ActualArgSpec
+| | | | | | | | | ActualArg -> Expr = 'one-cos**2_4'
+| | | | | | | | | | Subtract
+| | | | | | | | | | | Expr = 'one'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | | | | | | | Expr = 'cos**2_4'
+| | | | | | | | | | | | Power
+| | | | | | | | | | | | | Expr = 'cos'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'cos'
+| | | | | | | | | | | | | Expr = '2_4'
+| | | | | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'abs(v(int(j,kind=8)))<=one'
+| | | | | | LE
+| | | | | | | Expr = 'abs(v(int(j,kind=8)))'
+| | | | | | | | FunctionReference -> Call
+| | | | | | | | | ProcedureDesignator -> Name = 'dabs'
+| | | | | | | | | ActualArgSpec
+| | | | | | | | | | ActualArg -> Expr = 'v(int(j,kind=8))'
+| | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | DataRef -> Name = 'v'
+| | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'one'
+| | | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | ActionStmt -> AssignmentStmt = 'sin=v(int(j,kind=8))'
+| | | | | | Variable = 'sin'
+| | | | | | | Designator -> DataRef -> Name = 'sin'
+| | | | | | Expr = 'v(int(j,kind=8))'
+| | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | DataRef -> Name = 'v'
+| | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'abs(v(int(j,kind=8)))<=one'
+| | | | | | LE
+| | | | | | | Expr = 'abs(v(int(j,kind=8)))'
+| | | | | | | | FunctionReference -> Call
+| | | | | | | | | ProcedureDesignator -> Name = 'dabs'
+| | | | | | | | | ActualArgSpec
+| | | | | | | | | | ActualArg -> Expr = 'v(int(j,kind=8))'
+| | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | DataRef -> Name = 'v'
+| | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'one'
+| | | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | ActionStmt -> AssignmentStmt = 'cos=sqrt(one-sin**2_4)'
+| | | | | | Variable = 'cos'
+| | | | | | | Designator -> DataRef -> Name = 'cos'
+| | | | | | Expr = 'sqrt(one-sin**2_4)'
+| | | | | | | FunctionReference -> Call
+| | | | | | | | ProcedureDesignator -> Name = 'dsqrt'
+| | | | | | | | ActualArgSpec
+| | | | | | | | | ActualArg -> Expr = 'one-sin**2_4'
+| | | | | | | | | | Subtract
+| | | | | | | | | | | Expr = 'one'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | | | | | | | Expr = 'sin**2_4'
+| | | | | | | | | | | | Power
+| | | | | | | | | | | | | Expr = 'sin'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'sin'
+| | | | | | | | | | | | | Expr = '2_4'
+| | | | | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | | | NonLabelDoStmt
+| | | | | | LoopControl -> LoopBounds
+| | | | | | | Scalar -> Name = 'i'
+| | | | | | | Scalar -> Expr = '1_4'
+| | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | | | Scalar -> Expr = 'm'
+| | | | | | | | Designator -> DataRef -> Name = 'm'
+| | | | | Block
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'temp=cos*a(int(i,kind=8),int(j,kind=8))-sin*a(int(i,kind=8),int(n,kind=8))'
+| | | | | | | Variable = 'temp'
+| | | | | | | | Designator -> DataRef -> Name = 'temp'
+| | | | | | | Expr = 'cos*a(int(i,kind=8),int(j,kind=8))-sin*a(int(i,kind=8),int(n,kind=8))'
+| | | | | | | | Subtract
+| | | | | | | | | Expr = 'cos*a(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | | | Multiply
+| | | | | | | | | | | Expr = 'cos'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'cos'
+| | | | | | | | | | | Expr = 'a(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | DataRef -> Name = 'a'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | | | Expr = 'sin*a(int(i,kind=8),int(n,kind=8))'
+| | | | | | | | | | Multiply
+| | | | | | | | | | | Expr = 'sin'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'sin'
+| | | | | | | | | | | Expr = 'a(int(i,kind=8),int(n,kind=8))'
+| | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | DataRef -> Name = 'a'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'n'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'a(int(i,kind=8),int(n,kind=8))=sin*a(int(i,kind=8),int(j,kind=8))+cos*a(int(i,kind=8),int(n,kind=8))'
+| | | | | | | Variable = 'a(int(i,kind=8),int(n,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'a'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'n'
+| | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | | Expr = 'sin*a(int(i,kind=8),int(j,kind=8))+cos*a(int(i,kind=8),int(n,kind=8))'
+| | | | | | | | Add
+| | | | | | | | | Expr = 'sin*a(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | | | Multiply
+| | | | | | | | | | | Expr = 'sin'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'sin'
+| | | | | | | | | | | Expr = 'a(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | DataRef -> Name = 'a'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | | | Expr = 'cos*a(int(i,kind=8),int(n,kind=8))'
+| | | | | | | | | | Multiply
+| | | | | | | | | | | Expr = 'cos'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'cos'
+| | | | | | | | | | | Expr = 'a(int(i,kind=8),int(n,kind=8))'
+| | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | DataRef -> Name = 'a'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'n'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'a(int(i,kind=8),int(j,kind=8))=temp'
+| | | | | | | Variable = 'a(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'a'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'temp'
+| | | | | | | | Designator -> DataRef -> Name = 'temp'
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | | EndDoStmt -> 
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'j'
+| | | | | Scalar -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Scalar -> Expr = 'nm1'
+| | | | | | Designator -> DataRef -> Name = 'nm1'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'abs(w(int(j,kind=8)))>one'
+| | | | | | GT
+| | | | | | | Expr = 'abs(w(int(j,kind=8)))'
+| | | | | | | | FunctionReference -> Call
+| | | | | | | | | ProcedureDesignator -> Name = 'dabs'
+| | | | | | | | | ActualArgSpec
+| | | | | | | | | | ActualArg -> Expr = 'w(int(j,kind=8))'
+| | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | DataRef -> Name = 'w'
+| | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'one'
+| | | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | ActionStmt -> AssignmentStmt = 'cos=one/w(int(j,kind=8))'
+| | | | | | Variable = 'cos'
+| | | | | | | Designator -> DataRef -> Name = 'cos'
+| | | | | | Expr = 'one/w(int(j,kind=8))'
+| | | | | | | Divide
+| | | | | | | | Expr = 'one'
+| | | | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | | | | Expr = 'w(int(j,kind=8))'
+| | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | DataRef -> Name = 'w'
+| | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'abs(w(int(j,kind=8)))>one'
+| | | | | | GT
+| | | | | | | Expr = 'abs(w(int(j,kind=8)))'
+| | | | | | | | FunctionReference -> Call
+| | | | | | | | | ProcedureDesignator -> Name = 'dabs'
+| | | | | | | | | ActualArgSpec
+| | | | | | | | | | ActualArg -> Expr = 'w(int(j,kind=8))'
+| | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | DataRef -> Name = 'w'
+| | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'one'
+| | | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | ActionStmt -> AssignmentStmt = 'sin=sqrt(one-cos**2_4)'
+| | | | | | Variable = 'sin'
+| | | | | | | Designator -> DataRef -> Name = 'sin'
+| | | | | | Expr = 'sqrt(one-cos**2_4)'
+| | | | | | | FunctionReference -> Call
+| | | | | | | | ProcedureDesignator -> Name = 'dsqrt'
+| | | | | | | | ActualArgSpec
+| | | | | | | | | ActualArg -> Expr = 'one-cos**2_4'
+| | | | | | | | | | Subtract
+| | | | | | | | | | | Expr = 'one'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | | | | | | | Expr = 'cos**2_4'
+| | | | | | | | | | | | Power
+| | | | | | | | | | | | | Expr = 'cos'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'cos'
+| | | | | | | | | | | | | Expr = '2_4'
+| | | | | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'abs(w(int(j,kind=8)))<=one'
+| | | | | | LE
+| | | | | | | Expr = 'abs(w(int(j,kind=8)))'
+| | | | | | | | FunctionReference -> Call
+| | | | | | | | | ProcedureDesignator -> Name = 'dabs'
+| | | | | | | | | ActualArgSpec
+| | | | | | | | | | ActualArg -> Expr = 'w(int(j,kind=8))'
+| | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | DataRef -> Name = 'w'
+| | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'one'
+| | | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | ActionStmt -> AssignmentStmt = 'sin=w(int(j,kind=8))'
+| | | | | | Variable = 'sin'
+| | | | | | | Designator -> DataRef -> Name = 'sin'
+| | | | | | Expr = 'w(int(j,kind=8))'
+| | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | DataRef -> Name = 'w'
+| | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'abs(w(int(j,kind=8)))<=one'
+| | | | | | LE
+| | | | | | | Expr = 'abs(w(int(j,kind=8)))'
+| | | | | | | | FunctionReference -> Call
+| | | | | | | | | ProcedureDesignator -> Name = 'dabs'
+| | | | | | | | | ActualArgSpec
+| | | | | | | | | | ActualArg -> Expr = 'w(int(j,kind=8))'
+| | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | DataRef -> Name = 'w'
+| | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'one'
+| | | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | ActionStmt -> AssignmentStmt = 'cos=sqrt(one-sin**2_4)'
+| | | | | | Variable = 'cos'
+| | | | | | | Designator -> DataRef -> Name = 'cos'
+| | | | | | Expr = 'sqrt(one-sin**2_4)'
+| | | | | | | FunctionReference -> Call
+| | | | | | | | ProcedureDesignator -> Name = 'dsqrt'
+| | | | | | | | ActualArgSpec
+| | | | | | | | | ActualArg -> Expr = 'one-sin**2_4'
+| | | | | | | | | | Subtract
+| | | | | | | | | | | Expr = 'one'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | | | | | | | Expr = 'sin**2_4'
+| | | | | | | | | | | | Power
+| | | | | | | | | | | | | Expr = 'sin'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'sin'
+| | | | | | | | | | | | | Expr = '2_4'
+| | | | | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | | | NonLabelDoStmt
+| | | | | | LoopControl -> LoopBounds
+| | | | | | | Scalar -> Name = 'i'
+| | | | | | | Scalar -> Expr = '1_4'
+| | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | | | Scalar -> Expr = 'm'
+| | | | | | | | Designator -> DataRef -> Name = 'm'
+| | | | | Block
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'temp=cos*a(int(i,kind=8),int(j,kind=8))+sin*a(int(i,kind=8),int(n,kind=8))'
+| | | | | | | Variable = 'temp'
+| | | | | | | | Designator -> DataRef -> Name = 'temp'
+| | | | | | | Expr = 'cos*a(int(i,kind=8),int(j,kind=8))+sin*a(int(i,kind=8),int(n,kind=8))'
+| | | | | | | | Add
+| | | | | | | | | Expr = 'cos*a(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | | | Multiply
+| | | | | | | | | | | Expr = 'cos'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'cos'
+| | | | | | | | | | | Expr = 'a(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | DataRef -> Name = 'a'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | | | Expr = 'sin*a(int(i,kind=8),int(n,kind=8))'
+| | | | | | | | | | Multiply
+| | | | | | | | | | | Expr = 'sin'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'sin'
+| | | | | | | | | | | Expr = 'a(int(i,kind=8),int(n,kind=8))'
+| | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | DataRef -> Name = 'a'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'n'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'a(int(i,kind=8),int(n,kind=8))=-sin*a(int(i,kind=8),int(j,kind=8))+cos*a(int(i,kind=8),int(n,kind=8))'
+| | | | | | | Variable = 'a(int(i,kind=8),int(n,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'a'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'n'
+| | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | | Expr = '-sin*a(int(i,kind=8),int(j,kind=8))+cos*a(int(i,kind=8),int(n,kind=8))'
+| | | | | | | | Add
+| | | | | | | | | Expr = '-sin*a(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | | | Negate -> Expr = 'sin*a(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | | | | Multiply
+| | | | | | | | | | | | Expr = 'sin'
+| | | | | | | | | | | | | Designator -> DataRef -> Name = 'sin'
+| | | | | | | | | | | | Expr = 'a(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | | DataRef -> Name = 'a'
+| | | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | | | Expr = 'cos*a(int(i,kind=8),int(n,kind=8))'
+| | | | | | | | | | Multiply
+| | | | | | | | | | | Expr = 'cos'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'cos'
+| | | | | | | | | | | Expr = 'a(int(i,kind=8),int(n,kind=8))'
+| | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | DataRef -> Name = 'a'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'n'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'a(int(i,kind=8),int(j,kind=8))=temp'
+| | | | | | | Variable = 'a(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'a'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'temp'
+| | | | | | | | Designator -> DataRef -> Name = 'temp'
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | | EndDoStmt -> 
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ReturnStmt -> 
+| EndSubroutineStmt -> 

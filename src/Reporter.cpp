@@ -117,7 +117,9 @@ std::string reportMarkdown(ProjectAnalysis analysis) {
     out << "- Routine: `" << (finding.routine.empty() ? "file scope" : finding.routine) << "`\n";
     out << "- Affected files: " << files.size() << "\n";
     out << "- Dependent constructs: " << (finding.dependentConstructs.empty() ? "none recorded" : join(finding.dependentConstructs)) << "\n";
-    out << "- Behavior risks: " << (finding.behaviorRisks.empty() ? "low" : join(finding.behaviorRisks)) << "\n\n";
+    out << "- Behavior risks: " << (finding.behaviorRisks.empty() ? "low" : join(finding.behaviorRisks)) << "\n";
+    out << "- Flang parse-tree evidence: " << (finding.flangEvidence.empty() ? "not available" : join(finding.flangEvidence)) << "\n";
+    out << "- Flang semantic evidence: " << (finding.semanticEvidence.empty() ? "not available" : join(finding.semanticEvidence)) << "\n\n";
   }
   return out.str();
 }
@@ -137,7 +139,9 @@ std::string reportJson(ProjectAnalysis analysis) {
     out << "      \"routine\": \"" << escapeJson(finding.routine) << "\",\n";
     out << "      \"effort\": \"" << toString(finding.effort) << "\",\n";
     out << "      \"safety\": \"" << toString(finding.safety) << "\",\n";
-    out << "      \"priority\": " << finding.priority << "\n";
+    out << "      \"priority\": " << finding.priority << ",\n";
+    out << "      \"flang_evidence_count\": " << finding.flangEvidence.size() << ",\n";
+    out << "      \"semantic_evidence_count\": " << finding.semanticEvidence.size() << "\n";
     out << "    }" << (i + 1 == findings.size() ? "\n" : ",\n");
   }
   out << "  ]\n}\n";

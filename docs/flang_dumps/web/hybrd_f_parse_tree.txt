@@ -1,0 +1,1952 @@
+======================== Flang: parse tree dump ========================
+Program -> ProgramUnit -> SubroutineSubprogram
+| SubroutineStmt
+| | Name = 'hybrd'
+| | DummyArg -> Name = 'fcn'
+| | DummyArg -> Name = 'n'
+| | DummyArg -> Name = 'x'
+| | DummyArg -> Name = 'fvec'
+| | DummyArg -> Name = 'xtol'
+| | DummyArg -> Name = 'maxfev'
+| | DummyArg -> Name = 'ml'
+| | DummyArg -> Name = 'mu'
+| | DummyArg -> Name = 'epsfcn'
+| | DummyArg -> Name = 'diag'
+| | DummyArg -> Name = 'mode'
+| | DummyArg -> Name = 'factor'
+| | DummyArg -> Name = 'nprint'
+| | DummyArg -> Name = 'info'
+| | DummyArg -> Name = 'nfev'
+| | DummyArg -> Name = 'fjac'
+| | DummyArg -> Name = 'ldfjac'
+| | DummyArg -> Name = 'r'
+| | DummyArg -> Name = 'lr'
+| | DummyArg -> Name = 'qtf'
+| | DummyArg -> Name = 'wa1'
+| | DummyArg -> Name = 'wa2'
+| | DummyArg -> Name = 'wa3'
+| | DummyArg -> Name = 'wa4'
+| SpecificationPart
+| | ImplicitPart -> 
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'n'
+| | | EntityDecl
+| | | | Name = 'maxfev'
+| | | EntityDecl
+| | | | Name = 'ml'
+| | | EntityDecl
+| | | | Name = 'mu'
+| | | EntityDecl
+| | | | Name = 'mode'
+| | | EntityDecl
+| | | | Name = 'nprint'
+| | | EntityDecl
+| | | | Name = 'info'
+| | | EntityDecl
+| | | | Name = 'nfev'
+| | | EntityDecl
+| | | | Name = 'ldfjac'
+| | | EntityDecl
+| | | | Name = 'lr'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> DoublePrecision
+| | | EntityDecl
+| | | | Name = 'xtol'
+| | | EntityDecl
+| | | | Name = 'epsfcn'
+| | | EntityDecl
+| | | | Name = 'factor'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> DoublePrecision
+| | | EntityDecl
+| | | | Name = 'x'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | EntityDecl
+| | | | Name = 'fvec'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | EntityDecl
+| | | | Name = 'diag'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | EntityDecl
+| | | | Name = 'fjac'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'ldfjac'
+| | | | | | Designator -> DataRef -> Name = 'ldfjac'
+| | | | ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | EntityDecl
+| | | | Name = 'r'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'lr'
+| | | | | | Designator -> DataRef -> Name = 'lr'
+| | | EntityDecl
+| | | | Name = 'qtf'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | EntityDecl
+| | | | Name = 'wa1'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | EntityDecl
+| | | | Name = 'wa2'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | EntityDecl
+| | | | Name = 'wa3'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | EntityDecl
+| | | | Name = 'wa4'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | DeclarationConstruct -> SpecificationConstruct -> OtherSpecificationStmt -> ExternalStmt -> Name = 'fcn'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'i'
+| | | EntityDecl
+| | | | Name = 'iflag'
+| | | EntityDecl
+| | | | Name = 'iter'
+| | | EntityDecl
+| | | | Name = 'j'
+| | | EntityDecl
+| | | | Name = 'jm1'
+| | | EntityDecl
+| | | | Name = 'l'
+| | | EntityDecl
+| | | | Name = 'msum'
+| | | EntityDecl
+| | | | Name = 'ncfail'
+| | | EntityDecl
+| | | | Name = 'ncsuc'
+| | | EntityDecl
+| | | | Name = 'nslow1'
+| | | EntityDecl
+| | | | Name = 'nslow2'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> IntegerTypeSpec -> 
+| | | EntityDecl
+| | | | Name = 'iwa'
+| | | | ArraySpec -> ExplicitShapeSpec
+| | | | | SpecificationExpr -> Scalar -> Integer -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> Logical -> 
+| | | EntityDecl
+| | | | Name = 'jeval'
+| | | EntityDecl
+| | | | Name = 'sing'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> DoublePrecision
+| | | EntityDecl
+| | | | Name = 'actred'
+| | | EntityDecl
+| | | | Name = 'delta'
+| | | EntityDecl
+| | | | Name = 'epsmch'
+| | | EntityDecl
+| | | | Name = 'fnorm'
+| | | EntityDecl
+| | | | Name = 'fnorm1'
+| | | EntityDecl
+| | | | Name = 'one'
+| | | EntityDecl
+| | | | Name = 'pnorm'
+| | | EntityDecl
+| | | | Name = 'prered'
+| | | EntityDecl
+| | | | Name = 'p1'
+| | | EntityDecl
+| | | | Name = 'p5'
+| | | EntityDecl
+| | | | Name = 'p001'
+| | | EntityDecl
+| | | | Name = 'p0001'
+| | | EntityDecl
+| | | | Name = 'ratio'
+| | | EntityDecl
+| | | | Name = 'sum'
+| | | EntityDecl
+| | | | Name = 'temp'
+| | | EntityDecl
+| | | | Name = 'xnorm'
+| | | EntityDecl
+| | | | Name = 'zero'
+| | DeclarationConstruct -> SpecificationConstruct -> TypeDeclarationStmt
+| | | DeclarationTypeSpec -> IntrinsicTypeSpec -> DoublePrecision
+| | | EntityDecl
+| | | | Name = 'dpmpar'
+| | | EntityDecl
+| | | | Name = 'enorm'
+| | DeclarationConstruct -> DataStmt -> DataStmtSet
+| | | DataStmtObject -> Variable = 'one'
+| | | | Designator -> DataRef -> Name = 'one'
+| | | DataStmtObject -> Variable = 'p1'
+| | | | Designator -> DataRef -> Name = 'p1'
+| | | DataStmtObject -> Variable = 'p5'
+| | | | Designator -> DataRef -> Name = 'p5'
+| | | DataStmtObject -> Variable = 'p001'
+| | | | Designator -> DataRef -> Name = 'p001'
+| | | DataStmtObject -> Variable = 'p0001'
+| | | | Designator -> DataRef -> Name = 'p0001'
+| | | DataStmtObject -> Variable = 'zero'
+| | | | Designator -> DataRef -> Name = 'zero'
+| | | DataStmtValue
+| | | | DataStmtConstant = '1._8'
+| | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | Real = '1.0d0'
+| | | DataStmtValue
+| | | | DataStmtConstant = '1.000000000000000055511151231257827021181583404541015625e-1_8'
+| | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | Real = '1.0d-1'
+| | | DataStmtValue
+| | | | DataStmtConstant = '5.e-1_8'
+| | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | Real = '5.0d-1'
+| | | DataStmtValue
+| | | | DataStmtConstant = '1.000000000000000020816681711721685132943093776702880859375e-3_8'
+| | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | Real = '1.0d-3'
+| | | DataStmtValue
+| | | | DataStmtConstant = '1.00000000000000004792173602385929598312941379845142364501953125e-4_8'
+| | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | Real = '1.0d-4'
+| | | DataStmtValue
+| | | | DataStmtConstant = '0._8'
+| | | | | LiteralConstant -> RealLiteralConstant
+| | | | | | Real = '0.0d0'
+| ExecutionPart -> Block
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'epsmch=dpmpar(1_4)'
+| | | Variable = 'epsmch'
+| | | | Designator -> DataRef -> Name = 'epsmch'
+| | | Expr = 'dpmpar(1_4)'
+| | | | FunctionReference -> Call
+| | | | | ProcedureDesignator -> Name = 'dpmpar'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = '1_4'
+| | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'info=0_4'
+| | | Variable = 'info'
+| | | | Designator -> DataRef -> Name = 'info'
+| | | Expr = '0_4'
+| | | | LiteralConstant -> IntLiteralConstant = '0'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'iflag=0_4'
+| | | Variable = 'iflag'
+| | | | Designator -> DataRef -> Name = 'iflag'
+| | | Expr = '0_4'
+| | | | LiteralConstant -> IntLiteralConstant = '0'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'nfev=0_4'
+| | | Variable = 'nfev'
+| | | | Designator -> DataRef -> Name = 'nfev'
+| | | Expr = '0_4'
+| | | | LiteralConstant -> IntLiteralConstant = '0'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'n<=0_4.or.xtol<zero.or.maxfev<=0_4.or.ml<0_4.or.mu<0_4.or.factor<=zero.or.ldfjac<n.or.lr<(n*(n+1_4))/2_4'
+| | | | OR
+| | | | | Expr = 'n<=0_4.or.xtol<zero.or.maxfev<=0_4.or.ml<0_4.or.mu<0_4.or.factor<=zero.or.ldfjac<n'
+| | | | | | OR
+| | | | | | | Expr = 'n<=0_4.or.xtol<zero.or.maxfev<=0_4.or.ml<0_4.or.mu<0_4.or.factor<=zero'
+| | | | | | | | OR
+| | | | | | | | | Expr = 'n<=0_4.or.xtol<zero.or.maxfev<=0_4.or.ml<0_4.or.mu<0_4'
+| | | | | | | | | | OR
+| | | | | | | | | | | Expr = 'n<=0_4.or.xtol<zero.or.maxfev<=0_4.or.ml<0_4'
+| | | | | | | | | | | | OR
+| | | | | | | | | | | | | Expr = 'n<=0_4.or.xtol<zero.or.maxfev<=0_4'
+| | | | | | | | | | | | | | OR
+| | | | | | | | | | | | | | | Expr = 'n<=0_4.or.xtol<zero'
+| | | | | | | | | | | | | | | | OR
+| | | | | | | | | | | | | | | | | Expr = 'n<=0_4'
+| | | | | | | | | | | | | | | | | | LE
+| | | | | | | | | | | | | | | | | | | Expr = 'n'
+| | | | | | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | | | | | | | | | | | | | | Expr = '0_4'
+| | | | | | | | | | | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '0'
+| | | | | | | | | | | | | | | | | Expr = 'xtol<zero'
+| | | | | | | | | | | | | | | | | | LT
+| | | | | | | | | | | | | | | | | | | Expr = 'xtol'
+| | | | | | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'xtol'
+| | | | | | | | | | | | | | | | | | | Expr = 'zero'
+| | | | | | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'zero'
+| | | | | | | | | | | | | | | Expr = 'maxfev<=0_4'
+| | | | | | | | | | | | | | | | LE
+| | | | | | | | | | | | | | | | | Expr = 'maxfev'
+| | | | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'maxfev'
+| | | | | | | | | | | | | | | | | Expr = '0_4'
+| | | | | | | | | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '0'
+| | | | | | | | | | | | | Expr = 'ml<0_4'
+| | | | | | | | | | | | | | LT
+| | | | | | | | | | | | | | | Expr = 'ml'
+| | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'ml'
+| | | | | | | | | | | | | | | Expr = '0_4'
+| | | | | | | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '0'
+| | | | | | | | | | | Expr = 'mu<0_4'
+| | | | | | | | | | | | LT
+| | | | | | | | | | | | | Expr = 'mu'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'mu'
+| | | | | | | | | | | | | Expr = '0_4'
+| | | | | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '0'
+| | | | | | | | | Expr = 'factor<=zero'
+| | | | | | | | | | LE
+| | | | | | | | | | | Expr = 'factor'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'factor'
+| | | | | | | | | | | Expr = 'zero'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'zero'
+| | | | | | | Expr = 'ldfjac<n'
+| | | | | | | | LT
+| | | | | | | | | Expr = 'ldfjac'
+| | | | | | | | | | Designator -> DataRef -> Name = 'ldfjac'
+| | | | | | | | | Expr = 'n'
+| | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | Expr = 'lr<(n*(n+1_4))/2_4'
+| | | | | | LT
+| | | | | | | Expr = 'lr'
+| | | | | | | | Designator -> DataRef -> Name = 'lr'
+| | | | | | | Expr = '(n*(n+1_4))/2_4'
+| | | | | | | | Divide
+| | | | | | | | | Expr = '(n*(n+1_4))'
+| | | | | | | | | | Parentheses -> Expr = 'n*(n+1_4)'
+| | | | | | | | | | | Multiply
+| | | | | | | | | | | | Expr = 'n'
+| | | | | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | | | | | | | Expr = '(n+1_4)'
+| | | | | | | | | | | | | Parentheses -> Expr = 'n+1_4'
+| | | | | | | | | | | | | | Add
+| | | | | | | | | | | | | | | Expr = 'n'
+| | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | | | | | | | | | | Expr = '1_4'
+| | | | | | | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | | | | | Expr = '2_4'
+| | | | | | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | | ActionStmt -> GotoStmt -> uint64_t = '300'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'mode/=2_4'
+| | | | NE
+| | | | | Expr = 'mode'
+| | | | | | Designator -> DataRef -> Name = 'mode'
+| | | | | Expr = '2_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | | ActionStmt -> GotoStmt -> uint64_t = '20'
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'j'
+| | | | | Scalar -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Scalar -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'diag(int(j,kind=8))<=zero'
+| | | | | | LE
+| | | | | | | Expr = 'diag(int(j,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'diag'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'zero'
+| | | | | | | | Designator -> DataRef -> Name = 'zero'
+| | | | | ActionStmt -> GotoStmt -> uint64_t = '300'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'iflag=1_4'
+| | | Variable = 'iflag'
+| | | | Designator -> DataRef -> Name = 'iflag'
+| | | Expr = '1_4'
+| | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> CallStmt = 'CALL fcn(n,x,fvec,iflag)'
+| | | Call
+| | | | ProcedureDesignator -> Name = 'fcn'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'x'
+| | | | | | Designator -> DataRef -> Name = 'x'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'fvec'
+| | | | | | Designator -> DataRef -> Name = 'fvec'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'iflag'
+| | | | | | Designator -> DataRef -> Name = 'iflag'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'nfev=1_4'
+| | | Variable = 'nfev'
+| | | | Designator -> DataRef -> Name = 'nfev'
+| | | Expr = '1_4'
+| | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'iflag<0_4'
+| | | | LT
+| | | | | Expr = 'iflag'
+| | | | | | Designator -> DataRef -> Name = 'iflag'
+| | | | | Expr = '0_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '0'
+| | | ActionStmt -> GotoStmt -> uint64_t = '300'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'fnorm=enorm(n,fvec)'
+| | | Variable = 'fnorm'
+| | | | Designator -> DataRef -> Name = 'fnorm'
+| | | Expr = 'enorm(n,fvec)'
+| | | | FunctionReference -> Call
+| | | | | ProcedureDesignator -> Name = 'enorm'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'n'
+| | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'fvec'
+| | | | | | | Designator -> DataRef -> Name = 'fvec'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'msum=min(ml+mu+1_4,n)'
+| | | Variable = 'msum'
+| | | | Designator -> DataRef -> Name = 'msum'
+| | | Expr = 'min(ml+mu+1_4,n)'
+| | | | FunctionReference -> Call
+| | | | | ProcedureDesignator -> Name = 'min0'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'ml+mu+1_4'
+| | | | | | | Add
+| | | | | | | | Expr = 'ml+mu'
+| | | | | | | | | Add
+| | | | | | | | | | Expr = 'ml'
+| | | | | | | | | | | Designator -> DataRef -> Name = 'ml'
+| | | | | | | | | | Expr = 'mu'
+| | | | | | | | | | | Designator -> DataRef -> Name = 'mu'
+| | | | | | | | Expr = '1_4'
+| | | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'n'
+| | | | | | | Designator -> DataRef -> Name = 'n'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'iter=1_4'
+| | | Variable = 'iter'
+| | | | Designator -> DataRef -> Name = 'iter'
+| | | Expr = '1_4'
+| | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'ncsuc=0_4'
+| | | Variable = 'ncsuc'
+| | | | Designator -> DataRef -> Name = 'ncsuc'
+| | | Expr = '0_4'
+| | | | LiteralConstant -> IntLiteralConstant = '0'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'ncfail=0_4'
+| | | Variable = 'ncfail'
+| | | | Designator -> DataRef -> Name = 'ncfail'
+| | | Expr = '0_4'
+| | | | LiteralConstant -> IntLiteralConstant = '0'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'nslow1=0_4'
+| | | Variable = 'nslow1'
+| | | | Designator -> DataRef -> Name = 'nslow1'
+| | | Expr = '0_4'
+| | | | LiteralConstant -> IntLiteralConstant = '0'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'nslow2=0_4'
+| | | Variable = 'nslow2'
+| | | | Designator -> DataRef -> Name = 'nslow2'
+| | | Expr = '0_4'
+| | | | LiteralConstant -> IntLiteralConstant = '0'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'jeval=.true._4'
+| | | Variable = 'jeval'
+| | | | Designator -> DataRef -> Name = 'jeval'
+| | | Expr = '.true._4'
+| | | | LiteralConstant -> LogicalLiteralConstant
+| | | | | bool = 'true'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'iflag=2_4'
+| | | Variable = 'iflag'
+| | | | Designator -> DataRef -> Name = 'iflag'
+| | | Expr = '2_4'
+| | | | LiteralConstant -> IntLiteralConstant = '2'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> CallStmt = 'CALL fdjac1(fcn,n,x,fvec,fjac,ldfjac,iflag,ml,mu,epsfcn,wa1,wa2)'
+| | | Call
+| | | | ProcedureDesignator -> Name = 'fdjac1'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'fcn'
+| | | | | | Designator -> DataRef -> Name = 'fcn'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'x'
+| | | | | | Designator -> DataRef -> Name = 'x'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'fvec'
+| | | | | | Designator -> DataRef -> Name = 'fvec'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'fjac'
+| | | | | | Designator -> DataRef -> Name = 'fjac'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'ldfjac'
+| | | | | | Designator -> DataRef -> Name = 'ldfjac'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'iflag'
+| | | | | | Designator -> DataRef -> Name = 'iflag'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'ml'
+| | | | | | Designator -> DataRef -> Name = 'ml'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'mu'
+| | | | | | Designator -> DataRef -> Name = 'mu'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'epsfcn'
+| | | | | | Designator -> DataRef -> Name = 'epsfcn'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa1'
+| | | | | | Designator -> DataRef -> Name = 'wa1'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa2'
+| | | | | | Designator -> DataRef -> Name = 'wa2'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'nfev=nfev+msum'
+| | | Variable = 'nfev'
+| | | | Designator -> DataRef -> Name = 'nfev'
+| | | Expr = 'nfev+msum'
+| | | | Add
+| | | | | Expr = 'nfev'
+| | | | | | Designator -> DataRef -> Name = 'nfev'
+| | | | | Expr = 'msum'
+| | | | | | Designator -> DataRef -> Name = 'msum'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'iflag<0_4'
+| | | | LT
+| | | | | Expr = 'iflag'
+| | | | | | Designator -> DataRef -> Name = 'iflag'
+| | | | | Expr = '0_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '0'
+| | | ActionStmt -> GotoStmt -> uint64_t = '300'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> CallStmt = 'CALL qrfac(n,n,fjac,ldfjac,.false._4,iwa,1_4,wa1,wa2,wa3)'
+| | | Call
+| | | | ProcedureDesignator -> Name = 'qrfac'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'fjac'
+| | | | | | Designator -> DataRef -> Name = 'fjac'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'ldfjac'
+| | | | | | Designator -> DataRef -> Name = 'ldfjac'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = '.false._4'
+| | | | | | LiteralConstant -> LogicalLiteralConstant
+| | | | | | | bool = 'false'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'iwa'
+| | | | | | Designator -> DataRef -> Name = 'iwa'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa1'
+| | | | | | Designator -> DataRef -> Name = 'wa1'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa2'
+| | | | | | Designator -> DataRef -> Name = 'wa2'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa3'
+| | | | | | Designator -> DataRef -> Name = 'wa3'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'iter/=1_4'
+| | | | NE
+| | | | | Expr = 'iter'
+| | | | | | Designator -> DataRef -> Name = 'iter'
+| | | | | Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | ActionStmt -> GotoStmt -> uint64_t = '70'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'mode==2_4'
+| | | | EQ
+| | | | | Expr = 'mode'
+| | | | | | Designator -> DataRef -> Name = 'mode'
+| | | | | Expr = '2_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | | ActionStmt -> GotoStmt -> uint64_t = '50'
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'j'
+| | | | | Scalar -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Scalar -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'diag(int(j,kind=8))=wa2(int(j,kind=8))'
+| | | | | Variable = 'diag(int(j,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'diag'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | Expr = 'wa2(int(j,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa2'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'wa2(int(j,kind=8))==zero'
+| | | | | | EQ
+| | | | | | | Expr = 'wa2(int(j,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'wa2'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'zero'
+| | | | | | | | Designator -> DataRef -> Name = 'zero'
+| | | | | ActionStmt -> AssignmentStmt = 'diag(int(j,kind=8))=one'
+| | | | | | Variable = 'diag(int(j,kind=8))'
+| | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | DataRef -> Name = 'diag'
+| | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | Expr = 'one'
+| | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'j'
+| | | | | Scalar -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Scalar -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'wa3(int(j,kind=8))=diag(int(j,kind=8))*x(int(j,kind=8))'
+| | | | | Variable = 'wa3(int(j,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa3'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | Expr = 'diag(int(j,kind=8))*x(int(j,kind=8))'
+| | | | | | Multiply
+| | | | | | | Expr = 'diag(int(j,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'diag'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'x(int(j,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'x'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'xnorm=enorm(n,wa3)'
+| | | Variable = 'xnorm'
+| | | | Designator -> DataRef -> Name = 'xnorm'
+| | | Expr = 'enorm(n,wa3)'
+| | | | FunctionReference -> Call
+| | | | | ProcedureDesignator -> Name = 'enorm'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'n'
+| | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'wa3'
+| | | | | | | Designator -> DataRef -> Name = 'wa3'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'delta=factor*xnorm'
+| | | Variable = 'delta'
+| | | | Designator -> DataRef -> Name = 'delta'
+| | | Expr = 'factor*xnorm'
+| | | | Multiply
+| | | | | Expr = 'factor'
+| | | | | | Designator -> DataRef -> Name = 'factor'
+| | | | | Expr = 'xnorm'
+| | | | | | Designator -> DataRef -> Name = 'xnorm'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'delta==zero'
+| | | | EQ
+| | | | | Expr = 'delta'
+| | | | | | Designator -> DataRef -> Name = 'delta'
+| | | | | Expr = 'zero'
+| | | | | | Designator -> DataRef -> Name = 'zero'
+| | | ActionStmt -> AssignmentStmt = 'delta=factor'
+| | | | Variable = 'delta'
+| | | | | Designator -> DataRef -> Name = 'delta'
+| | | | Expr = 'factor'
+| | | | | Designator -> DataRef -> Name = 'factor'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'i'
+| | | | | Scalar -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Scalar -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'qtf(int(i,kind=8))=fvec(int(i,kind=8))'
+| | | | | Variable = 'qtf(int(i,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'qtf'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | Expr = 'fvec(int(i,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'fvec'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'j'
+| | | | | Scalar -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Scalar -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'fjac(int(j,kind=8),int(j,kind=8))==zero'
+| | | | | | EQ
+| | | | | | | Expr = 'fjac(int(j,kind=8),int(j,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'fjac'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'zero'
+| | | | | | | | Designator -> DataRef -> Name = 'zero'
+| | | | | ActionStmt -> GotoStmt -> uint64_t = '110'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'sum=zero'
+| | | | | Variable = 'sum'
+| | | | | | Designator -> DataRef -> Name = 'sum'
+| | | | | Expr = 'zero'
+| | | | | | Designator -> DataRef -> Name = 'zero'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | | | NonLabelDoStmt
+| | | | | | LoopControl -> LoopBounds
+| | | | | | | Scalar -> Name = 'i'
+| | | | | | | Scalar -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Scalar -> Expr = 'n'
+| | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | Block
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'sum=sum+fjac(int(i,kind=8),int(j,kind=8))*qtf(int(i,kind=8))'
+| | | | | | | Variable = 'sum'
+| | | | | | | | Designator -> DataRef -> Name = 'sum'
+| | | | | | | Expr = 'sum+fjac(int(i,kind=8),int(j,kind=8))*qtf(int(i,kind=8))'
+| | | | | | | | Add
+| | | | | | | | | Expr = 'sum'
+| | | | | | | | | | Designator -> DataRef -> Name = 'sum'
+| | | | | | | | | Expr = 'fjac(int(i,kind=8),int(j,kind=8))*qtf(int(i,kind=8))'
+| | | | | | | | | | Multiply
+| | | | | | | | | | | Expr = 'fjac(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | DataRef -> Name = 'fjac'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | | | | | Expr = 'qtf(int(i,kind=8))'
+| | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | DataRef -> Name = 'qtf'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | | EndDoStmt -> 
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'temp=-sum/fjac(int(j,kind=8),int(j,kind=8))'
+| | | | | Variable = 'temp'
+| | | | | | Designator -> DataRef -> Name = 'temp'
+| | | | | Expr = '-sum/fjac(int(j,kind=8),int(j,kind=8))'
+| | | | | | Negate -> Expr = 'sum/fjac(int(j,kind=8),int(j,kind=8))'
+| | | | | | | Divide
+| | | | | | | | Expr = 'sum'
+| | | | | | | | | Designator -> DataRef -> Name = 'sum'
+| | | | | | | | Expr = 'fjac(int(j,kind=8),int(j,kind=8))'
+| | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | DataRef -> Name = 'fjac'
+| | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | | | NonLabelDoStmt
+| | | | | | LoopControl -> LoopBounds
+| | | | | | | Scalar -> Name = 'i'
+| | | | | | | Scalar -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Scalar -> Expr = 'n'
+| | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | Block
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'qtf(int(i,kind=8))=qtf(int(i,kind=8))+fjac(int(i,kind=8),int(j,kind=8))*temp'
+| | | | | | | Variable = 'qtf(int(i,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'qtf'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | Expr = 'qtf(int(i,kind=8))+fjac(int(i,kind=8),int(j,kind=8))*temp'
+| | | | | | | | Add
+| | | | | | | | | Expr = 'qtf(int(i,kind=8))'
+| | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | DataRef -> Name = 'qtf'
+| | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | Expr = 'fjac(int(i,kind=8),int(j,kind=8))*temp'
+| | | | | | | | | | Multiply
+| | | | | | | | | | | Expr = 'fjac(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | DataRef -> Name = 'fjac'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | | | | | Expr = 'temp'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'temp'
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | | EndDoStmt -> 
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'sing=.false._4'
+| | | Variable = 'sing'
+| | | | Designator -> DataRef -> Name = 'sing'
+| | | Expr = '.false._4'
+| | | | LiteralConstant -> LogicalLiteralConstant
+| | | | | bool = 'false'
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'j'
+| | | | | Scalar -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Scalar -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'l=j'
+| | | | | Variable = 'l'
+| | | | | | Designator -> DataRef -> Name = 'l'
+| | | | | Expr = 'j'
+| | | | | | Designator -> DataRef -> Name = 'j'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'jm1=j-1_4'
+| | | | | Variable = 'jm1'
+| | | | | | Designator -> DataRef -> Name = 'jm1'
+| | | | | Expr = 'j-1_4'
+| | | | | | Subtract
+| | | | | | | Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = '1_4'
+| | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'jm1<1_4'
+| | | | | | LT
+| | | | | | | Expr = 'jm1'
+| | | | | | | | Designator -> DataRef -> Name = 'jm1'
+| | | | | | | Expr = '1_4'
+| | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | ActionStmt -> GotoStmt -> uint64_t = '140'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | | | NonLabelDoStmt
+| | | | | | LoopControl -> LoopBounds
+| | | | | | | Scalar -> Name = 'i'
+| | | | | | | Scalar -> Expr = '1_4'
+| | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | | | Scalar -> Expr = 'jm1'
+| | | | | | | | Designator -> DataRef -> Name = 'jm1'
+| | | | | Block
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'r(int(l,kind=8))=fjac(int(i,kind=8),int(j,kind=8))'
+| | | | | | | Variable = 'r(int(l,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'r'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'l'
+| | | | | | | | | | Designator -> DataRef -> Name = 'l'
+| | | | | | | Expr = 'fjac(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'fjac'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'l=l+n-i'
+| | | | | | | Variable = 'l'
+| | | | | | | | Designator -> DataRef -> Name = 'l'
+| | | | | | | Expr = 'l+n-i'
+| | | | | | | | Subtract
+| | | | | | | | | Expr = 'l+n'
+| | | | | | | | | | Add
+| | | | | | | | | | | Expr = 'l'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'l'
+| | | | | | | | | | | Expr = 'n'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | | | | | Expr = 'i'
+| | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | | EndDoStmt -> 
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'r(int(l,kind=8))=wa1(int(j,kind=8))'
+| | | | | Variable = 'r(int(l,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'r'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'l'
+| | | | | | | | Designator -> DataRef -> Name = 'l'
+| | | | | Expr = 'wa1(int(j,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa1'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'wa1(int(j,kind=8))==zero'
+| | | | | | EQ
+| | | | | | | Expr = 'wa1(int(j,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'wa1'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'zero'
+| | | | | | | | Designator -> DataRef -> Name = 'zero'
+| | | | | ActionStmt -> AssignmentStmt = 'sing=.true._4'
+| | | | | | Variable = 'sing'
+| | | | | | | Designator -> DataRef -> Name = 'sing'
+| | | | | | Expr = '.true._4'
+| | | | | | | LiteralConstant -> LogicalLiteralConstant
+| | | | | | | | bool = 'true'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> CallStmt = 'CALL qform(n,n,fjac,ldfjac,wa1)'
+| | | Call
+| | | | ProcedureDesignator -> Name = 'qform'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'fjac'
+| | | | | | Designator -> DataRef -> Name = 'fjac'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'ldfjac'
+| | | | | | Designator -> DataRef -> Name = 'ldfjac'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa1'
+| | | | | | Designator -> DataRef -> Name = 'wa1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'mode==2_4'
+| | | | EQ
+| | | | | Expr = 'mode'
+| | | | | | Designator -> DataRef -> Name = 'mode'
+| | | | | Expr = '2_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | | ActionStmt -> GotoStmt -> uint64_t = '170'
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'j'
+| | | | | Scalar -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Scalar -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'diag(int(j,kind=8))=max(diag(int(j,kind=8)),wa2(int(j,kind=8)))'
+| | | | | Variable = 'diag(int(j,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'diag'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | Expr = 'max(diag(int(j,kind=8)),wa2(int(j,kind=8)))'
+| | | | | | FunctionReference -> Call
+| | | | | | | ProcedureDesignator -> Name = 'dmax1'
+| | | | | | | ActualArgSpec
+| | | | | | | | ActualArg -> Expr = 'diag(int(j,kind=8))'
+| | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | DataRef -> Name = 'diag'
+| | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | ActualArgSpec
+| | | | | | | | ActualArg -> Expr = 'wa2(int(j,kind=8))'
+| | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | DataRef -> Name = 'wa2'
+| | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'nprint<=0_4'
+| | | | LE
+| | | | | Expr = 'nprint'
+| | | | | | Designator -> DataRef -> Name = 'nprint'
+| | | | | Expr = '0_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '0'
+| | | ActionStmt -> GotoStmt -> uint64_t = '190'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'iflag=0_4'
+| | | Variable = 'iflag'
+| | | | Designator -> DataRef -> Name = 'iflag'
+| | | Expr = '0_4'
+| | | | LiteralConstant -> IntLiteralConstant = '0'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'mod(iter-1_4,nprint)==0_4'
+| | | | EQ
+| | | | | Expr = 'mod(iter-1_4,nprint)'
+| | | | | | FunctionReference -> Call
+| | | | | | | ProcedureDesignator -> Name = 'mod'
+| | | | | | | ActualArgSpec
+| | | | | | | | ActualArg -> Expr = 'iter-1_4'
+| | | | | | | | | Subtract
+| | | | | | | | | | Expr = 'iter'
+| | | | | | | | | | | Designator -> DataRef -> Name = 'iter'
+| | | | | | | | | | Expr = '1_4'
+| | | | | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | | | ActualArgSpec
+| | | | | | | | ActualArg -> Expr = 'nprint'
+| | | | | | | | | Designator -> DataRef -> Name = 'nprint'
+| | | | | Expr = '0_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '0'
+| | | ActionStmt -> CallStmt = 'CALL fcn(n,x,fvec,iflag)'
+| | | | Call
+| | | | | ProcedureDesignator -> Name = 'fcn'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'n'
+| | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'x'
+| | | | | | | Designator -> DataRef -> Name = 'x'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'fvec'
+| | | | | | | Designator -> DataRef -> Name = 'fvec'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'iflag'
+| | | | | | | Designator -> DataRef -> Name = 'iflag'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'iflag<0_4'
+| | | | LT
+| | | | | Expr = 'iflag'
+| | | | | | Designator -> DataRef -> Name = 'iflag'
+| | | | | Expr = '0_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '0'
+| | | ActionStmt -> GotoStmt -> uint64_t = '300'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> CallStmt = 'CALL dogleg(n,r,lr,diag,qtf,delta,wa1,wa2,wa3)'
+| | | Call
+| | | | ProcedureDesignator -> Name = 'dogleg'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'r'
+| | | | | | Designator -> DataRef -> Name = 'r'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'lr'
+| | | | | | Designator -> DataRef -> Name = 'lr'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'diag'
+| | | | | | Designator -> DataRef -> Name = 'diag'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'qtf'
+| | | | | | Designator -> DataRef -> Name = 'qtf'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'delta'
+| | | | | | Designator -> DataRef -> Name = 'delta'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa1'
+| | | | | | Designator -> DataRef -> Name = 'wa1'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa2'
+| | | | | | Designator -> DataRef -> Name = 'wa2'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa3'
+| | | | | | Designator -> DataRef -> Name = 'wa3'
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'j'
+| | | | | Scalar -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Scalar -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'wa1(int(j,kind=8))=-wa1(int(j,kind=8))'
+| | | | | Variable = 'wa1(int(j,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa1'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | Expr = '-wa1(int(j,kind=8))'
+| | | | | | Negate -> Expr = 'wa1(int(j,kind=8))'
+| | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | DataRef -> Name = 'wa1'
+| | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'wa2(int(j,kind=8))=x(int(j,kind=8))+wa1(int(j,kind=8))'
+| | | | | Variable = 'wa2(int(j,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa2'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | Expr = 'x(int(j,kind=8))+wa1(int(j,kind=8))'
+| | | | | | Add
+| | | | | | | Expr = 'x(int(j,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'x'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'wa1(int(j,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'wa1'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'wa3(int(j,kind=8))=diag(int(j,kind=8))*wa1(int(j,kind=8))'
+| | | | | Variable = 'wa3(int(j,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa3'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | Expr = 'diag(int(j,kind=8))*wa1(int(j,kind=8))'
+| | | | | | Multiply
+| | | | | | | Expr = 'diag(int(j,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'diag'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'wa1(int(j,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'wa1'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'pnorm=enorm(n,wa3)'
+| | | Variable = 'pnorm'
+| | | | Designator -> DataRef -> Name = 'pnorm'
+| | | Expr = 'enorm(n,wa3)'
+| | | | FunctionReference -> Call
+| | | | | ProcedureDesignator -> Name = 'enorm'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'n'
+| | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'wa3'
+| | | | | | | Designator -> DataRef -> Name = 'wa3'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'iter==1_4'
+| | | | EQ
+| | | | | Expr = 'iter'
+| | | | | | Designator -> DataRef -> Name = 'iter'
+| | | | | Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | ActionStmt -> AssignmentStmt = 'delta=min(delta,pnorm)'
+| | | | Variable = 'delta'
+| | | | | Designator -> DataRef -> Name = 'delta'
+| | | | Expr = 'min(delta,pnorm)'
+| | | | | FunctionReference -> Call
+| | | | | | ProcedureDesignator -> Name = 'dmin1'
+| | | | | | ActualArgSpec
+| | | | | | | ActualArg -> Expr = 'delta'
+| | | | | | | | Designator -> DataRef -> Name = 'delta'
+| | | | | | ActualArgSpec
+| | | | | | | ActualArg -> Expr = 'pnorm'
+| | | | | | | | Designator -> DataRef -> Name = 'pnorm'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'iflag=1_4'
+| | | Variable = 'iflag'
+| | | | Designator -> DataRef -> Name = 'iflag'
+| | | Expr = '1_4'
+| | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> CallStmt = 'CALL fcn(n,wa2,wa4,iflag)'
+| | | Call
+| | | | ProcedureDesignator -> Name = 'fcn'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa2'
+| | | | | | Designator -> DataRef -> Name = 'wa2'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa4'
+| | | | | | Designator -> DataRef -> Name = 'wa4'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'iflag'
+| | | | | | Designator -> DataRef -> Name = 'iflag'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'nfev=nfev+1_4'
+| | | Variable = 'nfev'
+| | | | Designator -> DataRef -> Name = 'nfev'
+| | | Expr = 'nfev+1_4'
+| | | | Add
+| | | | | Expr = 'nfev'
+| | | | | | Designator -> DataRef -> Name = 'nfev'
+| | | | | Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'iflag<0_4'
+| | | | LT
+| | | | | Expr = 'iflag'
+| | | | | | Designator -> DataRef -> Name = 'iflag'
+| | | | | Expr = '0_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '0'
+| | | ActionStmt -> GotoStmt -> uint64_t = '300'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'fnorm1=enorm(n,wa4)'
+| | | Variable = 'fnorm1'
+| | | | Designator -> DataRef -> Name = 'fnorm1'
+| | | Expr = 'enorm(n,wa4)'
+| | | | FunctionReference -> Call
+| | | | | ProcedureDesignator -> Name = 'enorm'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'n'
+| | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'wa4'
+| | | | | | | Designator -> DataRef -> Name = 'wa4'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'actred=-one'
+| | | Variable = 'actred'
+| | | | Designator -> DataRef -> Name = 'actred'
+| | | Expr = '-one'
+| | | | Negate -> Expr = 'one'
+| | | | | Designator -> DataRef -> Name = 'one'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'fnorm1<fnorm'
+| | | | LT
+| | | | | Expr = 'fnorm1'
+| | | | | | Designator -> DataRef -> Name = 'fnorm1'
+| | | | | Expr = 'fnorm'
+| | | | | | Designator -> DataRef -> Name = 'fnorm'
+| | | ActionStmt -> AssignmentStmt = 'actred=one-(fnorm1/fnorm)**2_4'
+| | | | Variable = 'actred'
+| | | | | Designator -> DataRef -> Name = 'actred'
+| | | | Expr = 'one-(fnorm1/fnorm)**2_4'
+| | | | | Subtract
+| | | | | | Expr = 'one'
+| | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | | Expr = '(fnorm1/fnorm)**2_4'
+| | | | | | | Power
+| | | | | | | | Expr = '(fnorm1/fnorm)'
+| | | | | | | | | Parentheses -> Expr = 'fnorm1/fnorm'
+| | | | | | | | | | Divide
+| | | | | | | | | | | Expr = 'fnorm1'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'fnorm1'
+| | | | | | | | | | | Expr = 'fnorm'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'fnorm'
+| | | | | | | | Expr = '2_4'
+| | | | | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'l=1_4'
+| | | Variable = 'l'
+| | | | Designator -> DataRef -> Name = 'l'
+| | | Expr = '1_4'
+| | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'i'
+| | | | | Scalar -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Scalar -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'sum=zero'
+| | | | | Variable = 'sum'
+| | | | | | Designator -> DataRef -> Name = 'sum'
+| | | | | Expr = 'zero'
+| | | | | | Designator -> DataRef -> Name = 'zero'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | | | NonLabelDoStmt
+| | | | | | LoopControl -> LoopBounds
+| | | | | | | Scalar -> Name = 'j'
+| | | | | | | Scalar -> Expr = 'i'
+| | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | Scalar -> Expr = 'n'
+| | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | Block
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'sum=sum+r(int(l,kind=8))*wa1(int(j,kind=8))'
+| | | | | | | Variable = 'sum'
+| | | | | | | | Designator -> DataRef -> Name = 'sum'
+| | | | | | | Expr = 'sum+r(int(l,kind=8))*wa1(int(j,kind=8))'
+| | | | | | | | Add
+| | | | | | | | | Expr = 'sum'
+| | | | | | | | | | Designator -> DataRef -> Name = 'sum'
+| | | | | | | | | Expr = 'r(int(l,kind=8))*wa1(int(j,kind=8))'
+| | | | | | | | | | Multiply
+| | | | | | | | | | | Expr = 'r(int(l,kind=8))'
+| | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | DataRef -> Name = 'r'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'l'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'l'
+| | | | | | | | | | | Expr = 'wa1(int(j,kind=8))'
+| | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | DataRef -> Name = 'wa1'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'l=l+1_4'
+| | | | | | | Variable = 'l'
+| | | | | | | | Designator -> DataRef -> Name = 'l'
+| | | | | | | Expr = 'l+1_4'
+| | | | | | | | Add
+| | | | | | | | | Expr = 'l'
+| | | | | | | | | | Designator -> DataRef -> Name = 'l'
+| | | | | | | | | Expr = '1_4'
+| | | | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | | EndDoStmt -> 
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'wa3(int(i,kind=8))=qtf(int(i,kind=8))+sum'
+| | | | | Variable = 'wa3(int(i,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa3'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | Expr = 'qtf(int(i,kind=8))+sum'
+| | | | | | Add
+| | | | | | | Expr = 'qtf(int(i,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'qtf'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | Expr = 'sum'
+| | | | | | | | Designator -> DataRef -> Name = 'sum'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'temp=enorm(n,wa3)'
+| | | Variable = 'temp'
+| | | | Designator -> DataRef -> Name = 'temp'
+| | | Expr = 'enorm(n,wa3)'
+| | | | FunctionReference -> Call
+| | | | | ProcedureDesignator -> Name = 'enorm'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'n'
+| | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'wa3'
+| | | | | | | Designator -> DataRef -> Name = 'wa3'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'prered=zero'
+| | | Variable = 'prered'
+| | | | Designator -> DataRef -> Name = 'prered'
+| | | Expr = 'zero'
+| | | | Designator -> DataRef -> Name = 'zero'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'temp<fnorm'
+| | | | LT
+| | | | | Expr = 'temp'
+| | | | | | Designator -> DataRef -> Name = 'temp'
+| | | | | Expr = 'fnorm'
+| | | | | | Designator -> DataRef -> Name = 'fnorm'
+| | | ActionStmt -> AssignmentStmt = 'prered=one-(temp/fnorm)**2_4'
+| | | | Variable = 'prered'
+| | | | | Designator -> DataRef -> Name = 'prered'
+| | | | Expr = 'one-(temp/fnorm)**2_4'
+| | | | | Subtract
+| | | | | | Expr = 'one'
+| | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | | Expr = '(temp/fnorm)**2_4'
+| | | | | | | Power
+| | | | | | | | Expr = '(temp/fnorm)'
+| | | | | | | | | Parentheses -> Expr = 'temp/fnorm'
+| | | | | | | | | | Divide
+| | | | | | | | | | | Expr = 'temp'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'temp'
+| | | | | | | | | | | Expr = 'fnorm'
+| | | | | | | | | | | | Designator -> DataRef -> Name = 'fnorm'
+| | | | | | | | Expr = '2_4'
+| | | | | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'ratio=zero'
+| | | Variable = 'ratio'
+| | | | Designator -> DataRef -> Name = 'ratio'
+| | | Expr = 'zero'
+| | | | Designator -> DataRef -> Name = 'zero'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'prered>zero'
+| | | | GT
+| | | | | Expr = 'prered'
+| | | | | | Designator -> DataRef -> Name = 'prered'
+| | | | | Expr = 'zero'
+| | | | | | Designator -> DataRef -> Name = 'zero'
+| | | ActionStmt -> AssignmentStmt = 'ratio=actred/prered'
+| | | | Variable = 'ratio'
+| | | | | Designator -> DataRef -> Name = 'ratio'
+| | | | Expr = 'actred/prered'
+| | | | | Divide
+| | | | | | Expr = 'actred'
+| | | | | | | Designator -> DataRef -> Name = 'actred'
+| | | | | | Expr = 'prered'
+| | | | | | | Designator -> DataRef -> Name = 'prered'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'ratio>=p1'
+| | | | GE
+| | | | | Expr = 'ratio'
+| | | | | | Designator -> DataRef -> Name = 'ratio'
+| | | | | Expr = 'p1'
+| | | | | | Designator -> DataRef -> Name = 'p1'
+| | | ActionStmt -> GotoStmt -> uint64_t = '230'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'ncsuc=0_4'
+| | | Variable = 'ncsuc'
+| | | | Designator -> DataRef -> Name = 'ncsuc'
+| | | Expr = '0_4'
+| | | | LiteralConstant -> IntLiteralConstant = '0'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'ncfail=ncfail+1_4'
+| | | Variable = 'ncfail'
+| | | | Designator -> DataRef -> Name = 'ncfail'
+| | | Expr = 'ncfail+1_4'
+| | | | Add
+| | | | | Expr = 'ncfail'
+| | | | | | Designator -> DataRef -> Name = 'ncfail'
+| | | | | Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'delta=p5*delta'
+| | | Variable = 'delta'
+| | | | Designator -> DataRef -> Name = 'delta'
+| | | Expr = 'p5*delta'
+| | | | Multiply
+| | | | | Expr = 'p5'
+| | | | | | Designator -> DataRef -> Name = 'p5'
+| | | | | Expr = 'delta'
+| | | | | | Designator -> DataRef -> Name = 'delta'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> GotoStmt -> uint64_t = '240'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'ncfail=0_4'
+| | | Variable = 'ncfail'
+| | | | Designator -> DataRef -> Name = 'ncfail'
+| | | Expr = '0_4'
+| | | | LiteralConstant -> IntLiteralConstant = '0'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'ncsuc=ncsuc+1_4'
+| | | Variable = 'ncsuc'
+| | | | Designator -> DataRef -> Name = 'ncsuc'
+| | | Expr = 'ncsuc+1_4'
+| | | | Add
+| | | | | Expr = 'ncsuc'
+| | | | | | Designator -> DataRef -> Name = 'ncsuc'
+| | | | | Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'ratio>=p5.or.ncsuc>1_4'
+| | | | OR
+| | | | | Expr = 'ratio>=p5'
+| | | | | | GE
+| | | | | | | Expr = 'ratio'
+| | | | | | | | Designator -> DataRef -> Name = 'ratio'
+| | | | | | | Expr = 'p5'
+| | | | | | | | Designator -> DataRef -> Name = 'p5'
+| | | | | Expr = 'ncsuc>1_4'
+| | | | | | GT
+| | | | | | | Expr = 'ncsuc'
+| | | | | | | | Designator -> DataRef -> Name = 'ncsuc'
+| | | | | | | Expr = '1_4'
+| | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | ActionStmt -> AssignmentStmt = 'delta=max(delta,pnorm/p5)'
+| | | | Variable = 'delta'
+| | | | | Designator -> DataRef -> Name = 'delta'
+| | | | Expr = 'max(delta,pnorm/p5)'
+| | | | | FunctionReference -> Call
+| | | | | | ProcedureDesignator -> Name = 'dmax1'
+| | | | | | ActualArgSpec
+| | | | | | | ActualArg -> Expr = 'delta'
+| | | | | | | | Designator -> DataRef -> Name = 'delta'
+| | | | | | ActualArgSpec
+| | | | | | | ActualArg -> Expr = 'pnorm/p5'
+| | | | | | | | Divide
+| | | | | | | | | Expr = 'pnorm'
+| | | | | | | | | | Designator -> DataRef -> Name = 'pnorm'
+| | | | | | | | | Expr = 'p5'
+| | | | | | | | | | Designator -> DataRef -> Name = 'p5'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'abs(ratio-one)<=p1'
+| | | | LE
+| | | | | Expr = 'abs(ratio-one)'
+| | | | | | FunctionReference -> Call
+| | | | | | | ProcedureDesignator -> Name = 'dabs'
+| | | | | | | ActualArgSpec
+| | | | | | | | ActualArg -> Expr = 'ratio-one'
+| | | | | | | | | Subtract
+| | | | | | | | | | Expr = 'ratio'
+| | | | | | | | | | | Designator -> DataRef -> Name = 'ratio'
+| | | | | | | | | | Expr = 'one'
+| | | | | | | | | | | Designator -> DataRef -> Name = 'one'
+| | | | | Expr = 'p1'
+| | | | | | Designator -> DataRef -> Name = 'p1'
+| | | ActionStmt -> AssignmentStmt = 'delta=pnorm/p5'
+| | | | Variable = 'delta'
+| | | | | Designator -> DataRef -> Name = 'delta'
+| | | | Expr = 'pnorm/p5'
+| | | | | Divide
+| | | | | | Expr = 'pnorm'
+| | | | | | | Designator -> DataRef -> Name = 'pnorm'
+| | | | | | Expr = 'p5'
+| | | | | | | Designator -> DataRef -> Name = 'p5'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'ratio<p0001'
+| | | | LT
+| | | | | Expr = 'ratio'
+| | | | | | Designator -> DataRef -> Name = 'ratio'
+| | | | | Expr = 'p0001'
+| | | | | | Designator -> DataRef -> Name = 'p0001'
+| | | ActionStmt -> GotoStmt -> uint64_t = '260'
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'j'
+| | | | | Scalar -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Scalar -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'x(int(j,kind=8))=wa2(int(j,kind=8))'
+| | | | | Variable = 'x(int(j,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'x'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | Expr = 'wa2(int(j,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa2'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'wa2(int(j,kind=8))=diag(int(j,kind=8))*x(int(j,kind=8))'
+| | | | | Variable = 'wa2(int(j,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa2'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | Expr = 'diag(int(j,kind=8))*x(int(j,kind=8))'
+| | | | | | Multiply
+| | | | | | | Expr = 'diag(int(j,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'diag'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'x(int(j,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'x'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'fvec(int(j,kind=8))=wa4(int(j,kind=8))'
+| | | | | Variable = 'fvec(int(j,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'fvec'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | Expr = 'wa4(int(j,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa4'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'xnorm=enorm(n,wa2)'
+| | | Variable = 'xnorm'
+| | | | Designator -> DataRef -> Name = 'xnorm'
+| | | Expr = 'enorm(n,wa2)'
+| | | | FunctionReference -> Call
+| | | | | ProcedureDesignator -> Name = 'enorm'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'n'
+| | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'wa2'
+| | | | | | | Designator -> DataRef -> Name = 'wa2'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'fnorm=fnorm1'
+| | | Variable = 'fnorm'
+| | | | Designator -> DataRef -> Name = 'fnorm'
+| | | Expr = 'fnorm1'
+| | | | Designator -> DataRef -> Name = 'fnorm1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'iter=iter+1_4'
+| | | Variable = 'iter'
+| | | | Designator -> DataRef -> Name = 'iter'
+| | | Expr = 'iter+1_4'
+| | | | Add
+| | | | | Expr = 'iter'
+| | | | | | Designator -> DataRef -> Name = 'iter'
+| | | | | Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'nslow1=nslow1+1_4'
+| | | Variable = 'nslow1'
+| | | | Designator -> DataRef -> Name = 'nslow1'
+| | | Expr = 'nslow1+1_4'
+| | | | Add
+| | | | | Expr = 'nslow1'
+| | | | | | Designator -> DataRef -> Name = 'nslow1'
+| | | | | Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'actred>=p001'
+| | | | GE
+| | | | | Expr = 'actred'
+| | | | | | Designator -> DataRef -> Name = 'actred'
+| | | | | Expr = 'p001'
+| | | | | | Designator -> DataRef -> Name = 'p001'
+| | | ActionStmt -> AssignmentStmt = 'nslow1=0_4'
+| | | | Variable = 'nslow1'
+| | | | | Designator -> DataRef -> Name = 'nslow1'
+| | | | Expr = '0_4'
+| | | | | LiteralConstant -> IntLiteralConstant = '0'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'jeval'
+| | | | Designator -> DataRef -> Name = 'jeval'
+| | | ActionStmt -> AssignmentStmt = 'nslow2=nslow2+1_4'
+| | | | Variable = 'nslow2'
+| | | | | Designator -> DataRef -> Name = 'nslow2'
+| | | | Expr = 'nslow2+1_4'
+| | | | | Add
+| | | | | | Expr = 'nslow2'
+| | | | | | | Designator -> DataRef -> Name = 'nslow2'
+| | | | | | Expr = '1_4'
+| | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'actred>=p1'
+| | | | GE
+| | | | | Expr = 'actred'
+| | | | | | Designator -> DataRef -> Name = 'actred'
+| | | | | Expr = 'p1'
+| | | | | | Designator -> DataRef -> Name = 'p1'
+| | | ActionStmt -> AssignmentStmt = 'nslow2=0_4'
+| | | | Variable = 'nslow2'
+| | | | | Designator -> DataRef -> Name = 'nslow2'
+| | | | Expr = '0_4'
+| | | | | LiteralConstant -> IntLiteralConstant = '0'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'delta<=xtol*xnorm.or.fnorm==zero'
+| | | | OR
+| | | | | Expr = 'delta<=xtol*xnorm'
+| | | | | | LE
+| | | | | | | Expr = 'delta'
+| | | | | | | | Designator -> DataRef -> Name = 'delta'
+| | | | | | | Expr = 'xtol*xnorm'
+| | | | | | | | Multiply
+| | | | | | | | | Expr = 'xtol'
+| | | | | | | | | | Designator -> DataRef -> Name = 'xtol'
+| | | | | | | | | Expr = 'xnorm'
+| | | | | | | | | | Designator -> DataRef -> Name = 'xnorm'
+| | | | | Expr = 'fnorm==zero'
+| | | | | | EQ
+| | | | | | | Expr = 'fnorm'
+| | | | | | | | Designator -> DataRef -> Name = 'fnorm'
+| | | | | | | Expr = 'zero'
+| | | | | | | | Designator -> DataRef -> Name = 'zero'
+| | | ActionStmt -> AssignmentStmt = 'info=1_4'
+| | | | Variable = 'info'
+| | | | | Designator -> DataRef -> Name = 'info'
+| | | | Expr = '1_4'
+| | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'info/=0_4'
+| | | | NE
+| | | | | Expr = 'info'
+| | | | | | Designator -> DataRef -> Name = 'info'
+| | | | | Expr = '0_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '0'
+| | | ActionStmt -> GotoStmt -> uint64_t = '300'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'nfev>=maxfev'
+| | | | GE
+| | | | | Expr = 'nfev'
+| | | | | | Designator -> DataRef -> Name = 'nfev'
+| | | | | Expr = 'maxfev'
+| | | | | | Designator -> DataRef -> Name = 'maxfev'
+| | | ActionStmt -> AssignmentStmt = 'info=2_4'
+| | | | Variable = 'info'
+| | | | | Designator -> DataRef -> Name = 'info'
+| | | | Expr = '2_4'
+| | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'p1*max(p1*delta,pnorm)<=epsmch*xnorm'
+| | | | LE
+| | | | | Expr = 'p1*max(p1*delta,pnorm)'
+| | | | | | Multiply
+| | | | | | | Expr = 'p1'
+| | | | | | | | Designator -> DataRef -> Name = 'p1'
+| | | | | | | Expr = 'max(p1*delta,pnorm)'
+| | | | | | | | FunctionReference -> Call
+| | | | | | | | | ProcedureDesignator -> Name = 'dmax1'
+| | | | | | | | | ActualArgSpec
+| | | | | | | | | | ActualArg -> Expr = 'p1*delta'
+| | | | | | | | | | | Multiply
+| | | | | | | | | | | | Expr = 'p1'
+| | | | | | | | | | | | | Designator -> DataRef -> Name = 'p1'
+| | | | | | | | | | | | Expr = 'delta'
+| | | | | | | | | | | | | Designator -> DataRef -> Name = 'delta'
+| | | | | | | | | ActualArgSpec
+| | | | | | | | | | ActualArg -> Expr = 'pnorm'
+| | | | | | | | | | | Designator -> DataRef -> Name = 'pnorm'
+| | | | | Expr = 'epsmch*xnorm'
+| | | | | | Multiply
+| | | | | | | Expr = 'epsmch'
+| | | | | | | | Designator -> DataRef -> Name = 'epsmch'
+| | | | | | | Expr = 'xnorm'
+| | | | | | | | Designator -> DataRef -> Name = 'xnorm'
+| | | ActionStmt -> AssignmentStmt = 'info=3_4'
+| | | | Variable = 'info'
+| | | | | Designator -> DataRef -> Name = 'info'
+| | | | Expr = '3_4'
+| | | | | LiteralConstant -> IntLiteralConstant = '3'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'nslow2==5_4'
+| | | | EQ
+| | | | | Expr = 'nslow2'
+| | | | | | Designator -> DataRef -> Name = 'nslow2'
+| | | | | Expr = '5_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '5'
+| | | ActionStmt -> AssignmentStmt = 'info=4_4'
+| | | | Variable = 'info'
+| | | | | Designator -> DataRef -> Name = 'info'
+| | | | Expr = '4_4'
+| | | | | LiteralConstant -> IntLiteralConstant = '4'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'nslow1==10_4'
+| | | | EQ
+| | | | | Expr = 'nslow1'
+| | | | | | Designator -> DataRef -> Name = 'nslow1'
+| | | | | Expr = '10_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '10'
+| | | ActionStmt -> AssignmentStmt = 'info=5_4'
+| | | | Variable = 'info'
+| | | | | Designator -> DataRef -> Name = 'info'
+| | | | Expr = '5_4'
+| | | | | LiteralConstant -> IntLiteralConstant = '5'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'info/=0_4'
+| | | | NE
+| | | | | Expr = 'info'
+| | | | | | Designator -> DataRef -> Name = 'info'
+| | | | | Expr = '0_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '0'
+| | | ActionStmt -> GotoStmt -> uint64_t = '300'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'ncfail==2_4'
+| | | | EQ
+| | | | | Expr = 'ncfail'
+| | | | | | Designator -> DataRef -> Name = 'ncfail'
+| | | | | Expr = '2_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '2'
+| | | ActionStmt -> GotoStmt -> uint64_t = '290'
+| | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | NonLabelDoStmt
+| | | | LoopControl -> LoopBounds
+| | | | | Scalar -> Name = 'j'
+| | | | | Scalar -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | Scalar -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | Block
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'sum=zero'
+| | | | | Variable = 'sum'
+| | | | | | Designator -> DataRef -> Name = 'sum'
+| | | | | Expr = 'zero'
+| | | | | | Designator -> DataRef -> Name = 'zero'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> DoConstruct
+| | | | | NonLabelDoStmt
+| | | | | | LoopControl -> LoopBounds
+| | | | | | | Scalar -> Name = 'i'
+| | | | | | | Scalar -> Expr = '1_4'
+| | | | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | | | | Scalar -> Expr = 'n'
+| | | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | Block
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'sum=sum+fjac(int(i,kind=8),int(j,kind=8))*wa4(int(i,kind=8))'
+| | | | | | | Variable = 'sum'
+| | | | | | | | Designator -> DataRef -> Name = 'sum'
+| | | | | | | Expr = 'sum+fjac(int(i,kind=8),int(j,kind=8))*wa4(int(i,kind=8))'
+| | | | | | | | Add
+| | | | | | | | | Expr = 'sum'
+| | | | | | | | | | Designator -> DataRef -> Name = 'sum'
+| | | | | | | | | Expr = 'fjac(int(i,kind=8),int(j,kind=8))*wa4(int(i,kind=8))'
+| | | | | | | | | | Multiply
+| | | | | | | | | | | Expr = 'fjac(int(i,kind=8),int(j,kind=8))'
+| | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | DataRef -> Name = 'fjac'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | | | | | Expr = 'wa4(int(i,kind=8))'
+| | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | DataRef -> Name = 'wa4'
+| | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'i'
+| | | | | | | | | | | | | | Designator -> DataRef -> Name = 'i'
+| | | | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | | | EndDoStmt -> 
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'wa2(int(j,kind=8))=(sum-wa3(int(j,kind=8)))/pnorm'
+| | | | | Variable = 'wa2(int(j,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa2'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | Expr = '(sum-wa3(int(j,kind=8)))/pnorm'
+| | | | | | Divide
+| | | | | | | Expr = '(sum-wa3(int(j,kind=8)))'
+| | | | | | | | Parentheses -> Expr = 'sum-wa3(int(j,kind=8))'
+| | | | | | | | | Subtract
+| | | | | | | | | | Expr = 'sum'
+| | | | | | | | | | | Designator -> DataRef -> Name = 'sum'
+| | | | | | | | | | Expr = 'wa3(int(j,kind=8))'
+| | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | DataRef -> Name = 'wa3'
+| | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = 'pnorm'
+| | | | | | | | Designator -> DataRef -> Name = 'pnorm'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'wa1(int(j,kind=8))=diag(int(j,kind=8))*((diag(int(j,kind=8))*wa1(int(j,kind=8)))/pnorm)'
+| | | | | Variable = 'wa1(int(j,kind=8))'
+| | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | DataRef -> Name = 'wa1'
+| | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | Expr = 'diag(int(j,kind=8))*((diag(int(j,kind=8))*wa1(int(j,kind=8)))/pnorm)'
+| | | | | | Multiply
+| | | | | | | Expr = 'diag(int(j,kind=8))'
+| | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | DataRef -> Name = 'diag'
+| | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | Expr = '((diag(int(j,kind=8))*wa1(int(j,kind=8)))/pnorm)'
+| | | | | | | | Parentheses -> Expr = '(diag(int(j,kind=8))*wa1(int(j,kind=8)))/pnorm'
+| | | | | | | | | Divide
+| | | | | | | | | | Expr = '(diag(int(j,kind=8))*wa1(int(j,kind=8)))'
+| | | | | | | | | | | Parentheses -> Expr = 'diag(int(j,kind=8))*wa1(int(j,kind=8))'
+| | | | | | | | | | | | Multiply
+| | | | | | | | | | | | | Expr = 'diag(int(j,kind=8))'
+| | | | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | | | DataRef -> Name = 'diag'
+| | | | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | | | | | | | Expr = 'wa1(int(j,kind=8))'
+| | | | | | | | | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | | | | | | | | DataRef -> Name = 'wa1'
+| | | | | | | | | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | | | | | Expr = 'pnorm'
+| | | | | | | | | | | Designator -> DataRef -> Name = 'pnorm'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | | | Scalar -> Logical -> Expr = 'ratio>=p0001'
+| | | | | | GE
+| | | | | | | Expr = 'ratio'
+| | | | | | | | Designator -> DataRef -> Name = 'ratio'
+| | | | | | | Expr = 'p0001'
+| | | | | | | | Designator -> DataRef -> Name = 'p0001'
+| | | | | ActionStmt -> AssignmentStmt = 'qtf(int(j,kind=8))=sum'
+| | | | | | Variable = 'qtf(int(j,kind=8))'
+| | | | | | | Designator -> DataRef -> ArrayElement
+| | | | | | | | DataRef -> Name = 'qtf'
+| | | | | | | | SectionSubscript -> Integer -> Expr = 'j'
+| | | | | | | | | Designator -> DataRef -> Name = 'j'
+| | | | | | Expr = 'sum'
+| | | | | | | Designator -> DataRef -> Name = 'sum'
+| | | | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | | EndDoStmt -> 
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> CallStmt = 'CALL r1updt(n,n,r,lr,wa1,wa2,wa3,sing)'
+| | | Call
+| | | | ProcedureDesignator -> Name = 'r1updt'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'r'
+| | | | | | Designator -> DataRef -> Name = 'r'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'lr'
+| | | | | | Designator -> DataRef -> Name = 'lr'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa1'
+| | | | | | Designator -> DataRef -> Name = 'wa1'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa2'
+| | | | | | Designator -> DataRef -> Name = 'wa2'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa3'
+| | | | | | Designator -> DataRef -> Name = 'wa3'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'sing'
+| | | | | | Designator -> DataRef -> Name = 'sing'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> CallStmt = 'CALL r1mpyq(n,n,fjac,ldfjac,wa2,wa3)'
+| | | Call
+| | | | ProcedureDesignator -> Name = 'r1mpyq'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'fjac'
+| | | | | | Designator -> DataRef -> Name = 'fjac'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'ldfjac'
+| | | | | | Designator -> DataRef -> Name = 'ldfjac'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa2'
+| | | | | | Designator -> DataRef -> Name = 'wa2'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa3'
+| | | | | | Designator -> DataRef -> Name = 'wa3'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> CallStmt = 'CALL r1mpyq(1_4,n,qtf,1_4,wa2,wa3)'
+| | | Call
+| | | | ProcedureDesignator -> Name = 'r1mpyq'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'n'
+| | | | | | Designator -> DataRef -> Name = 'n'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'qtf'
+| | | | | | Designator -> DataRef -> Name = 'qtf'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = '1_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '1'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa2'
+| | | | | | Designator -> DataRef -> Name = 'wa2'
+| | | | ActualArgSpec
+| | | | | ActualArg -> Expr = 'wa3'
+| | | | | | Designator -> DataRef -> Name = 'wa3'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'jeval=.false._4'
+| | | Variable = 'jeval'
+| | | | Designator -> DataRef -> Name = 'jeval'
+| | | Expr = '.false._4'
+| | | | LiteralConstant -> LogicalLiteralConstant
+| | | | | bool = 'false'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> GotoStmt -> uint64_t = '180'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> GotoStmt -> uint64_t = '30'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ContinueStmt
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'iflag<0_4'
+| | | | LT
+| | | | | Expr = 'iflag'
+| | | | | | Designator -> DataRef -> Name = 'iflag'
+| | | | | Expr = '0_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '0'
+| | | ActionStmt -> AssignmentStmt = 'info=iflag'
+| | | | Variable = 'info'
+| | | | | Designator -> DataRef -> Name = 'info'
+| | | | Expr = 'iflag'
+| | | | | Designator -> DataRef -> Name = 'iflag'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> AssignmentStmt = 'iflag=0_4'
+| | | Variable = 'iflag'
+| | | | Designator -> DataRef -> Name = 'iflag'
+| | | Expr = '0_4'
+| | | | LiteralConstant -> IntLiteralConstant = '0'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> IfStmt
+| | | Scalar -> Logical -> Expr = 'nprint>0_4'
+| | | | GT
+| | | | | Expr = 'nprint'
+| | | | | | Designator -> DataRef -> Name = 'nprint'
+| | | | | Expr = '0_4'
+| | | | | | LiteralConstant -> IntLiteralConstant = '0'
+| | | ActionStmt -> CallStmt = 'CALL fcn(n,x,fvec,iflag)'
+| | | | Call
+| | | | | ProcedureDesignator -> Name = 'fcn'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'n'
+| | | | | | | Designator -> DataRef -> Name = 'n'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'x'
+| | | | | | | Designator -> DataRef -> Name = 'x'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'fvec'
+| | | | | | | Designator -> DataRef -> Name = 'fvec'
+| | | | | ActualArgSpec
+| | | | | | ActualArg -> Expr = 'iflag'
+| | | | | | | Designator -> DataRef -> Name = 'iflag'
+| | ExecutionPartConstruct -> ExecutableConstruct -> ActionStmt -> ReturnStmt -> 
+| EndSubroutineStmt -> 

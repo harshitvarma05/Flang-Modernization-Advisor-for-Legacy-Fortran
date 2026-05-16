@@ -1,4 +1,5 @@
 #include "Analyzer.hpp"
+#include "FlangMetadata.hpp"
 
 #include <algorithm>
 #include <fstream>
@@ -42,6 +43,26 @@ std::string trimLocal(const std::string &value) {
   return value.substr(start, end - start + 1);
 }
 
+std::string joinInts(const std::vector<std::string> &items) {
+  std::ostringstream out;
+  for (size_t i = 0; i < items.size(); ++i) {
+    if (i) out << ", ";
+    out << items[i];
+  }
+  return out.str();
+}
+
+bool isSpecificationLike(const std::string &code) {
+  std::string t = trimLocal(code);
+  if (t.empty()) return true;
+  if (std::regex_search(t, DeclarationRe) || std::regex_search(t, CommonRe) || std::regex_search(t, EquivalenceRe) ||
+      std::regex_search(t, EntryRe) || std::regex_search(t, std::regex(R"(^\s*implicit)", std::regex::icase)) ||
+      std::regex_search(t, StatementFunctionRe)) {
+    return true;
+  }
+  return false;
+}
+
 Finding makeFinding(const SourceUnit &unit, int line, const std::string &pattern, const std::string &message,
                     const std::string &raw, const Routine *routine, Effort effort, Safety safety,
                     std::vector<std::string> deps) {
@@ -72,6 +93,7 @@ ProjectAnalysis ModernizationAnalyzer::analyzePath(const std::filesystem::path &
     analysis.findings.insert(analysis.findings.end(), unitFindings.begin(), unitFindings.end());
   }
   computeImpact(analysis.files, analysis.findings);
+  enrichWithFlangMetadata(FlangMetadataProvider().collect(analysis.files), analysis.findings);
   prioritize(analysis.findings);
   return analysis;
 }
@@ -137,6 +159,9 @@ void ModernizationAnalyzer::indexRoutines(SourceUnit &unit) {
       if (std::regex_search(code, match, CommonRe)) {
         current->commonBlocks.insert(match[1].matched ? lower(match[1].str()) : "_blank_");
       }
+      if (current->firstExecutableLine == 0 && lineNumber != current->startLine && !isSpecificationLike(code) && !std::regex_search(code, EndRoutineRe)) {
+        current->firstExecutableLine = lineNumber;
+      }
       if (std::regex_search(code, EndRoutineRe)) {
         current->endLine = lineNumber;
         current = nullptr;
@@ -164,15 +189,32 @@ std::vector<Finding> ModernizationAnalyzer::detectInUnit(const SourceUnit &unit)
     std::string normalized = removeFixedLabel(stripComment(raw), unit.fixedForm);
     const Routine *routine = routineAt(unit, lineNumber);
 
-    if (std::regex_search(normalized, ArithmeticIfRe)) {
+    std::smatch branchMatch;
+    if (std::regex_search(normalized, branchMatch, ArithmeticIfRe)) {
+      std::vector<std::string> labels;
+      std::regex labelRe(R"(\d+)");
+      for (auto it = std::sregex_iterator(normalized.begin(), normalized.end(), labelRe); it != std::sregex_iterator(); ++it) {
+        labels.push_back(it->str());
+      }
       findings.push_back(makeFinding(unit, lineNumber, "arithmetic-if",
                                      "Arithmetic IF depends on three-way numeric branch behavior.", raw, routine,
-                                     Effort::Moderate, Safety::ReviewNeeded, {"control-flow labels"}));
+                                     Effort::Moderate, Safety::ReviewNeeded,
+                                     {"target labels: " + joinInts(labels)}));
     }
     if (std::regex_search(normalized, ComputedGotoRe)) {
+      std::vector<std::string> labels;
+      auto open = normalized.find('(');
+      auto close = normalized.find(')', open == std::string::npos ? 0 : open);
+      if (open != std::string::npos && close != std::string::npos) {
+        std::string labelList = normalized.substr(open + 1, close - open - 1);
+        std::regex labelRe(R"(\d+)");
+        for (auto it = std::sregex_iterator(labelList.begin(), labelList.end(), labelRe); it != std::sregex_iterator(); ++it) {
+          labels.push_back(it->str());
+        }
+      }
       findings.push_back(makeFinding(unit, lineNumber, "computed-goto", "Computed GOTO hides an indexed branch table.",
                                      raw, routine, Effort::Moderate, Safety::ReviewNeeded,
-                                     {"branch labels", "selector expression"}));
+                                     {"target labels: " + joinInts(labels), "selector expression"}));
     }
     if (std::regex_search(normalized, CommonRe)) {
       findings.push_back(makeFinding(unit, lineNumber, "common-block",
@@ -196,7 +238,7 @@ std::vector<Finding> ModernizationAnalyzer::detectInUnit(const SourceUnit &unit)
                                      "Assumed-size dummy array lacks explicit bounds metadata.", raw, routine,
                                      Effort::Moderate, Safety::ReviewNeeded, {"dummy argument interface"}));
     }
-    if (isStatementFunction(normalized, routine)) {
+    if (isStatementFunction(normalized, routine) && (!routine || routine->firstExecutableLine == 0 || lineNumber < routine->firstExecutableLine)) {
       findings.push_back(makeFinding(unit, lineNumber, "statement-function",
                                      "Statement function should become an internal procedure or elemental function.",
                                      raw, routine, Effort::Moderate, Safety::Safe,
@@ -258,6 +300,29 @@ void ModernizationAnalyzer::computeImpact(const std::vector<SourceUnit> &files, 
       finding.behaviorRisks.push_back("Adding IMPLICIT NONE requires declarations for every implicit symbol.");
     } else if (finding.pattern == "assumed-size-array") {
       finding.behaviorRisks.push_back("Changing to assumed-shape requires explicit interfaces at call sites.");
+    }
+  }
+}
+
+void ModernizationAnalyzer::enrichWithFlangMetadata(const std::map<std::string, FlangFileMetadata> &metadata, std::vector<Finding> &findings) {
+  for (auto &finding : findings) {
+    auto it = metadata.find(finding.location.file);
+    if (it == metadata.end()) {
+      continue;
+    }
+    const auto &fileMeta = it->second;
+    if (fileMeta.parseTreeAvailable && fileMeta.parseConstructs.count(finding.pattern)) {
+      finding.flangEvidence.push_back("Flang parse tree confirms " + finding.pattern + " in this source file.");
+    }
+    if (fileMeta.symbolsAvailable) {
+      for (const auto &evidence : fileMeta.symbolEvidence) {
+        if ((finding.pattern == "common-block" && evidence.find("COMMON") != std::string::npos) ||
+            (finding.pattern == "equivalence" && evidence.find("equivalence") != std::string::npos) ||
+            (finding.pattern == "assumed-size-array" && evidence.find("assumed-size") != std::string::npos) ||
+            (finding.pattern == "statement-function" && evidence.find("statement function") != std::string::npos)) {
+          finding.semanticEvidence.push_back(evidence);
+        }
+      }
     }
   }
 }
