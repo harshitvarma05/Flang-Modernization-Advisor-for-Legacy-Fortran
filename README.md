@@ -119,7 +119,3 @@ Examples of semantic data used:
 | Legacy test suite | `examples/legacy/`, `flang_ast_advisor/tests/test_flang_ast_advisor.cpp` |
 | Real case study | `examples/real_case_study/minpack/`, `docs/real_case_study_report.md`, `flang_ast_advisor/docs/ast_real_case_study_report.md` |
 | Three safe transformations | `src/Transform.cpp`, `transformed/case_study/`, `transformed/real_case_study/` |
-
-## Viva Line
-
-This project uses Flang as the compiler frontend. The analyzer walks Flang's in-memory parse tree, then uses Flang semantic scopes and symbols to assess modernization risk for constructs such as `COMMON`, `EQUIVALENCE`, and implicit typing.
