@@ -3,12 +3,11 @@ BUILD_DIR := build
 FLANG_PREFIX ?= /opt/homebrew/opt/flang
 LLVM_PREFIX ?= /opt/homebrew/opt/llvm
 WARN_FLAGS ?= -Wall -Wextra -pedantic
-CXXFLAGS ?= -std=c++17 $(WARN_FLAGS) -Iinclude
-FLANG_CXXFLAGS := -std=c++17 $(WARN_FLAGS) -I$(FLANG_PREFIX)/include -I$(LLVM_PREFIX)/include
+CXXFLAGS ?= -std=c++17 $(WARN_FLAGS) -Iinclude -Iflang_ast_advisor/include
+FLANG_CXXFLAGS := -std=c++17 $(WARN_FLAGS) -Iinclude -Iflang_ast_advisor/include -I$(FLANG_PREFIX)/include -I$(LLVM_PREFIX)/include
 FLANG_LDFLAGS := -L$(FLANG_PREFIX)/lib -L$(LLVM_PREFIX)/lib -lFortranParser -lFortranSemantics -lFortranEvaluate -lFortranSupport -lFortranDecimal -lLLVM-22 -Wl,-rpath,$(FLANG_PREFIX)/lib -Wl,-rpath,$(LLVM_PREFIX)/lib
-CORE_SRC := src/Analyzer.cpp src/FlangMetadata.cpp src/Models.cpp src/Reporter.cpp src/Transform.cpp
-WEB_SRC := src/WebServer.cpp
 AST_SRC := flang_ast_advisor/src/Findings.cpp flang_ast_advisor/src/FlangAstAdvisor.cpp
+APP_SRC := src/main.cpp src/WebServer.cpp src/Transform.cpp
 
 .PHONY: all test clean report transform real-report real-transform flang-validate flang-dump-tree flang-inprocess serve ast-advisor ast-test ast-report ast-real-report
 
@@ -17,24 +16,19 @@ all: $(BUILD_DIR)/flang-modernizer $(BUILD_DIR)/flang-ast-advisor
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
-$(BUILD_DIR)/flang-modernizer: $(CORE_SRC) $(WEB_SRC) src/main.cpp | $(BUILD_DIR)
-	$(CXX) $(CXXFLAGS) $(CORE_SRC) $(WEB_SRC) src/main.cpp -o $@
+$(BUILD_DIR)/flang-modernizer: $(AST_SRC) $(APP_SRC) | $(BUILD_DIR)
+	$(CXX) $(FLANG_CXXFLAGS) $(AST_SRC) $(APP_SRC) $(FLANG_LDFLAGS) -o $@
 
-$(BUILD_DIR)/flang-modernizer-tests: $(CORE_SRC) tests/test_analyzer.cpp | $(BUILD_DIR)
-	$(CXX) $(CXXFLAGS) $(CORE_SRC) tests/test_analyzer.cpp -o $@
+$(BUILD_DIR)/flang-ast-advisor: $(AST_SRC) flang_ast_advisor/src/main.cpp | $(BUILD_DIR)
+	$(CXX) $(FLANG_CXXFLAGS) $(AST_SRC) flang_ast_advisor/src/main.cpp $(FLANG_LDFLAGS) -o $@
+
+$(BUILD_DIR)/flang-ast-advisor-tests: $(AST_SRC) flang_ast_advisor/tests/test_flang_ast_advisor.cpp | $(BUILD_DIR)
+	$(CXX) $(FLANG_CXXFLAGS) $(AST_SRC) flang_ast_advisor/tests/test_flang_ast_advisor.cpp $(FLANG_LDFLAGS) -o $@
 
 $(BUILD_DIR)/flang-inprocess-probe: src/InProcessFlangProbe.cpp | $(BUILD_DIR)
 	$(CXX) $(FLANG_CXXFLAGS) src/InProcessFlangProbe.cpp $(FLANG_LDFLAGS) -o $@
 
-$(BUILD_DIR)/flang-ast-advisor: $(AST_SRC) flang_ast_advisor/src/main.cpp | $(BUILD_DIR)
-	$(CXX) $(FLANG_CXXFLAGS) -Iflang_ast_advisor/include $(AST_SRC) flang_ast_advisor/src/main.cpp $(FLANG_LDFLAGS) -o $@
-
-$(BUILD_DIR)/flang-ast-advisor-tests: $(AST_SRC) flang_ast_advisor/tests/test_flang_ast_advisor.cpp | $(BUILD_DIR)
-	$(CXX) $(FLANG_CXXFLAGS) -Iflang_ast_advisor/include $(AST_SRC) flang_ast_advisor/tests/test_flang_ast_advisor.cpp $(FLANG_LDFLAGS) -o $@
-
-test: $(BUILD_DIR)/flang-modernizer-tests $(BUILD_DIR)/flang-ast-advisor-tests
-	./$(BUILD_DIR)/flang-modernizer-tests
-	./$(BUILD_DIR)/flang-ast-advisor-tests
+test: ast-test
 
 ast-advisor: $(BUILD_DIR)/flang-ast-advisor
 

@@ -1,9 +1,6 @@
 # In-Memory Flang AST Advisor
 
-This folder is the assignment-strict implementation path.
-
-Unlike the dashboard-oriented advisor in the repository root, this executable embeds
-Flang directly as a library. It prescans, parses, and semantically analyzes Fortran
+This folder contains the main analysis engine used by both the CLI and the web dashboard. It embeds Flang directly as a library. It prescans, parses, and semantically analyzes Fortran
 source in the same process, then visits Flang's in-memory parse tree with
 `Fortran::parser::Walk`.
 
@@ -25,7 +22,7 @@ source in the same process, then visits Flang's in-memory parse tree with
 - implicit typing: `parser::ImplicitStmt` plus semantic implicit symbol flags
 - fixed-form source: Flang parser options used for prescan
 - statement functions: `parser::StmtFunctionStmt`
-- assumed-size arrays: `parser::AssumedSizeSpec`
+- assumed-size arrays: Flang assumed-implied `*` array-spec nodes
 - ENTRY statements: `parser::EntryStmt`
 
 ## Build
@@ -59,6 +56,4 @@ text dumps as its frontend. It holds Flang's parse tree in memory, visits typed
 parse-tree nodes, runs Flang semantic analysis, and reads semantic scopes/symbols
 to estimate impact.
 
-The repository root still contains the nicer local web dashboard and conservative
-transformation demo. For viva, present this folder as the compiler-frontend core
-and the root dashboard as the user-facing interface around the same project idea.
+The repository root provides the CLI, web dashboard, build files, and conservative transformation demo. They all use this Flang AST analyzer as the analysis core.

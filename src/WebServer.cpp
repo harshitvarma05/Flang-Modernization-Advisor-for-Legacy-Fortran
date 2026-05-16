@@ -1,5 +1,5 @@
-#include "Analyzer.hpp"
-#include "Reporter.hpp"
+#include "FlangAstAdvisor.hpp"
+#include "Findings.hpp"
 #include "Transform.hpp"
 #include "WebServer.hpp"
 
@@ -11,6 +11,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <filesystem>
+#include <fstream>
 #include <iostream>
 #include <map>
 #include <netinet/in.h>
@@ -112,6 +113,7 @@ std::string html() {
     <div class="actions">
       <button onclick="setPath('examples/case_study')">Case Study</button>
       <button onclick="setPath('examples/legacy')">Legacy Fixture</button>
+      <button onclick="setPath('examples/real_case_study/minpack')">Real MINPACK</button>
       <button onclick="validateFlang()">Validate With Flang</button>
       <button onclick="dumpTree()">Generate Flang Tree</button>
       <button onclick="transformSafe()">Safe Transform</button>
@@ -177,9 +179,13 @@ async function analyze() {
     const safe = findings.filter(f => f.safety === 'safe').length;
     el('risky').textContent = risky;
     el('safe').textContent = safe;
-    el('planSummary').textContent = `${findings.length} findings, ${risky} risky, ${safe} safe.`;
-    el('rows').innerHTML = findings.map(f => `<tr><td>${f.priority}</td><td>${f.pattern}</td><td>${f.location}</td><td>${f.effort}</td><td>${badge(f.safety)}</td><td>${f.recommendation}</td></tr>`).join('');
-    showMessage(data.markdown);
+    el('planSummary').textContent = `Flang AST engine: ${findings.length} findings, ${risky} risky, ${safe} safe.`;
+    el('rows').innerHTML = findings.map(f => {
+      const location = f.location || ((f.file || '') + ':' + (f.line || 1));
+      const recommendation = f.recommendation || f.message || 'Review construct.';
+      return `<tr><td>${f.priority}</td><td>${f.pattern}</td><td>${location}</td><td>${f.effort}</td><td>${badge(f.safety)}</td><td>${recommendation}</td></tr>`;
+    }).join('');
+    showMessage(data.markdown || 'AST analysis completed.');
   } catch (e) { showMessage(e.message); }
 }
 async function browse(type) {
@@ -258,38 +264,26 @@ std::filesystem::path resolveInputPath(const std::filesystem::path &input) {
 }
 
 
-std::string recommendation(const std::string &pattern) {
-  if (pattern == "arithmetic-if") return "Replace with explicit IF/ELSE IF/ELSE branches after checking label fall-through.";
-  if (pattern == "computed-goto") return "Replace branch table with SELECT CASE or procedure dispatch.";
-  if (pattern == "equivalence") return "Isolate storage overlay and replace only after aliasing/binary-layout review.";
-  if (pattern == "common-block") return "Migrate shared state to a module, preserving declaration order and initialization.";
-  if (pattern == "implicit-typing") return "Add IMPLICIT NONE and explicit declarations per program unit.";
-  if (pattern == "statement-function") return "Convert to an internal or module procedure.";
-  if (pattern == "fixed-form") return "Convert to free-form source and normalize continuations/comments.";
-  if (pattern == "assumed-size-array") return "Use assumed-shape arrays after introducing explicit interfaces.";
-  if (pattern == "entry") return "Split alternate entries into separate procedures with explicit shared state.";
-  return "Review construct and modernize locally.";
-}
 
-std::string findingsJson(ProjectAnalysis analysis) {
-  std::sort(analysis.findings.begin(), analysis.findings.end(), [](const Finding &a, const Finding &b) {
-    if (a.priority != b.priority) return a.priority > b.priority;
-    if (a.location.file != b.location.file) return a.location.file < b.location.file;
-    return a.location.line < b.location.line;
-  });
+std::string advisorFindingsJson(advisor::ProjectAnalysis analysis) {
+  advisor::prioritize(analysis);
   std::ostringstream out;
-  out << "{\"root\":\"" << jsonEscape(analysis.root) << "\",\"files_analyzed\":" << analysis.files.size() << ",\"findings\":[";
+  out << "{\"ok\":true,\"engine\":\"in-memory-flang-ast\",\"root\":\"" << jsonEscape(analysis.root)
+      << "\",\"files_analyzed\":" << analysis.files.size() << ",\"findings\":[";
   for (size_t i = 0; i < analysis.findings.size(); ++i) {
     const auto &f = analysis.findings[i];
     if (i) out << ",";
     out << "{\"priority\":" << f.priority
         << ",\"pattern\":\"" << jsonEscape(f.pattern)
         << "\",\"location\":\"" << jsonEscape(f.location.file + ":" + std::to_string(f.location.line))
-        << "\",\"effort\":\"" << toString(f.effort)
-        << "\",\"safety\":\"" << toString(f.safety)
-        << "\",\"recommendation\":\"" << jsonEscape(recommendation(f.pattern)) << "\"}";
+        << "\",\"file\":\"" << jsonEscape(f.location.file)
+        << "\",\"line\":" << f.location.line
+        << ",\"effort\":\"" << advisor::toString(f.effort)
+        << "\",\"safety\":\"" << advisor::toString(f.safety)
+        << "\",\"message\":\"" << jsonEscape(f.message)
+        << "\",\"recommendation\":\"" << jsonEscape(f.message) << "\"}";
   }
-  out << "],\"markdown\":\"" << jsonEscape(reportMarkdown(analysis)) << "\"}";
+  out << "],\"markdown\":\"" << jsonEscape(advisor::markdownReport(analysis)) << "\"}";
   return out.str();
 }
 
@@ -327,6 +321,7 @@ std::string runCommand(const std::string &command, int &status) {
   status = pclose(pipe);
   return result;
 }
+
 
 std::string browseJson(const std::string &type) {
   int status = 0;
@@ -407,8 +402,8 @@ std::string handle(const std::string &request) {
     if (route == "/" || route == "/index.html") return response(html(), "text/html");
     if (route == "/api/browse") return response(browseJson(query.count("type") ? query["type"] : "file"));
     if (route == "/api/analyze") {
-      ModernizationAnalyzer analyzer;
-      return response(findingsJson(analyzer.analyzePath(resolveInputPath(path))));
+      advisor::FlangAstAdvisor analyzer;
+      return response(advisorFindingsJson(analyzer.analyzePath(resolveInputPath(path))));
     }
     if (route == "/api/validate") return response(validateJson(path));
     if (route == "/api/dump") return response(dumpJson(path));

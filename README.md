@@ -1,38 +1,50 @@
 # Flang Modernization Advisor for Legacy Fortran
 
-This project is a C++17 Flang-oriented static analysis tool that detects legacy Fortran anti-patterns, estimates modernization impact, and produces a prioritized modernization plan.
+A C++17 static analysis tool for legacy Fortran modernization. The analyzer embeds LLVM Flang, builds Flang's parse tree in memory, runs Flang semantic analysis, and produces a prioritized modernization plan with effort and safety ratings.
 
-The main advisor uses a C++ source-fact layer plus Flang-generated parse-tree and semantic-symbol metadata. It also includes an optional in-process Flang probe that links against the installed Flang parser and semantic-analysis libraries to demonstrate direct compiler API integration.
+## What It Detects
 
-## Features
+- Arithmetic `IF`
+- Computed `GOTO`
+- `EQUIVALENCE`
+- `COMMON` blocks
+- Implicit typing
+- Fixed-form source
+- Statement functions
+- Assumed-size arrays
+- `ENTRY` statements
 
-- Detects arithmetic `IF`, computed `GOTO`, `EQUIVALENCE`, `COMMON`, implicit typing, fixed-form source, statement functions, assumed-size arrays, and `ENTRY`.
-- Computes cross-file impact for shared `COMMON` blocks.
-- Records dependent constructs such as exact branch labels, storage association, dummy argument interfaces, and call graph risks.
-- Assigns effort ratings: `trivial`, `moderate`, `complex`.
-- Assigns safety ratings: `safe`, `review-needed`, `risky`.
-- Produces Markdown or JSON reports.
-- Includes a conservative fixed-form cleanup transformer for validating safe recommendations.
-- Consumes Flang parse-tree and symbol dumps to attach compiler-produced evidence to findings.
-- Provides an optional in-process Flang parser/semantic probe target.
+## Project Structure
 
-## Run
+| Path | Purpose |
+|---|---|
+| `flang_ast_advisor/` | Main assignment analyzer: in-memory Flang AST visitor and semantic impact analyzer |
+| `src/main.cpp` | CLI entry point and web-dashboard launcher |
+| `src/WebServer.cpp` | Minimal local web UI that calls the AST analyzer |
+| `src/Transform.cpp` | Conservative safe transformations used for validation/demo output |
+| `src/InProcessFlangProbe.cpp` | Small Flang parser/semantic probe for viva/debugging |
+| `examples/legacy/` | Fixture covering required patterns and false positives |
+| `examples/case_study/` | Small demonstration case study |
+| `examples/real_case_study/minpack/` | Real public Netlib MINPACK subset |
+| `docs/` | Reports, scoring notes, presentation notes, Flang dumps |
+| `transformed/` | Safe transformation outputs |
+
+There is one official build entry point: the root `Makefile` and root `CMakeLists.txt`.
+
+## Build And Run
 
 ```bash
 make
-./build/flang-modernizer examples/legacy
+./build/flang-modernizer examples/legacy/all_patterns.f
 ```
 
-Generate the case-study report:
+Generate reports:
 
 ```bash
 make report
-```
-
-Run safe demonstration transformations:
-
-```bash
-make transform
+make real-report
+make ast-report
+make ast-real-report
 ```
 
 Run tests:
@@ -41,71 +53,73 @@ Run tests:
 make test
 ```
 
-Validate the Fortran fixtures with real Flang, write parse-tree dumps, and run the in-process Flang probe:
+CMake flow for IDEs:
 
 ```bash
-make flang-validate
-make flang-dump-tree
-make flang-inprocess
+cmake -S . -B cmake-build
+cmake --build cmake-build
+ctest --test-dir cmake-build --output-on-failure
 ```
 
-
 ## Local Web Dashboard
-
-Start the browser-based local UI:
 
 ```bash
 make
 ./build/flang-modernizer --serve
 ```
 
-Then open:
+Open:
 
 ```text
 http://localhost:8080
 ```
 
-The dashboard lets you enter a Fortran file or folder path and run:
+The dashboard has one analysis button, **Analyze**, and it uses the in-memory Flang AST analyzer. The other buttons provide Flang validation, parse-tree dumps, and conservative safe transformations.
 
-- Analyze
-- Validate with Flang
-- Generate Flang parse-tree dumps
-- Run safe transformations
+## How The Flang Analyzer Works
 
-For CMake-based IDEs, build the `serve` target to start the same dashboard.
+The main analyzer is in `flang_ast_advisor/src/FlangAstAdvisor.cpp`.
 
-## Assignment-Strict In-Memory Flang AST Core
+Pipeline:
 
-The assignment-strict implementation lives in `flang_ast_advisor/`, but it is built from the root Makefile/CMake project. This is the version to emphasize when a professor asks whether the project truly uses Flang parse-tree and semantic analysis. It links against Flang libraries, parses Fortran in process, visits typed Flang AST nodes with `Fortran::parser::Walk`, and reads `semantics::Scope` / `Symbol` data for COMMON, EQUIVALENCE, and implicit typing impact.
-
-Useful commands:
-
-```bash
-make ast-advisor
-make ast-test
-make ast-report
-make ast-real-report
+```text
+Fortran source
+  -> Flang prescan
+  -> Flang parse tree in memory
+  -> typed AST visitor with Fortran::parser::Walk
+  -> Flang semantic analysis
+  -> semantic Scope/Symbol impact extraction
+  -> priority scoring
+  -> Markdown/JSON modernization report
 ```
 
-CMake IDEs now see these targets directly from the root `CMakeLists.txt`, so there is only one official CMake project to open.
+Examples of typed AST nodes used:
 
-## Flang Integration Design
+- `parser::ArithmeticIfStmt`
+- `parser::ComputedGotoStmt`
+- `parser::CommonStmt`
+- `parser::EquivalenceStmt`
+- `parser::StmtFunctionStmt`
+- `parser::EntryStmt`
 
-The advisor now uses Flang in three ways:
+Examples of semantic data used:
 
-1. `flang -fsyntax-only` validates analyzed Fortran inputs.
-2. `FlangMetadataProvider` consumes `-fdebug-dump-parse-tree` and `-fdebug-dump-symbols` output and attaches Flang parse-tree / semantic-symbol evidence to findings.
-3. `flang-inprocess-probe` links against Homebrew Flang libraries (`FortranParser`, `FortranSemantics`, `FortranEvaluate`, and support libraries) and runs Flang parsing plus semantic analysis in process.
+- `Scope::commonBlocks()`
+- `CommonBlockDetails::objects()`
+- `Scope::equivalenceSets()`
+- `Symbol::Flag::Implicit`
 
-The main modernization pipeline remains separated into source facts, impact analysis, prioritization, reporting, and transformations. This keeps the project demonstrable while still showing real Flang parse-tree and semantic-analysis integration.
-
-## Deliverables Mapping
+## Assignment Deliverables Mapping
 
 | Required deliverable | Project location |
 |---|---|
-| Pattern detector | `src/Analyzer.cpp`, `include/Analyzer.hpp` |
-| Impact analyzer | `ModernizationAnalyzer::computeImpact`, `ModernizationAnalyzer::enrichWithFlangMetadata` |
-| Prioritized plan | `src/Reporter.cpp`, `docs/scoring_model.md` |
-| Legacy tests | `examples/legacy`, `tests/test_analyzer.cpp` |
-| Demo case study | `examples/case_study`, `docs/case_study_report.md` |
-| Real legacy case study | `examples/real_case_study/minpack`, `docs/real_case_study_report.md` |
+| Pattern detector | `flang_ast_advisor/src/FlangAstAdvisor.cpp` typed Flang AST visitor |
+| Impact analyzer | `collectSemanticScopeEvidence(...)` and cross-file COMMON consolidation in `FlangAstAdvisor.cpp` |
+| Prioritized plan | `flang_ast_advisor/src/Findings.cpp` and generated Markdown/JSON reports |
+| Legacy test suite | `examples/legacy/`, `flang_ast_advisor/tests/test_flang_ast_advisor.cpp` |
+| Real case study | `examples/real_case_study/minpack/`, `docs/real_case_study_report.md`, `flang_ast_advisor/docs/ast_real_case_study_report.md` |
+| Three safe transformations | `src/Transform.cpp`, `transformed/case_study/`, `transformed/real_case_study/` |
+
+## Viva Line
+
+This project uses Flang as the compiler frontend. The analyzer walks Flang's in-memory parse tree, then uses Flang semantic scopes and symbols to assess modernization risk for constructs such as `COMMON`, `EQUIVALENCE`, and implicit typing.

@@ -2,3 +2,8 @@ __pycache__/
 *.pyc
 build/
 /cmake-build/
+.DS_Store
+cmake-build*/
+CMakeFiles/
+CMakeCache.txt
+compile_commands.json

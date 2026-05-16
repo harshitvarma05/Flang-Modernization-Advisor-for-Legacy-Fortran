@@ -31,24 +31,8 @@ set(FLANG_LIBS
   ${LLVM_LIB}
 )
 
-add_library(flang_modernizer_core
-  src/Analyzer.cpp
-  src/FlangMetadata.cpp
-  src/Models.cpp
-  src/Reporter.cpp
-  src/Transform.cpp
-)
-target_include_directories(flang_modernizer_core PUBLIC include)
-
-add_executable(flang-modernizer src/main.cpp src/WebServer.cpp)
-target_link_libraries(flang-modernizer PRIVATE flang_modernizer_core)
-
-add_executable(flang-modernizer-tests tests/test_analyzer.cpp)
-target_link_libraries(flang-modernizer-tests PRIVATE flang_modernizer_core)
-
-add_executable(flang-inprocess-probe src/InProcessFlangProbe.cpp)
-target_include_directories(flang-inprocess-probe PRIVATE ${FLANG_INCLUDE_DIR} ${LLVM_INCLUDE_DIR})
-target_link_libraries(flang-inprocess-probe PRIVATE ${FLANG_LIBS})
+add_library(safe_transform src/Transform.cpp)
+target_include_directories(safe_transform PUBLIC include)
 
 add_library(flang_ast_advisor_core
   flang_ast_advisor/src/Findings.cpp
@@ -60,16 +44,19 @@ target_include_directories(flang_ast_advisor_core
 )
 target_link_libraries(flang_ast_advisor_core PUBLIC ${FLANG_LIBS})
 
+add_executable(flang-modernizer src/main.cpp src/WebServer.cpp)
+target_include_directories(flang-modernizer PRIVATE include flang_ast_advisor/include)
+target_link_libraries(flang-modernizer PRIVATE flang_ast_advisor_core safe_transform)
+
 add_executable(flang-ast-advisor flang_ast_advisor/src/main.cpp)
 target_link_libraries(flang-ast-advisor PRIVATE flang_ast_advisor_core)
 
 add_executable(flang-ast-advisor-tests flang_ast_advisor/tests/test_flang_ast_advisor.cpp)
 target_link_libraries(flang-ast-advisor-tests PRIVATE flang_ast_advisor_core)
 
-add_test(NAME analyzer_tests
-  COMMAND flang-modernizer-tests
-  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-)
+add_executable(flang-inprocess-probe src/InProcessFlangProbe.cpp)
+target_include_directories(flang-inprocess-probe PRIVATE ${FLANG_INCLUDE_DIR} ${LLVM_INCLUDE_DIR})
+target_link_libraries(flang-inprocess-probe PRIVATE ${FLANG_LIBS})
 
 add_test(NAME flang_ast_advisor_tests
   COMMAND flang-ast-advisor-tests
@@ -103,14 +90,14 @@ add_custom_target(report
   COMMAND flang-modernizer examples/case_study --output docs/case_study_report.md
   DEPENDS flang-modernizer
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-  COMMENT "Generating dashboard-advisor case-study report"
+  COMMENT "Generating AST case-study report"
 )
 
 add_custom_target(real-report
   COMMAND flang-modernizer examples/real_case_study/minpack --output docs/real_case_study_report.md
   DEPENDS flang-modernizer
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-  COMMENT "Generating dashboard-advisor real MINPACK report"
+  COMMENT "Generating AST real MINPACK report"
 )
 
 add_custom_target(ast-report

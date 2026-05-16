@@ -1,5 +1,5 @@
-#include "Analyzer.hpp"
-#include "Reporter.hpp"
+#include "Findings.hpp"
+#include "FlangAstAdvisor.hpp"
 #include "Transform.hpp"
 #include "WebServer.hpp"
 
@@ -56,12 +56,14 @@ int main(int argc, char **argv) {
     }
   }
 
-  ModernizationAnalyzer analyzer;
-  ProjectAnalysis analysis = analyzer.analyzePath(input);
-  std::string report = format == "json" ? reportJson(analysis) : reportMarkdown(analysis);
+  advisor::FlangAstAdvisor analyzer;
+  advisor::ProjectAnalysis analysis = analyzer.analyzePath(input);
+  std::string report = format == "json" ? advisor::jsonReport(analysis) : advisor::markdownReport(analysis);
 
   if (!output.empty()) {
-    std::filesystem::create_directories(output.parent_path());
+    if (!output.parent_path().empty()) {
+      std::filesystem::create_directories(output.parent_path());
+    }
     std::ofstream file(output);
     file << report;
   } else {
