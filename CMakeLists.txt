@@ -66,6 +66,19 @@ add_test(NAME flang_ast_advisor_tests
 
 find_program(FLANG_EXECUTABLE NAMES flang flang-new REQUIRED)
 
+set(MINPACK_TRANSFORMED_SOURCES
+  transformed/real_case_study/dogleg.f90
+  transformed/real_case_study/dpmpar.f90
+  transformed/real_case_study/enorm.f90
+  transformed/real_case_study/fdjac1.f90
+  transformed/real_case_study/hybrd.f90
+  transformed/real_case_study/hybrd1.f90
+  transformed/real_case_study/qform.f90
+  transformed/real_case_study/qrfac.f90
+  transformed/real_case_study/r1mpyq.f90
+  transformed/real_case_study/r1updt.f90
+)
+
 add_custom_target(flang-validate
   COMMAND ${FLANG_EXECUTABLE} -fsyntax-only examples/legacy/all_patterns.f
   COMMAND ${FLANG_EXECUTABLE} -fsyntax-only examples/case_study/solver.f examples/case_study/physics.f
@@ -134,4 +147,20 @@ add_custom_target(serve
   DEPENDS flang-modernizer
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
   COMMENT "Starting local web dashboard at http://localhost:8080"
+)
+
+add_custom_target(minpack-driver
+  COMMAND ${FLANG_EXECUTABLE} -o
+        examples/real_case_study/minpack_driver/main.f90
+          ${MINPACK_TRANSFORMED_SOURCES}
+  DEPENDS real-transform
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  COMMENT "Building executable MINPACK driver against transformed sources"
+)
+
+add_custom_target(run-minpack-driver
+  COMMAND transformed/real_case_study/minpack_driver
+  DEPENDS minpack-driver
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  COMMENT "Running executable MINPACK driver case study"
 )

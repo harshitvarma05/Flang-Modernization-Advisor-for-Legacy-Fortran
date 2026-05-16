@@ -120,3 +120,14 @@ Examples of semantic data used:
 | Legacy test suite | `examples/legacy/`, `flang_ast_advisor/tests/test_flang_ast_advisor.cpp` |
 | Real case study | `examples/real_case_study/minpack/`, `docs/real_case_study_report.md`, `flang_ast_advisor/docs/ast_real_case_study_report.md` |
 | Three safe transformations | `src/Transform.cpp`, `transformed/case_study/`, `transformed/real_case_study/` |
+
+
+### Executable MINPACK driver
+
+MINPACK itself is a library, so individual routines such as `dogleg.f90` do not contain a `program main`. For a full executable demo, the repository includes `examples/real_case_study/minpack_driver/main.f90`, which calls the transformed MINPACK `hybrd1` solver on a small equation.
+
+```bash
+cmake --build cmake-build --target run-minpack-driver
+```
+
+This first regenerates the transformed MINPACK sources, links them with the driver, and runs the executable.
