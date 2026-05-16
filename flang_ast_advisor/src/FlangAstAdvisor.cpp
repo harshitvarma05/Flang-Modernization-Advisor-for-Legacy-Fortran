@@ -35,6 +35,41 @@ static bool isFixedFormFile(const fs::path &path) {
   return ext == ".f" || ext == ".for" || ext == ".f77";
 }
 
+
+static fs::path canonicalPath(const fs::path &path) {
+  std::error_code ec;
+  fs::path candidate = path;
+  if (!candidate.is_absolute()) {
+    candidate = fs::current_path(ec) / candidate;
+    if (ec)
+      candidate = fs::absolute(path, ec);
+  }
+  auto canonical = fs::weakly_canonical(candidate, ec);
+  if (!ec)
+    return canonical.lexically_normal();
+  return candidate.lexically_normal();
+}
+
+static std::string normalizePathString(const std::string &path) {
+  if (path.empty())
+    return path;
+  return canonicalPath(fs::path(path)).string();
+}
+
+static void normalizeFindingPaths(Finding &finding) {
+  finding.location.file = normalizePathString(finding.location.file);
+  std::set<std::string> normalized;
+  for (const auto &file : finding.affectedFiles) {
+    normalized.insert(normalizePathString(file));
+  }
+  finding.affectedFiles = std::move(normalized);
+}
+
+static void normalizeFindings(std::vector<Finding> &findings) {
+  for (auto &finding : findings)
+    normalizeFindingPaths(finding);
+}
+
 static std::string labelString(Fortran::common::Label label) {
   return std::to_string(static_cast<unsigned long long>(label));
 }
@@ -53,6 +88,7 @@ static Location locationFrom(
     loc.line = range->first.line;
     loc.column = range->first.column;
   }
+  loc.file = normalizePathString(loc.file);
   return loc;
 }
 
@@ -437,9 +473,12 @@ static void collectSemanticScopeEvidence(const semantics::Scope &scope,
 }
 
 FileAnalysis FlangAstAdvisor::analyzeFile(const fs::path &path) const {
+  const fs::path canonical = canonicalPath(path);
+  const std::string normalizedFile = canonical.string();
+
   FileAnalysis result;
-  result.path = path.string();
-  result.fixedForm = isFixedFormFile(path);
+  result.path = normalizedFile;
+  result.fixedForm = isFixedFormFile(canonical);
 
   parser::AllSources allSources;
   parser::AllCookedSources allCooked{allSources};
@@ -447,11 +486,11 @@ FileAnalysis FlangAstAdvisor::analyzeFile(const fs::path &path) const {
   parser::Options options;
   options.isFixedForm = result.fixedForm;
 
-  if (!parsing.Prescan(path.string(), options)) {
+  if (!parsing.Prescan(normalizedFile, options)) {
     Finding f;
     f.pattern = "parse-error";
     f.message = "Flang in-process prescan failed.";
-    f.location = Location{path.string(), 1, 1};
+    f.location = Location{normalizedFile, 1, 1};
     result.findings.push_back(std::move(f));
     return result;
   }
@@ -461,13 +500,13 @@ FileAnalysis FlangAstAdvisor::analyzeFile(const fs::path &path) const {
     Finding f;
     f.pattern = "parse-error";
     f.message = "Flang in-process parse failed.";
-    f.location = Location{path.string(), 1, 1};
+    f.location = Location{normalizedFile, 1, 1};
     result.findings.push_back(std::move(f));
     return result;
   }
   result.parsed = true;
 
-  AstFindingVisitor visitor{allCooked, path.string(), result.fixedForm,
+  AstFindingVisitor visitor{allCooked, normalizedFile, result.fixedForm,
       result.findings};
   visitor.addFixedFormFinding();
   parser::Walk(*parsing.parseTree(), visitor);
@@ -480,22 +519,25 @@ FileAnalysis FlangAstAdvisor::analyzeFile(const fs::path &path) const {
   semantics::Semantics semantics{semanticsContext, *parsing.parseTree()};
   result.semanticsOk = semantics.Perform() && !semantics.AnyFatalError();
   collectSemanticScopeEvidence(
-      semanticsContext.globalScope(), allCooked, path.string(), result.findings);
+      semanticsContext.globalScope(), allCooked, normalizedFile, result.findings);
 
+  normalizeFindings(result.findings);
   return result;
 }
 
 ProjectAnalysis FlangAstAdvisor::analyzePath(const fs::path &path) const {
+  const fs::path canonicalRoot = canonicalPath(path);
+
   ProjectAnalysis project;
-  project.root = path.string();
+  project.root = canonicalRoot.string();
 
   std::vector<fs::path> files;
-  if (fs::is_regular_file(path) && isFortranFile(path)) {
-    files.push_back(path);
-  } else if (fs::is_directory(path)) {
-    for (const auto &entry : fs::recursive_directory_iterator(path)) {
+  if (fs::is_regular_file(canonicalRoot) && isFortranFile(canonicalRoot)) {
+    files.push_back(canonicalRoot);
+  } else if (fs::is_directory(canonicalRoot)) {
+    for (const auto &entry : fs::recursive_directory_iterator(canonicalRoot)) {
       if (entry.is_regular_file() && isFortranFile(entry.path()))
-        files.push_back(entry.path());
+        files.push_back(canonicalPath(entry.path()));
     }
   }
   std::sort(files.begin(), files.end());
@@ -507,10 +549,12 @@ ProjectAnalysis FlangAstAdvisor::analyzePath(const fs::path &path) const {
     project.files.push_back(std::move(fileAnalysis));
   }
 
+  normalizeFindings(project.findings);
+
   std::map<std::string, std::set<std::string>> commonUsers;
   for (const auto &finding : project.findings) {
     if (finding.pattern == "common")
-      commonUsers[finding.construct].insert(finding.location.file);
+      commonUsers[finding.construct].insert(normalizePathString(finding.location.file));
   }
   for (auto &finding : project.findings) {
     if (finding.pattern != "common")
@@ -519,6 +563,7 @@ ProjectAnalysis FlangAstAdvisor::analyzePath(const fs::path &path) const {
     if (it == commonUsers.end())
       continue;
     finding.affectedFiles.insert(it->second.begin(), it->second.end());
+    normalizeFindingPaths(finding);
     if (it->second.size() > 1) {
       finding.dependentConstructs.push_back(
           "cross-file COMMON users: " + std::to_string(it->second.size()));

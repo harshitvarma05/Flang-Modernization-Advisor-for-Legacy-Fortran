@@ -1,11 +1,11 @@
 {
-  "root": "../examples/real_case_study/minpack",
+  "root": "/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack",
   "files_analyzed": 10,
   "findings": [
     {
       "pattern": "equivalence",
       "message": "Review EQUIVALENCE manually before replacing storage overlays.",
-      "file": "./../examples/real_case_study/minpack/dpmpar.f",
+      "file": "/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f",
       "line": 38,
       "routine": "dpmpar",
       "effort": "complex",
@@ -19,7 +19,7 @@
     {
       "pattern": "equivalence",
       "message": "Review EQUIVALENCE manually before replacing storage overlays.",
-      "file": "./../examples/real_case_study/minpack/dpmpar.f",
+      "file": "/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f",
       "line": 39,
       "routine": "dpmpar",
       "effort": "complex",
@@ -33,7 +33,7 @@
     {
       "pattern": "equivalence",
       "message": "Review EQUIVALENCE manually before replacing storage overlays.",
-      "file": "./../examples/real_case_study/minpack/dpmpar.f",
+      "file": "/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f",
       "line": 40,
       "routine": "dpmpar",
       "effort": "complex",
@@ -47,7 +47,7 @@
     {
       "pattern": "equivalence",
       "message": "Flang semantic scope resolved an EQUIVALENCE set; keep as risky until aliasing is reviewed.",
-      "file": "../examples/real_case_study/minpack/dpmpar.f",
+      "file": "/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f",
       "line": 1,
       "routine": "dpmpar",
       "effort": "complex",
@@ -61,7 +61,7 @@
     {
       "pattern": "equivalence",
       "message": "Flang semantic scope resolved an EQUIVALENCE set; keep as risky until aliasing is reviewed.",
-      "file": "../examples/real_case_study/minpack/dpmpar.f",
+      "file": "/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f",
       "line": 1,
       "routine": "dpmpar",
       "effort": "complex",
@@ -75,7 +75,7 @@
     {
       "pattern": "equivalence",
       "message": "Flang semantic scope resolved an EQUIVALENCE set; keep as risky until aliasing is reviewed.",
-      "file": "../examples/real_case_study/minpack/dpmpar.f",
+      "file": "/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f",
       "line": 1,
       "routine": "dpmpar",
       "effort": "complex",
@@ -89,7 +89,7 @@
     {
       "pattern": "equivalence",
       "message": "Flang semantic scope resolved an EQUIVALENCE set; keep as risky until aliasing is reviewed.",
-      "file": "../examples/real_case_study/minpack/dpmpar.f",
+      "file": "/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f",
       "line": 1,
       "routine": "dpmpar",
       "effort": "complex",
@@ -103,7 +103,7 @@
     {
       "pattern": "implicit-typing",
       "message": "Flang semantics resolved implicitly typed symbols; add explicit declarations before IMPLICIT NONE.",
-      "file": "../examples/real_case_study/minpack/fdjac1.f",
+      "file": "/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/fdjac1.f",
       "line": 1,
       "routine": "fdjac1",
       "effort": "moderate",
@@ -117,7 +117,7 @@
     {
       "pattern": "fixed-form",
       "message": "Convert fixed-form source to free-form Fortran.",
-      "file": "../examples/real_case_study/minpack/dogleg.f",
+      "file": "/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dogleg.f",
       "line": 1,
       "routine": "",
       "effort": "trivial",
@@ -131,7 +131,7 @@
     {
       "pattern": "fixed-form",
       "message": "Convert fixed-form source to free-form Fortran.",
-      "file": "../examples/real_case_study/minpack/dpmpar.f",
+      "file": "/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/dpmpar.f",
       "line": 1,
       "routine": "",
       "effort": "trivial",
@@ -145,7 +145,7 @@
     {
       "pattern": "fixed-form",
       "message": "Convert fixed-form source to free-form Fortran.",
-      "file": "../examples/real_case_study/minpack/enorm.f",
+      "file": "/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/enorm.f",
       "line": 1,
       "routine": "",
       "effort": "trivial",
@@ -159,7 +159,7 @@
     {
       "pattern": "fixed-form",
       "message": "Convert fixed-form source to free-form Fortran.",
-      "file": "../examples/real_case_study/minpack/fdjac1.f",
+      "file": "/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/fdjac1.f",
       "line": 1,
       "routine": "",
       "effort": "trivial",
@@ -173,7 +173,7 @@
     {
       "pattern": "fixed-form",
       "message": "Convert fixed-form source to free-form Fortran.",
-      "file": "../examples/real_case_study/minpack/hybrd.f",
+      "file": "/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/hybrd.f",
       "line": 1,
       "routine": "",
       "effort": "trivial",
@@ -187,7 +187,7 @@
     {
       "pattern": "fixed-form",
       "message": "Convert fixed-form source to free-form Fortran.",
-      "file": "../examples/real_case_study/minpack/hybrd1.f",
+      "file": "/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/hybrd1.f",
       "line": 1,
       "routine": "",
       "effort": "trivial",
@@ -201,7 +201,7 @@
     {
       "pattern": "fixed-form",
       "message": "Convert fixed-form source to free-form Fortran.",
-      "file": "../examples/real_case_study/minpack/qform.f",
+      "file": "/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/qform.f",
       "line": 1,
       "routine": "",
       "effort": "trivial",
@@ -215,7 +215,7 @@
     {
       "pattern": "fixed-form",
       "message": "Convert fixed-form source to free-form Fortran.",
-      "file": "../examples/real_case_study/minpack/qrfac.f",
+      "file": "/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/qrfac.f",
       "line": 1,
       "routine": "",
       "effort": "trivial",
@@ -229,7 +229,7 @@
     {
       "pattern": "fixed-form",
       "message": "Convert fixed-form source to free-form Fortran.",
-      "file": "../examples/real_case_study/minpack/r1mpyq.f",
+      "file": "/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/r1mpyq.f",
       "line": 1,
       "routine": "",
       "effort": "trivial",
@@ -243,7 +243,7 @@
     {
       "pattern": "fixed-form",
       "message": "Convert fixed-form source to free-form Fortran.",
-      "file": "../examples/real_case_study/minpack/r1updt.f",
+      "file": "/Users/harshit/Documents/Flang Modernization Advisor for Legacy Fortran/examples/real_case_study/minpack/r1updt.f",
       "line": 1,
       "routine": "",
       "effort": "trivial",
