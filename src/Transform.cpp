@@ -5,6 +5,7 @@
 #include <regex>
 #include <set>
 #include <sstream>
+#include <vector>
 
 namespace {
 std::string trim(const std::string &value) {
@@ -89,6 +90,50 @@ std::set<std::string> declaredNames(const std::string &code) {
   return names;
 }
 
+
+std::set<std::string> splitNames(const std::string &code) {
+  std::set<std::string> names;
+  std::stringstream stream(code);
+  std::string part;
+  while (std::getline(stream, part, ',')) {
+    part = lower(trim(part));
+    if (std::regex_match(part, std::regex(R"([a-z_]\w*)", std::regex::icase))) {
+      names.insert(part);
+    }
+  }
+  return names;
+}
+
+std::string continuationBody(const std::string &line) {
+  auto stripped = trim(line);
+  if (!stripped.empty() && stripped.front() == '&') {
+    return trim(stripped.substr(1));
+  }
+  return stripped;
+}
+
+bool isCommentOrBlank(const std::string &line) {
+  auto stripped = trim(line);
+  return stripped.empty() || stripped.front() == '!';
+}
+
+bool isSpecificationLine(const std::string &line) {
+  static const std::regex declarationRe(
+      R"(^\s*(integer|real|double\s+precision|complex|logical|character|common|equivalence|external|intrinsic|dimension|parameter|implicit|save|data)\b)",
+      std::regex::icase);
+  return std::regex_search(line, declarationRe);
+}
+
+std::set<std::string> dummyArgumentsFromRoutine(const std::string &line) {
+  static const std::regex routineWithArgsRe(R"(^(program|subroutine|function)\s+[a-z_]\w*\s*\((.*)\)\s*$)",
+                                           std::regex::icase);
+  std::smatch match;
+  if (!std::regex_search(line, match, routineWithArgsRe)) {
+    return {};
+  }
+  return splitNames(match[2].str());
+}
+
 std::vector<std::string> internalFunctionLines(const std::string &name, const std::string &args,
                                                const std::string &expression) {
   std::vector<std::string> argNames;
@@ -132,24 +177,52 @@ std::vector<std::string> convertSimpleStatementFunctions(const std::vector<std::
   std::set<std::string> declared;
   std::vector<std::string> pendingFunctions;
   bool inRoutine = false;
+  bool inSpecificationPart = false;
+  bool collectingRoutineHeader = false;
+  std::string routineHeader;
 
   for (const auto &line : lines) {
     std::string stripped = trim(line);
     if (std::regex_search(stripped, routineRe)) {
       inRoutine = true;
+      inSpecificationPart = true;
+      collectingRoutineHeader = stripped.find('(') != std::string::npos && stripped.find(')') == std::string::npos;
+      routineHeader = continuationBody(stripped);
       declared.clear();
       pendingFunctions.clear();
+      auto names = dummyArgumentsFromRoutine(routineHeader);
+      declared.insert(names.begin(), names.end());
+      result.push_back(line);
+      continue;
     }
-    if (inRoutine && std::regex_search(stripped, declarationRe)) {
+
+    if (inRoutine && collectingRoutineHeader) {
+      routineHeader += " " + continuationBody(line);
+      auto names = dummyArgumentsFromRoutine(routineHeader);
+      declared.insert(names.begin(), names.end());
+      if (routineHeader.find(')') != std::string::npos) {
+        collectingRoutineHeader = false;
+      }
+      result.push_back(line);
+      continue;
+    }
+
+    if (inRoutine && inSpecificationPart && std::regex_search(stripped, declarationRe)) {
       auto names = declaredNames(stripped);
       declared.insert(names.begin(), names.end());
     }
 
     std::smatch match;
-    if (inRoutine && std::regex_search(stripped, match, statementFunctionRe) && declared.count(lower(match[1].str())) == 0) {
+    if (inRoutine && inSpecificationPart && std::regex_search(stripped, match, statementFunctionRe) &&
+        declared.count(lower(match[1].str())) == 0) {
       auto generated = internalFunctionLines(match[1].str(), match[2].str(), match[3].str());
       pendingFunctions.insert(pendingFunctions.end(), generated.begin(), generated.end());
       continue;
+    }
+
+    if (inRoutine && inSpecificationPart && !collectingRoutineHeader && !isCommentOrBlank(stripped) &&
+        !isSpecificationLine(stripped)) {
+      inSpecificationPart = false;
     }
 
     if (inRoutine && std::regex_search(stripped, endRe)) {
@@ -158,11 +231,14 @@ std::vector<std::string> convertSimpleStatementFunctions(const std::vector<std::
         result.insert(result.end(), pendingFunctions.begin(), pendingFunctions.end());
       }
       inRoutine = false;
+      inSpecificationPart = false;
+      collectingRoutineHeader = false;
     }
     result.push_back(line);
   }
   return result;
 }
+
 } // namespace
 
 std::vector<std::filesystem::path> applySafeTransformations(const std::filesystem::path &source,

@@ -1,8 +1,18 @@
 #include "FlangAstAdvisor.hpp"
+#include "Transform.hpp"
 
 #include <cassert>
+#include <filesystem>
+#include <fstream>
 #include <iostream>
 #include <set>
+#include <string>
+
+
+static std::string readFile(const std::filesystem::path &path) {
+  std::ifstream input(path);
+  return std::string(std::istreambuf_iterator<char>(input), std::istreambuf_iterator<char>());
+}
 
 static bool hasPattern(
     const advisor::ProjectAnalysis &analysis, const std::string &pattern) {
@@ -36,6 +46,17 @@ int main() {
   assert(!real.files.empty());
   assert(hasPattern(real, "fixed-form"));
   assert(hasPattern(real, "implicit-typing"));
+
+  auto out = std::filesystem::temp_directory_path() / "flang-modernizer-transform-test";
+  std::filesystem::remove_all(out);
+  auto transformed = applySafeTransformations("examples/real_case_study/minpack/hybrd.f", out);
+  assert(transformed.size() == 1);
+  auto code = readFile(transformed.front());
+  assert(code.find("real function wa1") == std::string::npos);
+  assert(code.find("real function wa2") == std::string::npos);
+  assert(code.find("real function wa3") == std::string::npos);
+  assert(code.find("real function qtf") == std::string::npos);
+  assert(code.find("wa3(j) = diag(j)*x(j)") != std::string::npos);
 
   std::cout << "In-memory Flang AST advisor tests passed.\n";
   return 0;

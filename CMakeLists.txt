@@ -52,7 +52,8 @@ add_executable(flang-ast-advisor flang_ast_advisor/src/main.cpp)
 target_link_libraries(flang-ast-advisor PRIVATE flang_ast_advisor_core)
 
 add_executable(flang-ast-advisor-tests flang_ast_advisor/tests/test_flang_ast_advisor.cpp)
-target_link_libraries(flang-ast-advisor-tests PRIVATE flang_ast_advisor_core)
+target_include_directories(flang-ast-advisor-tests PRIVATE include)
+target_link_libraries(flang-ast-advisor-tests PRIVATE flang_ast_advisor_core safe_transform)
 
 add_executable(flang-inprocess-probe src/InProcessFlangProbe.cpp)
 target_include_directories(flang-inprocess-probe PRIVATE ${FLANG_INCLUDE_DIR} ${LLVM_INCLUDE_DIR})

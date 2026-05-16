@@ -245,6 +245,7 @@
 !        and initialize the step bound delta.
 !
          do 60 j = 1, n
+            wa3(j) = diag(j)*x(j)
 60       continue
          xnorm = enorm(n,wa3)
          delta = factor*xnorm
@@ -254,6 +255,7 @@
 !        form (q transpose)*fvec and store in qtf.
 !
          do 80 i = 1, n
+            qtf(i) = fvec(i)
 80       continue
          do 120 j = 1, n
             if (fjac(j,j) .eq. zero) go to 110
@@ -263,6 +265,7 @@
 90          continue
             temp = -sum/fjac(j,j)
             do 100 i = j, n
+               qtf(i) = qtf(i) + fjac(i,j)*temp
 100          continue
 110       continue
 120       continue
@@ -314,6 +317,9 @@
 !           store the direction p and x + p. calculate the norm of p.
 !
             do 200 j = 1, n
+               wa1(j) = -wa1(j)
+               wa2(j) = x(j) + wa1(j)
+               wa3(j) = diag(j)*wa1(j)
 200          continue
             pnorm = enorm(n,wa3)
 !
@@ -343,6 +349,7 @@
                   sum = sum + r(l)*wa1(j)
                   l = l + 1
 210             continue
+               wa3(i) = qtf(i) + sum
 220          continue
             temp = enorm(n,wa3)
             prered = zero
@@ -377,6 +384,7 @@
 !
             do 250 j = 1, n
                x(j) = wa2(j)
+               wa2(j) = diag(j)*x(j)
                fvec(j) = wa4(j)
 250          continue
             xnorm = enorm(n,wa2)
@@ -417,6 +425,8 @@
                do 270 i = 1, n
                   sum = sum + fjac(i,j)*wa4(i)
 270             continue
+               wa2(j) = (sum - wa3(j))/pnorm
+               wa1(j) = diag(j)*((diag(j)*wa1(j))/pnorm)
                if (ratio .ge. p0001) qtf(j) = sum
 280          continue
 !
@@ -446,45 +456,4 @@
 !
 !     last card of subroutine hybrd.
 !
-contains
-  real function wa3(j)
-    real, intent(in) :: j
-    wa3 = diag(j)*x(j)
-  end function wa3
-  real function qtf(i)
-    real, intent(in) :: i
-    qtf = fvec(i)
-  end function qtf
-  real function qtf(i)
-    real, intent(in) :: i
-    qtf = qtf(i) + fjac(i,j)*temp
-  end function qtf
-  real function wa1(j)
-    real, intent(in) :: j
-    wa1 = -wa1(j)
-  end function wa1
-  real function wa2(j)
-    real, intent(in) :: j
-    wa2 = x(j) + wa1(j)
-  end function wa2
-  real function wa3(j)
-    real, intent(in) :: j
-    wa3 = diag(j)*wa1(j)
-  end function wa3
-  real function wa3(i)
-    real, intent(in) :: i
-    wa3 = qtf(i) + sum
-  end function wa3
-  real function wa2(j)
-    real, intent(in) :: j
-    wa2 = diag(j)*x(j)
-  end function wa2
-  real function wa2(j)
-    real, intent(in) :: j
-    wa2 = (sum - wa3(j))/pnorm
-  end function wa2
-  real function wa1(j)
-    real, intent(in) :: j
-    wa1 = diag(j)*((diag(j)*wa1(j))/pnorm)
-  end function wa1
       end
