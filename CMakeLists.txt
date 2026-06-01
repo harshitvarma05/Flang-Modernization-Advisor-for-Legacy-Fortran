@@ -7,20 +7,54 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-find_path(FLANG_INCLUDE_DIR flang/Parser/parsing.h HINTS /opt/homebrew/opt/flang/include)
-find_path(LLVM_INCLUDE_DIR llvm/Support/raw_ostream.h HINTS /opt/homebrew/opt/llvm/include)
-find_library(FORTRAN_PARSER_LIB FortranParser HINTS /opt/homebrew/opt/flang/lib)
-find_library(FORTRAN_SEMANTICS_LIB FortranSemantics HINTS /opt/homebrew/opt/flang/lib)
-find_library(FORTRAN_EVALUATE_LIB FortranEvaluate HINTS /opt/homebrew/opt/flang/lib)
-find_library(FORTRAN_SUPPORT_LIB FortranSupport HINTS /opt/homebrew/opt/flang/lib)
-find_library(FORTRAN_DECIMAL_LIB FortranDecimal HINTS /opt/homebrew/opt/flang/lib)
-find_library(LLVM_LIB LLVM-22 HINTS /opt/homebrew/opt/llvm/lib)
+set(FLANG_ROOT "" CACHE PATH "Root of a Flang installation containing include/ and lib/")
+set(LLVM_ROOT "" CACHE PATH "Root of an LLVM installation containing include/ and lib/")
+
+set(LLVM_FLANG_HINT_ROOTS
+  ${FLANG_ROOT}
+  ${LLVM_ROOT}
+  $ENV{FLANG_ROOT}
+  $ENV{LLVM_ROOT}
+  /opt/homebrew/opt/flang
+  /opt/homebrew/opt/llvm
+  /usr/local/opt/flang
+  /usr/local/opt/llvm
+  /usr/lib/llvm-22
+  /usr/lib/llvm-21
+  /usr/lib/llvm-20
+  /usr/lib/llvm-19
+  /usr/lib/llvm-18
+  /usr/lib/llvm-17
+  /usr/lib/llvm-16
+  /usr/local
+  /usr
+)
+
+foreach(root ${LLVM_FLANG_HINT_ROOTS})
+  if(root)
+    list(APPEND LLVM_FLANG_INCLUDE_HINTS ${root}/include)
+    list(APPEND LLVM_FLANG_LIBRARY_HINTS ${root}/lib ${root}/lib64)
+  endif()
+endforeach()
+
+find_path(FLANG_INCLUDE_DIR flang/Parser/parsing.h HINTS ${LLVM_FLANG_INCLUDE_HINTS})
+find_path(LLVM_INCLUDE_DIR llvm/Support/raw_ostream.h HINTS ${LLVM_FLANG_INCLUDE_HINTS})
+find_library(FORTRAN_PARSER_LIB FortranParser HINTS ${LLVM_FLANG_LIBRARY_HINTS})
+find_library(FORTRAN_SEMANTICS_LIB FortranSemantics HINTS ${LLVM_FLANG_LIBRARY_HINTS})
+find_library(FORTRAN_EVALUATE_LIB FortranEvaluate HINTS ${LLVM_FLANG_LIBRARY_HINTS})
+find_library(FORTRAN_SUPPORT_LIB FortranSupport HINTS ${LLVM_FLANG_LIBRARY_HINTS})
+find_library(FORTRAN_DECIMAL_LIB FortranDecimal HINTS ${LLVM_FLANG_LIBRARY_HINTS})
+find_library(LLVM_LIB NAMES LLVM LLVM-22 LLVM-21 LLVM-20 LLVM-19 LLVM-18 LLVM-17 LLVM-16 HINTS ${LLVM_FLANG_LIBRARY_HINTS})
 
 if(NOT FLANG_INCLUDE_DIR OR NOT LLVM_INCLUDE_DIR OR NOT FORTRAN_PARSER_LIB OR
    NOT FORTRAN_SEMANTICS_LIB OR NOT FORTRAN_EVALUATE_LIB OR
    NOT FORTRAN_SUPPORT_LIB OR NOT FORTRAN_DECIMAL_LIB OR NOT LLVM_LIB)
-  message(FATAL_ERROR "Flang/LLVM development headers and libraries were not found. Install Homebrew flang and llvm.")
+  message(FATAL_ERROR "Flang/LLVM development headers and libraries were not found. Run scripts/detect_llvm.sh, or configure with -DFLANG_ROOT=/path/to/flang -DLLVM_ROOT=/path/to/llvm.")
 endif()
+
+message(STATUS "Flang include: ${FLANG_INCLUDE_DIR}")
+message(STATUS "LLVM include: ${LLVM_INCLUDE_DIR}")
+message(STATUS "LLVM library: ${LLVM_LIB}")
 
 set(FLANG_LIBS
   ${FORTRAN_PARSER_LIB}
@@ -79,10 +113,12 @@ set(MINPACK_TRANSFORMED_SOURCES
   transformed/real_case_study/r1updt.f90
 )
 
+file(GLOB MINPACK_LEGACY_SOURCES CONFIGURE_DEPENDS examples/real_case_study/minpack/*.f)
+
 add_custom_target(flang-validate
   COMMAND ${FLANG_EXECUTABLE} -fsyntax-only examples/legacy/all_patterns.f
   COMMAND ${FLANG_EXECUTABLE} -fsyntax-only examples/case_study/solver.f examples/case_study/physics.f
-  COMMAND ${FLANG_EXECUTABLE} -fsyntax-only examples/real_case_study/minpack/*.f
+  COMMAND ${FLANG_EXECUTABLE} -fsyntax-only ${MINPACK_LEGACY_SOURCES}
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
   COMMENT "Validating legacy Fortran fixtures and real case study with LLVM Flang"
 )

@@ -14,6 +14,20 @@ A C++17 static analysis tool for legacy Fortran modernization. The analyzer embe
 - Assumed-size arrays
 - `ENTRY` statements
 
+
+## Submission Documents
+
+| Required item | Location |
+|---|---|
+| README: what and how to run | `README.md` |
+| DESIGN: approach and alternatives | `DESIGN.md` |
+| IMPLEMENTATION: LLVM/Flang details | `IMPLEMENTATION.md` |
+| EVALUATION: metrics, comparison, test cases | `EVALUATION.md` |
+| Demo guide | `DEMO.md` |
+| scripts | `build.sh`, `run.sh`, `demo.sh`, `scripts/detect_llvm.sh` |
+| src | `src/`, `flang_ast_advisor/src/` |
+| testcases | `testcases/`, `examples/legacy/`, `examples/case_study/`, `examples/real_case_study/` |
+
 ## Project Structure
 
 | Path | Purpose |
@@ -33,17 +47,26 @@ There is one official build entry point: the root `CMakeLists.txt`.
 
 ## Build And Run
 
-Configure and build with CMake:
+Use the provided scripts for submission/demo runs. The build script automatically detects LLVM/Flang on macOS or Linux through `scripts/detect_llvm.sh`, configures CMake, builds, and runs tests.
+
+```bash
+./build.sh
+./run.sh examples/legacy/all_patterns.f
+./run.sh examples/case_study
+./demo.sh
+```
+
+Manual CMake use is also supported:
 
 ```bash
 cmake -S . -B cmake-build
 cmake --build cmake-build
 ```
 
-Run the CLI:
+If auto-detection fails, pass roots explicitly:
 
 ```bash
-./cmake-build/flang-modernizer examples/legacy/all_patterns.f
+cmake -S . -B cmake-build -DFLANG_ROOT=/path/to/flang -DLLVM_ROOT=/path/to/llvm
 ```
 
 Generate reports:
